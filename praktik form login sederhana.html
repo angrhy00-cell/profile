@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Contoh Input dan JavaScript</title>
+    </head>
+    <body>
+        <h2>Cek Nama Siswa</h2>
+
+        <form onsubmit="return cekNama()">
+            <label >Username:</label><br>
+            <input type="text" id="nama"><br><br>
+            <label>password:</label><br>
+            <input type="number" id="password"><br><br>
+            <button onclick="submit">Login</button>
+        </form>
+
+        <p id="hasil"></p>
+
+        <script>
+            function cekNama () {
+                var namaSiswa = document.getElementById("nama") .value;
+        
+            if (namaSiswa === "Admin"){
+                 let expectedPassword = "12345";
+                 document.getElementById("hasil").innerHTML =
+                  "<span style='color:green;'>Halo Admin, selamat datang!</span>";
+                } else {
+                 document.getElementById("hasil").innerHTML =
+                  "<span style='color:red;'>Maaf, nama tidak dikenal.</span>";
+                }
+                return false;
+            }
+            
+        </script>
+    </body>
+</html>

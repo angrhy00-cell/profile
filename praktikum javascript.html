@@ -1,0 +1,37 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contoh javascript Dasar</title>
+</head>
+<body>
+    <h1>Selamat Datang di praktikum Javascript!</h1>
+<p id="teksPesan">
+<button id="tombolTeks">Click teks</button>
+<button id="tombolWarna">click warna</button>
+<script>
+    // mendapatkan elemen tombol berdasarkan ID
+    const tombol = document.getElementById('tombolTeks');
+
+    // menambahkan event listener untuk aksi 'click'
+    tombol.addEventListener('click',function() {
+        alert('Halo, Selamat Datang di Dunia Javascript!') ;
+    });
+
+    // Untuk Tombol  (mengubah teks paragraf)
+    const tombolTeks=document.getElementById('tombolTeks');
+    tombolSapa.addEventListener('click',function() {
+        document.getElementById('teksPesan').teksContent = 'Teks paragraf sudah diubah oleh Javascript!';
+
+    });
+
+    // Untuk Tombol Warna (mengubah warna latar belakang)
+    const tombolWarna = document.getElementById('tombolWarna');
+    tombolWarna.addEventListener('click',function() {
+            document.body.style.backgroundColor = '#E0FFF';
+        
+    });
+    </script>
+    </body>
+    </html>
+
