@@ -4,7 +4,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Anugrah | My Green Portfolio</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -15,7 +14,6 @@
     --dark: #145b36;
     --mint: #e5f8df;
     --text: #35483d;
-    --white: #ffffff;
 }
 
 * {
@@ -26,39 +24,41 @@
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 85px;
+    scroll-padding-top: 80px;
 }
 
 body {
     font-family: 'Poppins', sans-serif;
     color: var(--text);
-    background: #f8fcf6;
+    background: #fff;
     overflow-x: hidden;
 }
 
-/* WALLPAPER JONG WOO */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* BACKGROUND JONGWOO */
 .wallpaper {
     position: fixed;
     inset: 0;
     z-index: -2;
     overflow: hidden;
     pointer-events: none;
-    background: #fafff8;
+    background-color: #fff;
 }
 
 .wallpaper::before {
-    content:
-    "I LOVE JONG WOO  I LOVE JONG WOO  I LOVE JONG WOO  I LOVE JONG WOO  I LOVE JONG WOO";
+    content: "";
     position: absolute;
-    inset: -100px;
-    width: 130%;
-    font-size: 25px;
-    line-height: 2.65;
-    letter-spacing: 1px;
-    overflow-wrap: anywhere;
-    color: #b8e4b1;
-    opacity: .40;
-    transform: rotate(-5deg);
+    inset: -50px;
+    background-image: url("jongwoo.jfif");
+    background-size: 145px auto;
+    background-repeat: repeat;
+    background-position: center;
+    opacity: .13;
+    transform: rotate(-8deg) scale(1.1);
     animation: wallpaperMove 35s linear infinite;
 }
 
@@ -66,17 +66,16 @@ body {
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(255,255,255,.43);
+    background: rgba(255,255,255,.48);
 }
 
 @keyframes wallpaperMove {
-    from { background-position: 0 0; }
-    to { background-position: 300px 0; }
-}
-
-a {
-    text-decoration: none;
-    color: inherit;
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 290px 145px;
+    }
 }
 
 .container {
@@ -90,7 +89,7 @@ header {
     position: sticky;
     top: 0;
     z-index: 100;
-    background: rgba(255,255,255,.90);
+    background: rgba(255,255,255,.92);
     backdrop-filter: blur(14px);
     border-bottom: 1px solid #edf4e9;
 }
@@ -116,14 +115,13 @@ header {
 nav {
     display: flex;
     align-items: center;
-    gap: 27px;
+    gap: 25px;
 }
 
 nav a {
-    padding: 19px 0;
+    padding: 18px 0;
     font-size: 11px;
-    font-weight: 500;
-    color: #42594a;
+    font-weight: 600;
     transition: .3s;
 }
 
@@ -132,7 +130,7 @@ nav a:hover {
     border-bottom: 2px solid var(--green);
 }
 
-/* HERO */
+/* BERANDA */
 .hero {
     min-height: 420px;
     display: grid;
@@ -211,7 +209,7 @@ h1 span {
 
 .btn-secondary {
     color: var(--dark);
-    background: rgba(255,255,255,.8);
+    background: rgba(255,255,255,.9);
 }
 
 .btn:hover {
@@ -219,7 +217,7 @@ h1 span {
     box-shadow: 0 7px 18px #b6dfad;
 }
 
-/* KARTU FOTO PROFIL */
+/* FOTO PROFIL */
 .profile-area {
     position: relative;
     display: flex;
@@ -233,7 +231,7 @@ h1 span {
     max-width: 350px;
     padding: 9px;
     border-radius: 22px;
-    background: rgba(255,255,255,.91);
+    background: rgba(255,255,255,.94);
     border: 1px solid #a9dca0;
     box-shadow: 0 10px 30px #acd7a74a;
 }
@@ -299,7 +297,6 @@ h1 span {
     font-weight: 600;
 }
 
-/* HIASAN CUTE */
 .sticker {
     position: absolute;
     z-index: 3;
@@ -327,8 +324,12 @@ h1 span {
 }
 
 @keyframes floating {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-8px); }
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
 }
 
 @keyframes bob {
@@ -354,7 +355,7 @@ section {
     padding: 20px 25px;
     border: 1px solid #e6f1e2;
     border-radius: 20px;
-    background: rgba(255,255,255,.83);
+    background: rgba(255,255,255,.91);
     box-shadow: 0 5px 20px #b8dcb31c;
 }
 
@@ -386,11 +387,11 @@ section {
     margin-top: 5px;
 }
 
-/* KARTU PROYEK */
+/* PROYEK DAN TUGAS */
 .project-box {
     padding: 20px 22px;
     border-radius: 20px;
-    background: rgba(255,255,255,.92);
+    background: rgba(255,255,255,.94);
     border: 1px solid #e0efdb;
     box-shadow: 0 8px 30px #a9d4a51f;
 }
@@ -501,7 +502,7 @@ section {
 }
 
 .contact-box .description {
-    margin: 0 auto;
+    margin: auto;
 }
 
 .contact-box .btn {
@@ -521,14 +522,14 @@ footer {
     border-top: 1px solid #e3efdf;
     color: #506c59;
     font-size: 10px;
+    background: rgba(255,255,255,.7);
 }
 
 footer strong {
     color: var(--dark);
-    transform: rotate(-3deg);
 }
 
-/* TAMPILAN TABLET */
+/* TABLET */
 @media (max-width: 950px) {
     .container {
         width: 92%;
@@ -551,7 +552,7 @@ footer strong {
     }
 }
 
-/* TAMPILAN HP */
+/* HP */
 @media (max-width: 600px) {
     .navbar {
         padding: 12px 0;
@@ -663,7 +664,6 @@ footer strong {
     }
 }
 
-/* KURANGI GERAKAN JIKA DIPILIH DI PERANGKAT */
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
         animation: none !important;
@@ -676,13 +676,12 @@ footer strong {
 
 <body>
 
-<!-- BACKGROUND -->
+<!-- BACKGROUND JONGWOO -->
 <div class="wallpaper"></div>
 
 <!-- NAVBAR -->
 <header>
     <div class="container navbar">
-
         <a href="#beranda" class="logo">
             Anugrah <span>💚</span>
         </a>
@@ -694,7 +693,6 @@ footer strong {
             <a href="#kontak">✉ Kontak</a>
             <a href="#beranda">☀️</a>
         </nav>
-
     </div>
 </header>
 
@@ -704,7 +702,6 @@ footer strong {
 <div class="container hero" id="beranda">
 
     <div class="hero-text">
-
         <p class="hello">HELLO, SAYA ♡</p>
 
         <h1>
@@ -716,7 +713,7 @@ footer strong {
 
         <h2 class="role">
             RPL Student &amp; Web Developer
-            <span style="color:#399747"> &lt;/&gt;</span>
+            <span style="color:#399747">&lt;/&gt;</span>
         </h2>
 
         <p class="description">
@@ -735,18 +732,15 @@ footer strong {
                 ✉ Kontak Saya
             </a>
         </div>
-
     </div>
 
     <!-- FOTO PROFIL -->
     <div class="profile-area">
-
         <span class="sticker sticker-one">✿</span>
         <span class="sticker sticker-two">★</span>
         <span class="sticker sticker-three">♡</span>
 
         <div class="profile-card">
-
             <img
                 src="anugrahclnut.jfif"
                 alt="Foto profil Anugrah"
@@ -766,7 +760,6 @@ footer strong {
                     Contact Me →
                 </a>
             </div>
-
         </div>
     </div>
 
@@ -774,13 +767,9 @@ footer strong {
 
 <!-- TENTANG SAYA -->
 <section class="container" id="tentang">
-
     <div class="about-box">
-
         <div>
-            <h2 class="section-title">
-                🌿 Tentang Saya
-            </h2>
+            <h2 class="section-title">🌿 Tentang Saya</h2>
 
             <p class="about-text">
                 Website ini berisi kumpulan tugas dan latihan selama
@@ -794,23 +783,16 @@ footer strong {
             Keep Going ♡
             <span>〰➤</span>
         </div>
-
     </div>
-
 </section>
 
-<!-- PROYEK -->
+<!-- PROYEK DAN TUGAS -->
 <section class="container" id="proyek">
-
     <div class="project-box">
 
         <div class="project-heading">
-
             <div>
-                <h2 class="project-title">
-                    📂 Proyek &amp; Tugas
-                </h2>
-
+                <h2 class="project-title">📂 Proyek &amp; Tugas</h2>
                 <p class="project-subtitle">
                     Berikut kumpulan tugas yang biasa ada di website saya.
                     Klik kartu untuk membuka tugas.
@@ -818,7 +800,6 @@ footer strong {
             </div>
 
             <span class="task-count">✨ 16 Tugas</span>
-
         </div>
 
         <div class="menu-grid">
@@ -968,16 +949,12 @@ footer strong {
             </a>
 
         </div>
-
     </div>
-
 </section>
 
 <!-- KONTAK -->
 <section class="container" id="kontak">
-
     <div class="project-box contact-box">
-
         <h2 class="section-title">💌 Kontak Saya</h2>
 
         <p class="description">
@@ -988,9 +965,7 @@ footer strong {
            class="btn btn-primary">
             ✉ Kirim Email
         </a>
-
     </div>
-
 </section>
 
 </main>
