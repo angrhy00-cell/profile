@@ -4,17 +4,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Anugrah | My Cute Portfolio</title>
+
+<title>Anugrah | My Green Portfolio</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 :root {
-    --green: #3b9845;
-    --dark-green: #145c35;
-    --light-green: #e7f9df;
+    --green: #389747;
+    --dark: #145b36;
+    --mint: #e5f8df;
+    --text: #35483d;
     --white: #ffffff;
-    --text: #30443a;
 }
 
 * {
@@ -31,43 +32,46 @@ html {
 body {
     font-family: 'Poppins', sans-serif;
     color: var(--text);
-    background: #f8fff7;
+    background: #f8fcf6;
     overflow-x: hidden;
 }
 
-/* BACKGROUND JONG WOO */
-body::before {
-    content: "I LOVE JONG WOO  I LOVE JONG WOO  I LOVE JONG WOO  I LOVE JONG WOO  I LOVE JONG WOO";
-    position: fixed;
-    inset: -100px;
-    z-index: -2;
-    pointer-events: none;
-    font-size: 25px;
-    line-height: 2.6;
-    letter-spacing: 1px;
-    color: #b9e6b3;
-    opacity: .38;
-    word-spacing: 5px;
-    overflow-wrap: anywhere;
-    transform: rotate(-5deg);
-    animation: wallpaper 25s linear infinite;
-}
-
-body::after {
-    content: "";
+/* WALLPAPER JONG WOO */
+.wallpaper {
     position: fixed;
     inset: 0;
-    z-index: -1;
+    z-index: -2;
+    overflow: hidden;
     pointer-events: none;
-    background:
-        radial-gradient(circle at 10% 15%, #e1f8dc 0, transparent 25%),
-        radial-gradient(circle at 90% 20%, #e3f8df 0, transparent 25%),
-        rgba(255,255,255,.55);
+    background: #fafff8;
 }
 
-@keyframes wallpaper {
+.wallpaper::before {
+    content:
+    "I LOVE JONG WOO  I LOVE JONG WOO  I LOVE JONG WOO  I LOVE JONG WOO  I LOVE JONG WOO";
+    position: absolute;
+    inset: -100px;
+    width: 130%;
+    font-size: 25px;
+    line-height: 2.65;
+    letter-spacing: 1px;
+    overflow-wrap: anywhere;
+    color: #b8e4b1;
+    opacity: .40;
+    transform: rotate(-5deg);
+    animation: wallpaperMove 35s linear infinite;
+}
+
+.wallpaper::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,.43);
+}
+
+@keyframes wallpaperMove {
     from { background-position: 0 0; }
-    to { background-position: 500px 0; }
+    to { background-position: 300px 0; }
 }
 
 a {
@@ -75,21 +79,24 @@ a {
     color: inherit;
 }
 
+.container {
+    width: 88%;
+    max-width: 1200px;
+    margin: auto;
+}
+
 /* NAVBAR */
 header {
     position: sticky;
     top: 0;
     z-index: 100;
-    background: rgba(255,255,255,.88);
-    backdrop-filter: blur(15px);
-    border-bottom: 1px solid #e5f3e1;
+    background: rgba(255,255,255,.90);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid #edf4e9;
 }
 
 .navbar {
-    max-width: 1200px;
-    width: 92%;
-    margin: auto;
-    min-height: 65px;
+    min-height: 55px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -97,9 +104,9 @@ header {
 }
 
 .logo {
-    font-size: 23px;
+    color: var(--dark);
+    font-size: 22px;
     font-weight: 800;
-    color: var(--dark-green);
 }
 
 .logo span {
@@ -109,49 +116,46 @@ header {
 nav {
     display: flex;
     align-items: center;
-    gap: 28px;
+    gap: 27px;
 }
 
 nav a {
-    font-size: 12px;
+    padding: 19px 0;
+    font-size: 11px;
     font-weight: 500;
+    color: #42594a;
     transition: .3s;
 }
 
 nav a:hover {
     color: var(--green);
-}
-
-/* LAYOUT */
-.container {
-    width: 90%;
-    max-width: 1120px;
-    margin: auto;
+    border-bottom: 2px solid var(--green);
 }
 
 /* HERO */
 .hero {
-    min-height: 440px;
+    min-height: 420px;
     display: grid;
-    grid-template-columns: 1.1fr .9fr;
+    grid-template-columns: 1.15fr .85fr;
     align-items: center;
-    gap: 50px;
-    padding: 45px 0;
+    gap: 45px;
+    padding-top: 30px;
+    padding-bottom: 35px;
 }
 
 .hello {
-    color: var(--dark-green);
-    font-size: 12px;
+    color: var(--dark);
+    font-size: 11px;
     font-weight: 700;
-    letter-spacing: 1px;
+    letter-spacing: .5px;
 }
 
 h1 {
-    font-size: clamp(36px, 4.5vw, 54px);
-    line-height: 1.13;
-    font-weight: 800;
     margin: 12px 0;
-    color: #34443b;
+    font-size: clamp(36px, 4vw, 48px);
+    line-height: 1.05;
+    font-weight: 800;
+    color: #33443a;
 }
 
 h1 span {
@@ -161,240 +165,334 @@ h1 span {
 
 .student {
     display: inline-block;
-    background: #d9f6d1;
-    color: #17652c;
-    border-radius: 10px;
-    padding: 5px 12px;
-    font-size: 14px;
+    background: #d9f5d1;
+    color: #17652d;
+    padding: 4px 10px;
+    border-radius: 9px;
+    font-size: 13px;
     font-weight: 600;
     margin-bottom: 8px;
 }
 
 .role {
     font-size: 19px;
-    margin-bottom: 12px;
-    color: #344a3c;
+    margin-bottom: 10px;
+    color: #35483d;
 }
 
 .description {
-    font-size: 13px;
-    line-height: 1.9;
-    color: #597064;
     max-width: 470px;
+    color: #5a7163;
+    font-size: 12px;
+    line-height: 1.85;
 }
 
 .buttons {
     display: flex;
     gap: 14px;
     flex-wrap: wrap;
-    margin-top: 23px;
+    margin-top: 20px;
 }
 
 .btn {
     display: inline-block;
-    padding: 11px 20px;
-    border-radius: 30px;
     border: 1px solid var(--green);
-    color: var(--dark-green);
-    font-size: 12px;
+    border-radius: 30px;
+    padding: 10px 20px;
+    font-size: 11px;
     font-weight: 600;
     transition: .3s;
 }
 
 .btn-primary {
-    background: var(--green);
     color: white;
+    background: var(--green);
+}
+
+.btn-secondary {
+    color: var(--dark);
+    background: rgba(255,255,255,.8);
 }
 
 .btn:hover {
     transform: translateY(-4px);
-    box-shadow: 0 7px 20px #a8dba4;
+    box-shadow: 0 7px 18px #b6dfad;
 }
 
-/* FOTO PROFIL */
+/* KARTU FOTO PROFIL */
 .profile-area {
+    position: relative;
     display: flex;
     justify-content: center;
-    position: relative;
-    animation: float 4s ease-in-out infinite;
+    animation: floating 4s ease-in-out infinite;
 }
 
 .profile-card {
+    position: relative;
     width: 100%;
     max-width: 350px;
-    padding: 10px;
+    padding: 9px;
     border-radius: 22px;
-    background: rgba(255,255,255,.85);
-    border: 1px solid #b7e2ad;
-    box-shadow: 0 12px 35px #b6ddb34d;
-    position: relative;
+    background: rgba(255,255,255,.91);
+    border: 1px solid #a9dca0;
+    box-shadow: 0 10px 30px #acd7a74a;
 }
 
 .profile-card::before {
     content: "♡";
     position: absolute;
-    top: -20px;
-    left: 15px;
-    font-size: 45px;
-    color: var(--green);
     z-index: 2;
+    top: -15px;
+    left: 12px;
+    color: var(--green);
+    font-size: 40px;
     transform: rotate(-15deg);
 }
 
 .profile-card::after {
     content: "JONG WOO ♥";
     position: absolute;
-    right: -15px;
-    top: 20px;
-    padding: 10px;
-    border-radius: 15px;
-    background: #d9f6d1;
-    color: var(--dark-green);
+    top: 18px;
+    right: -12px;
+    background: #d9f5d1;
+    color: var(--dark);
+    padding: 9px 12px;
+    border-radius: 12px;
+    font-size: 11px;
     font-weight: 800;
-    font-size: 12px;
     transform: rotate(8deg);
 }
 
 .profile-photo {
-    display: block;
     width: 100%;
-    height: 300px;
+    height: 250px;
+    display: block;
     object-fit: cover;
     object-position: center;
     border-radius: 15px;
-    background: #e8f8e5;
+    background: #e8f6e3;
 }
 
 .profile-info {
-    padding: 13px 8px 7px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 8px;
+    padding: 12px 6px 5px;
     font-size: 10px;
-    color: #688271;
+    color: #63806b;
 }
 
 .profile-info strong {
     display: block;
-    font-size: 13px;
-    color: var(--dark-green);
+    color: var(--dark);
+    font-size: 12px;
 }
 
 .online {
     color: var(--green);
 }
 
-/* FLOATING DECORATION */
-.decor {
+.contact-link {
+    color: var(--dark);
+    white-space: nowrap;
+    font-weight: 600;
+}
+
+/* HIASAN CUTE */
+.sticker {
     position: absolute;
-    color: #66b95e;
+    z-index: 3;
+    color: var(--green);
     font-size: 30px;
     animation: bob 3s ease-in-out infinite;
+    pointer-events: none;
 }
 
-.decor-one {
+.sticker-one {
     left: -15px;
-    bottom: 45px;
+    bottom: 85px;
 }
 
-.decor-two {
-    right: -15px;
-    bottom: 100px;
-    animation-delay: 1s;
+.sticker-two {
+    right: -18px;
+    bottom: 145px;
+    animation-delay: .8s;
 }
 
-@keyframes float {
+.sticker-three {
+    left: 10px;
+    top: 10px;
+    animation-delay: 1.3s;
+}
+
+@keyframes floating {
     0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+    50% { transform: translateY(-8px); }
 }
 
 @keyframes bob {
-    0%, 100% { transform: translateY(0) rotate(-10deg); }
-    50% { transform: translateY(-13px) rotate(10deg); }
+    0%, 100% {
+        transform: translateY(0) rotate(-8deg);
+    }
+    50% {
+        transform: translateY(-12px) rotate(8deg);
+    }
 }
 
-/* SECTION */
+/* TENTANG SAYA */
 section {
-    padding: 30px 0;
+    padding: 12px 0;
 }
 
-.section-box {
-    background: rgba(255,255,255,.86);
-    border: 1px solid #e1f1dc;
+.about-box {
+    min-height: 120px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    padding: 20px 25px;
+    border: 1px solid #e6f1e2;
     border-radius: 20px;
-    padding: 24px;
-    box-shadow: 0 8px 25px #b5dcb126;
+    background: rgba(255,255,255,.83);
+    box-shadow: 0 5px 20px #b8dcb31c;
 }
 
 .section-title {
-    font-size: 22px;
-    color: var(--dark-green);
-    margin-bottom: 8px;
+    font-size: 21px;
+    color: var(--dark);
+    margin-bottom: 7px;
 }
 
-.section-subtitle {
+.about-text {
+    max-width: 550px;
+    color: #607568;
     font-size: 12px;
-    color: #718477;
-    margin-bottom: 20px;
+    line-height: 1.8;
 }
 
-/* TUGAS */
+.about-decoration {
+    min-width: 180px;
+    text-align: center;
+    color: var(--green);
+    font-size: 17px;
+    font-weight: 700;
+    transform: rotate(-6deg);
+}
+
+.about-decoration span {
+    display: block;
+    font-size: 27px;
+    margin-top: 5px;
+}
+
+/* KARTU PROYEK */
+.project-box {
+    padding: 20px 22px;
+    border-radius: 20px;
+    background: rgba(255,255,255,.92);
+    border: 1px solid #e0efdb;
+    box-shadow: 0 8px 30px #a9d4a51f;
+}
+
+.project-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 17px;
+}
+
+.project-title {
+    color: var(--dark);
+    font-size: 21px;
+}
+
+.project-subtitle {
+    color: #64786a;
+    font-size: 11px;
+    margin-top: 4px;
+}
+
+.task-count {
+    padding: 8px 13px;
+    border-radius: 30px;
+    background: #e2f8db;
+    color: var(--dark);
+    font-size: 11px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
 .menu-grid {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 12px;
+    gap: 10px 15px;
 }
 
 .menu-card {
-    min-height: 60px;
-    padding: 12px;
+    min-width: 0;
+    min-height: 58px;
     display: flex;
     align-items: center;
     gap: 10px;
-    border-radius: 13px;
-    border: 1px solid #dcefd7;
-    background: linear-gradient(135deg, #fff, #f5fff2);
-    transition: .3s;
+    padding: 9px 12px;
+    border: 1px solid #e0efdc;
+    border-radius: 12px;
+    background: linear-gradient(120deg, #fff, #f8fff6);
+    transition: .25s;
 }
 
 .menu-card:hover {
     transform: translateY(-4px);
-    border-color: #76c76b;
-    box-shadow: 0 8px 18px #acd9a54d;
-    background: #efffeb;
+    border-color: #8bce7e;
+    background: #f0ffec;
+    box-shadow: 0 7px 15px #b5dcb34a;
 }
 
 .menu-icon {
+    flex-shrink: 0;
     width: 38px;
     height: 38px;
-    flex-shrink: 0;
     display: grid;
     place-items: center;
     border-radius: 50%;
-    background: #e2f7dc;
+    background: #e3f6dc;
     color: var(--green);
     font-size: 17px;
+    font-weight: 700;
+}
+
+.menu-text {
+    min-width: 0;
+    flex: 1;
 }
 
 .menu-text small {
     display: block;
-    color: #89a58d;
+    color: #89a78e;
     font-size: 9px;
-    margin-bottom: 3px;
+    margin-bottom: 2px;
 }
 
 .menu-text strong {
     display: block;
-    color: var(--dark-green);
+    color: var(--dark);
     font-size: 11px;
     font-weight: 600;
+    overflow-wrap: anywhere;
 }
 
 .arrow {
-    margin-left: auto;
+    flex-shrink: 0;
+    width: 25px;
+    height: 25px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: #e2f9e1;
     color: var(--green);
-    font-size: 15px;
+    font-size: 13px;
 }
 
 /* KONTAK */
@@ -402,31 +500,40 @@ section {
     text-align: center;
 }
 
-.contact-box .section-subtitle {
-    margin-bottom: 15px;
+.contact-box .description {
+    margin: 0 auto;
+}
+
+.contact-box .btn {
+    margin-top: 15px;
 }
 
 /* FOOTER */
 footer {
-    max-width: 1120px;
-    width: 90%;
-    margin: 25px auto;
-    padding: 22px 10px;
+    width: 88%;
+    max-width: 1200px;
+    margin: 15px auto 0;
+    padding: 20px 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 15px;
-    color: #52705a;
-    font-size: 11px;
-    border-top: 1px solid #dcefd7;
+    border-top: 1px solid #e3efdf;
+    color: #506c59;
+    font-size: 10px;
 }
 
 footer strong {
-    color: var(--dark-green);
+    color: var(--dark);
+    transform: rotate(-3deg);
 }
 
-/* RESPONSIVE */
-@media (max-width: 850px) {
+/* TAMPILAN TABLET */
+@media (max-width: 950px) {
+    .container {
+        width: 92%;
+    }
+
     .hero {
         gap: 25px;
     }
@@ -436,26 +543,38 @@ footer strong {
     }
 
     nav {
-        gap: 15px;
+        gap: 16px;
+    }
+
+    .about-decoration {
+        min-width: 120px;
     }
 }
 
+/* TAMPILAN HP */
 @media (max-width: 600px) {
     .navbar {
-        padding: 15px 0;
+        padding: 12px 0;
         flex-direction: column;
+        gap: 5px;
     }
 
     nav {
+        width: 100%;
         justify-content: center;
         flex-wrap: wrap;
         gap: 16px;
     }
 
+    nav a {
+        padding: 9px 0;
+        font-size: 10px;
+    }
+
     .hero {
         grid-template-columns: 1fr;
         text-align: center;
-        padding: 35px 0;
+        padding-top: 35px;
         gap: 35px;
     }
 
@@ -464,11 +583,11 @@ footer strong {
     }
 
     .profile-card {
-        max-width: 280px;
+        max-width: 290px;
     }
 
     .profile-photo {
-        height: 250px;
+        height: 260px;
     }
 
     .description {
@@ -479,10 +598,28 @@ footer strong {
         justify-content: center;
     }
 
-    .section-box {
-        padding: 17px;
+    .about-box {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 18px;
+        gap: 12px;
     }
 
+    .about-decoration {
+        align-self: flex-end;
+        min-width: auto;
+    }
+
+    .project-box {
+        padding: 14px;
+    }
+
+    .project-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .project-title,
     .section-title {
         font-size: 19px;
     }
@@ -492,14 +629,18 @@ footer strong {
     }
 
     .menu-card {
-        padding: 9px;
+        padding: 8px;
         gap: 7px;
     }
 
     .menu-icon {
         width: 30px;
         height: 30px;
-        font-size: 14px;
+        font-size: 13px;
+    }
+
+    .menu-text small {
+        font-size: 8px;
     }
 
     .menu-text strong {
@@ -521,22 +662,39 @@ footer strong {
         grid-template-columns: 1fr;
     }
 }
+
+/* KURANGI GERAKAN JIKA DIPILIH DI PERANGKAT */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation: none !important;
+        scroll-behavior: auto !important;
+        transition: none !important;
+    }
+}
 </style>
 </head>
 
 <body>
 
+<!-- BACKGROUND -->
+<div class="wallpaper"></div>
+
 <!-- NAVBAR -->
 <header>
-    <div class="navbar">
-        <a href="#beranda" class="logo">Anugrah<span>💚</span></a>
+    <div class="container navbar">
+
+        <a href="#beranda" class="logo">
+            Anugrah <span>💚</span>
+        </a>
 
         <nav>
             <a href="#beranda">⌂ Beranda</a>
-            <a href="#tentang">Tentang</a>
-            <a href="#proyek">Proyek</a>
-            <a href="#kontak">Kontak</a>
+            <a href="#tentang">♙ Tentang</a>
+            <a href="#proyek">▱ Proyek</a>
+            <a href="#kontak">✉ Kontak</a>
+            <a href="#beranda">☀️</a>
         </nav>
+
     </div>
 </header>
 
@@ -546,6 +704,7 @@ footer strong {
 <div class="container hero" id="beranda">
 
     <div class="hero-text">
+
         <p class="hello">HELLO, SAYA ♡</p>
 
         <h1>
@@ -555,7 +714,10 @@ footer strong {
 
         <span class="student">Seorang Siswa</span>
 
-        <h2 class="role">RPL Student &amp; Web Developer</h2>
+        <h2 class="role">
+            RPL Student &amp; Web Developer
+            <span style="color:#399747"> &lt;/&gt;</span>
+        </h2>
 
         <p class="description">
             Semangat pagi semangat berjuang menuju Indonesia cerdas,
@@ -569,17 +731,19 @@ footer strong {
                 ➜ Lihat Proyek
             </a>
 
-            <a href="#kontak" class="btn">
+            <a href="#kontak" class="btn btn-secondary">
                 ✉ Kontak Saya
             </a>
         </div>
+
     </div>
 
-    <!-- GANTI FOTO PROFIL DI SINI -->
+    <!-- FOTO PROFIL -->
     <div class="profile-area">
 
-        <span class="decor decor-one">✿</span>
-        <span class="decor decor-two">★</span>
+        <span class="sticker sticker-one">✿</span>
+        <span class="sticker sticker-two">★</span>
+        <span class="sticker sticker-three">♡</span>
 
         <div class="profile-card">
 
@@ -592,10 +756,15 @@ footer strong {
             <div class="profile-info">
                 <div>
                     <strong>anugrahclnut.jfif</strong>
-                    <span><span class="online">●</span> Portofolio Pelajar</span>
+                    <span>
+                        <span class="online">●</span>
+                        Portofolio Pelajar
+                    </span>
                 </div>
 
-                <a href="#kontak">Contact Me →</a>
+                <a class="contact-link" href="#kontak">
+                    Contact Me →
+                </a>
             </div>
 
         </div>
@@ -605,34 +774,57 @@ footer strong {
 
 <!-- TENTANG SAYA -->
 <section class="container" id="tentang">
-    <div class="section-box">
 
-        <h2 class="section-title">🌿 Tentang Saya</h2>
+    <div class="about-box">
 
-        <p class="description">
-            Website ini berisi kumpulan tugas dan latihan selama belajar
-            pemrograman web. Saya belajar menggunakan HTML, CSS, dan
-            JavaScript untuk membuat halaman web yang menarik.
-        </p>
+        <div>
+            <h2 class="section-title">
+                🌿 Tentang Saya
+            </h2>
+
+            <p class="about-text">
+                Website ini berisi kumpulan tugas dan latihan selama
+                belajar pemrograman web. Saya belajar menggunakan
+                HTML, CSS, dan JavaScript untuk membuat halaman web
+                yang menarik.
+            </p>
+        </div>
+
+        <div class="about-decoration">
+            Keep Going ♡
+            <span>〰➤</span>
+        </div>
 
     </div>
+
 </section>
 
-<!-- PROYEK DAN TUGAS -->
+<!-- PROYEK -->
 <section class="container" id="proyek">
-    <div class="section-box">
 
-        <h2 class="section-title">📂 Proyek &amp; Tugas</h2>
+    <div class="project-box">
 
-        <p class="section-subtitle">
-            Berikut kumpulan tugas yang biasa ada di website saya.
-            Klik kartu untuk membuka tugas.
-        </p>
+        <div class="project-heading">
+
+            <div>
+                <h2 class="project-title">
+                    📂 Proyek &amp; Tugas
+                </h2>
+
+                <p class="project-subtitle">
+                    Berikut kumpulan tugas yang biasa ada di website saya.
+                    Klik kartu untuk membuka tugas.
+                </p>
+            </div>
+
+            <span class="task-count">✨ 16 Tugas</span>
+
+        </div>
 
         <div class="menu-grid">
 
             <a href="biodata.html" class="menu-card">
-                <span class="menu-icon">👤</span>
+                <span class="menu-icon">♟</span>
                 <span class="menu-text">
                     <small>01 / HTML</small>
                     <strong>Biodata</strong>
@@ -677,7 +869,7 @@ footer strong {
             </a>
 
             <a href="Semantik.html" class="menu-card">
-                <span class="menu-icon">‹/›</span>
+                <span class="menu-icon">&lt;/&gt;</span>
                 <span class="menu-text">
                     <small>06 / HTML</small>
                     <strong>Semantik</strong>
@@ -695,7 +887,7 @@ footer strong {
             </a>
 
             <a href="cobaincss.html" class="menu-card">
-                <span class="menu-icon">🎨</span>
+                <span class="menu-icon">✿</span>
                 <span class="menu-text">
                     <small>08 / CSS</small>
                     <strong>My CSS</strong>
@@ -713,7 +905,7 @@ footer strong {
             </a>
 
             <a href="praktik form login sederhana.html" class="menu-card">
-                <span class="menu-icon">🔒</span>
+                <span class="menu-icon">♙</span>
                 <span class="menu-text">
                     <small>10 / FORM</small>
                     <strong>Login</strong>
@@ -743,13 +935,13 @@ footer strong {
                 <span class="menu-icon">▦</span>
                 <span class="menu-text">
                     <small>13 / JAVASCRIPT</small>
-                    <strong>Aritmatika 2</strong>
+                    <strong>Aritmatika2</strong>
                 </span>
                 <span class="arrow">➜</span>
             </a>
 
             <a href="index angrh.html" class="menu-card">
-                <span class="menu-icon">⭐</span>
+                <span class="menu-icon">★</span>
                 <span class="menu-text">
                     <small>14 / PROYEK</small>
                     <strong>Angrh</strong>
@@ -767,7 +959,7 @@ footer strong {
             </a>
 
             <a href="Biodata Saya.html" class="menu-card">
-                <span class="menu-icon">👤</span>
+                <span class="menu-icon">♟</span>
                 <span class="menu-text">
                     <small>16 / HTML</small>
                     <strong>Biodata 2</strong>
@@ -776,30 +968,36 @@ footer strong {
             </a>
 
         </div>
+
     </div>
+
 </section>
 
 <!-- KONTAK -->
 <section class="container" id="kontak">
-    <div class="section-box contact-box">
+
+    <div class="project-box contact-box">
 
         <h2 class="section-title">💌 Kontak Saya</h2>
 
-        <p class="section-subtitle">
+        <p class="description">
             Terima kasih sudah mengunjungi portofolio saya!
         </p>
 
-        <a href="mailto:anugrah@example.com" class="btn btn-primary">
+        <a href="mailto:anugrah@example.com"
+           class="btn btn-primary">
             ✉ Kirim Email
         </a>
 
     </div>
+
 </section>
 
 </main>
 
+<!-- FOOTER -->
 <footer>
-    <span>💌 Terima kasih sudah mengunjungi portofolio saya!</span>
+    <span>✉ Terima kasih sudah mengunjungi portofolio saya!</span>
     <strong>I LOVE JONG WOO 💚</strong>
 </footer>
 
