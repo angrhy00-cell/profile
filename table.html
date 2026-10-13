@@ -1,50 +1,604 @@
-<html>
-  <head>
-  <title>latihan table</title>
-  </head>
-  <body>
-  <h1>table nilai uas x ti
-  <table border :1>
-  	<tr>
-	 <th rowspan=2>no
-	 <th rowspan=2>nama
-	 <th colspan=3>nilai
-	</tr>
-	<tr>
-	 <th>ipa
-	 <th>ips
-	 <th>mtk
-	<tr>
-	<tr>
-	 <td>1
-         <td>Anugrah nur cahyati
-	 <td>100
-	 <td>95
-	 <td>90
-        <tr>
-	 <td>2
-         <td>Yaumi usytufia ahyani 
-	 <td>100
-	 <td>95
-	 <td>90
-        <tr>
-	 <td>3
-         <td>visia nauli
-	 <td>95
-	 <td>85
-	 <td>80
-        <tr>
-	 <td>4
-         <td>rahma laila faiza
-	 <td>90
-	 <td>95
-	 <td>85
-        <tr>
-	 <td>5
-         <td>eva saputri
-	 <td>85
-	 <td>90
-	 <td>95
-  </table>
-  </body>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>♡ Tabel Nilai Anugrah ♡</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --green: #54b85b;
+    --dark-green: #206b3b;
+    --light-green: #e7f9df;
+    --text: #405b49;
+}
+
+body {
+    min-height: 100vh;
+    padding: 20px 15px;
+    font-family: 'Nunito', sans-serif;
+    color: var(--text);
+    background: #ffffff;
+    overflow-x: hidden;
+}
+
+/* BACKGROUND JONGWOO */
+.wallpaper {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    overflow: hidden;
+    background: white;
+    pointer-events: none;
+}
+
+.wallpaper::before {
+    content: "";
+    position: absolute;
+    inset: -50px;
+    background-image: url("jongwoo.jfif");
+    background-size: 150px auto;
+    background-repeat: repeat;
+    opacity: 0.13;
+    transform: rotate(-7deg) scale(1.1);
+    animation: wallpaperMove 40s linear infinite;
+}
+
+.wallpaper::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.5);
+}
+
+@keyframes wallpaperMove {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 300px 150px;
+    }
+}
+
+/* HIASAN MELAYANG */
+.decoration {
+    position: fixed;
+    z-index: -1;
+    color: #65bd63;
+    pointer-events: none;
+    animation: floating 4s ease-in-out infinite;
+}
+
+.deco1 {
+    top: 15%;
+    left: 5%;
+    font-size: 38px;
+}
+
+.deco2 {
+    top: 35%;
+    right: 5%;
+    font-size: 35px;
+    animation-delay: 1s;
+}
+
+.deco3 {
+    bottom: 15%;
+    left: 7%;
+    font-size: 35px;
+    animation-delay: 2s;
+}
+
+.deco4 {
+    bottom: 20%;
+    right: 8%;
+    font-size: 40px;
+    animation-delay: .5s;
+}
+
+@keyframes floating {
+    0%, 100% {
+        transform: translateY(0) rotate(-8deg);
+    }
+    50% {
+        transform: translateY(-13px) rotate(8deg);
+    }
+}
+
+/* NAVBAR */
+.navbar {
+    max-width: 1000px;
+    margin: 0 auto 25px;
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    border: 1px solid #e0f1d9;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, .94);
+    box-shadow: 0 5px 20px #8ecf821a;
+}
+
+.logo {
+    color: var(--dark-green);
+    font-size: 19px;
+    font-weight: 900;
+    text-decoration: none;
+}
+
+.logo span {
+    color: var(--green);
+}
+
+.nav-link {
+    color: var(--dark-green);
+    font-size: 13px;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.nav-link:hover {
+    color: var(--green);
+}
+
+/* KARTU UTAMA */
+.container {
+    max-width: 1000px;
+    margin: auto;
+}
+
+.main-card {
+    padding: 30px;
+    border: 2px solid #d7efce;
+    border-radius: 30px;
+    background: rgba(255, 255, 255, .95);
+    box-shadow: 0 15px 40px #76ba7226;
+    animation: appear .8s ease both;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* JUDUL */
+.heading {
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.mini-title {
+    display: inline-block;
+    margin-bottom: 12px;
+    padding: 6px 15px;
+    border-radius: 30px;
+    color: var(--dark-green);
+    background: var(--light-green);
+    font-size: 12px;
+    font-weight: 900;
+}
+
+.heading h1 {
+    color: var(--dark-green);
+    font-size: clamp(25px, 5vw, 38px);
+    font-weight: 900;
+}
+
+.heading h1 span {
+    color: var(--green);
+}
+
+.heading p {
+    margin-top: 8px;
+    color: #7a9a80;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+/* INFORMASI TABEL */
+.table-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.table-info h2 {
+    color: var(--dark-green);
+    font-size: 19px;
+    font-weight: 900;
+}
+
+.badge {
+    padding: 7px 13px;
+    border-radius: 30px;
+    background: #e5f9df;
+    color: var(--dark-green);
+    font-size: 12px;
+    font-weight: 900;
+}
+
+/* TABEL RESPONSIF */
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    border: 1px solid #d9eed3;
+    border-radius: 17px;
+    background: #ffffff;
+    box-shadow: 0 5px 18px #8ecf8214;
+}
+
+table {
+    width: 100%;
+    min-width: 560px;
+    border-collapse: separate;
+    border-spacing: 0;
+    text-align: center;
+}
+
+thead th {
+    padding: 15px 12px;
+    color: #ffffff;
+    background: linear-gradient(135deg, #65c75c, #359c49);
+    font-size: 13px;
+    font-weight: 900;
+    border-right: 1px solid #ffffff35;
+    border-bottom: 1px solid #ffffff35;
+}
+
+thead tr:first-child th:first-child {
+    border-top-left-radius: 16px;
+}
+
+thead tr:first-child th:last-child {
+    border-top-right-radius: 16px;
+}
+
+thead tr:nth-child(2) th {
+    background: #dff5d7;
+    color: var(--dark-green);
+    border-color: #cdebc4;
+}
+
+tbody td {
+    padding: 14px 12px;
+    border-right: 1px solid #e2f1dd;
+    border-bottom: 1px solid #e2f1dd;
+    color: #405b49;
+    font-size: 13px;
+    font-weight: 700;
+    transition: .25s;
+}
+
+tbody tr:nth-child(odd) {
+    background: #f7fff4;
+}
+
+tbody tr:nth-child(even) {
+    background: #ffffff;
+}
+
+tbody tr:hover {
+    background: #e8fadd;
+}
+
+tbody td:first-child {
+    color: var(--green);
+    font-weight: 900;
+}
+
+tbody td:nth-child(2) {
+    text-align: left;
+    font-weight: 800;
+    color: var(--dark-green);
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+th:last-child,
+td:last-child {
+    border-right: none;
+}
+
+/* NILAI TERTINGGI */
+.score {
+    display: inline-block;
+    min-width: 36px;
+    padding: 5px 8px;
+    border-radius: 10px;
+    background: #e4f8dc;
+    color: #26763a;
+    font-weight: 900;
+}
+
+.score-high {
+    background: #c9f3b9;
+    color: #17652e;
+}
+
+/* KARTU CATATAN */
+.note {
+    margin-top: 22px;
+    padding: 18px;
+    border: 1px solid #d3edca;
+    border-radius: 19px;
+    background: linear-gradient(135deg, #edffe8, #ffffff);
+    text-align: center;
+}
+
+.note h3 {
+    margin-bottom: 7px;
+    color: var(--dark-green);
+    font-size: 17px;
+}
+
+.note p {
+    color: #58775d;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+/* TOMBOL */
+.buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 11px 20px;
+    border: 1px solid var(--green);
+    border-radius: 30px;
+    background: #ffffff;
+    color: var(--dark-green);
+    font-size: 12px;
+    font-weight: 900;
+    text-decoration: none;
+    transition: .3s;
+}
+
+.btn-primary {
+    color: #ffffff;
+    background: linear-gradient(135deg, #62c45b, #339c49);
+    border-color: transparent;
+}
+
+.btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 7px 18px #8bce8245;
+}
+
+/* FOOTER */
+footer {
+    max-width: 1000px;
+    margin: 20px auto 0;
+    padding: 18px 10px;
+    text-align: center;
+    color: #6b8d72;
+    font-size: 12px;
+}
+
+footer strong {
+    color: var(--dark-green);
+}
+
+/* TAMPILAN HP */
+@media (max-width: 600px) {
+    body {
+        padding: 12px 9px;
+    }
+
+    .navbar {
+        padding: 12px;
+    }
+
+    .logo {
+        font-size: 16px;
+    }
+
+    .nav-link {
+        font-size: 11px;
+    }
+
+    .main-card {
+        padding: 20px 12px;
+        border-radius: 23px;
+    }
+
+    .table-info h2 {
+        font-size: 16px;
+    }
+
+    .table-wrapper {
+        border-radius: 13px;
+    }
+
+    thead th,
+    tbody td {
+        padding: 12px 10px;
+        font-size: 12px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- BACKGROUND -->
+<div class="wallpaper"></div>
+
+<!-- HIASAN CUTE -->
+<div class="decoration deco1">♡</div>
+<div class="decoration deco2">✿</div>
+<div class="decoration deco3">🌱</div>
+<div class="decoration deco4">★</div>
+
+<!-- NAVBAR -->
+<header class="navbar">
+    <a href="index.html" class="logo">
+        Anugrah <span>💚</span>
+    </a>
+
+    <a href="index.html" class="nav-link">
+        🏡 Beranda
+    </a>
+</header>
+
+<main class="container">
+    <div class="main-card">
+
+        <!-- JUDUL -->
+        <div class="heading">
+            <span class="mini-title">
+                🌷 MY SCHOOL PROJECT 🌷
+            </span>
+
+            <h1>
+                Tabel Nilai <span>UAS ♡</span>
+            </h1>
+
+            <p>
+                Belajar, bertumbuh, dan meraih impian! 🍀
+            </p>
+        </div>
+
+        <!-- INFORMASI -->
+        <div class="table-info">
+            <h2>📚 Nilai UAS X TI</h2>
+            <span class="badge">🌱 5 Siswa</span>
+        </div>
+
+        <!-- TABEL -->
+        <div class="table-wrapper">
+            <table>
+
+                <thead>
+                    <tr>
+                        <th rowspan="2">No.</th>
+                        <th rowspan="2">Nama Siswa</th>
+                        <th colspan="3">Nilai UAS 🌿</th>
+                    </tr>
+
+                    <tr>
+                        <th>IPA</th>
+                        <th>IPS</th>
+                        <th>MTK</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Anugrah Nur Cahyati</td>
+                        <td><span class="score score-high">100</span></td>
+                        <td><span class="score">95</span></td>
+                        <td><span class="score">90</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>2</td>
+                        <td>Yaumi Usytufia Ahyani</td>
+                        <td><span class="score score-high">100</span></td>
+                        <td><span class="score">95</span></td>
+                        <td><span class="score">90</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>3</td>
+                        <td>Visia Nauli</td>
+                        <td><span class="score">95</span></td>
+                        <td><span class="score">85</span></td>
+                        <td><span class="score">80</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>4</td>
+                        <td>Rahma Laila Faiza</td>
+                        <td><span class="score">90</span></td>
+                        <td><span class="score">95</span></td>
+                        <td><span class="score">85</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>5</td>
+                        <td>Eva Saputri</td>
+                        <td><span class="score">85</span></td>
+                        <td><span class="score">90</span></td>
+                        <td><span class="score">95</span></td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+
+        <!-- CATATAN -->
+        <div class="note">
+            <h3>🌼 Semangat Terus! 💚</h3>
+
+            <p>
+                Setiap usaha adalah langkah kecil menuju kesuksesan.
+                <br>
+                Tetap semangat belajar dan jangan menyerah mengejar cita-cita! ♡
+            </p>
+
+            <p style="margin-top: 8px;">
+                ✧･ﾟ: *✧･ﾟ:* 🌿 *:･ﾟ✧*:･ﾟ✧
+            </p>
+        </div>
+
+        <!-- TOMBOL -->
+        <div class="buttons">
+            <a href="index.html" class="btn btn-primary">
+                🏡 Kembali ke Beranda
+            </a>
+
+            <a href="biodata.html" class="btn">
+                🌷 Lihat Biodata
+            </a>
+
+            <a href="tulisan.html" class="btn">
+                ✏️ Halaman Tulisan
+            </a>
+        </div>
+
+    </div>
+</main>
+
+<footer>
+    <p>Made with ♡ by <strong>Anugrah</strong></p>
+    <p>🌱 Keep learning, keep growing! 💚</p>
+    <p style="margin-top: 6px;">I LOVE JONG WOO ♡</p>
+</footer>
+
+</body>
 </html>
