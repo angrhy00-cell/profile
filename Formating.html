@@ -1,26 +1,575 @@
-<html>
- <head>
-  <title>Tulisan</title>
- </head>
- <body>
-	<b>ku ingin menjadi pangeran</b>
-	<br>
-	<strong>wahai tuan putri</strong>
-	<br>
-	padahal aku ingin bertemu<i> denganmu </i>
-	<br>
-	<em>jangan pernah percaya pada seseorang</em>
-	<br>
-	<mark>sungguh indah</mark>
-	<br>
-	<small>aku sang pangeran</small>
-	<br>
-	why did <del> you </del>shape my life like this?
-	<br>
-	i never feel <ins>happy</ins>
-	<br>
-	nama ilmiah air adalah H<sub>2</sub>O
-	<br>
-	suhu ruangan ini 16<sup>o</sup>C
- </body>
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>♡ Tulisan Anugrah ♡</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --green: #54b85b;
+    --dark-green: #206b3b;
+    --light-green: #e7f9df;
+    --text: #405b49;
+}
+
+body {
+    min-height: 100vh;
+    padding: 20px 15px;
+    font-family: 'Nunito', sans-serif;
+    color: var(--text);
+    background: white;
+    overflow-x: hidden;
+}
+
+/* BACKGROUND JONGWOO */
+.wallpaper {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    overflow: hidden;
+    background: white;
+    pointer-events: none;
+}
+
+.wallpaper::before {
+    content: "";
+    position: absolute;
+    inset: -50px;
+    background-image: url("jongwoo.jfif");
+    background-size: 150px auto;
+    background-repeat: repeat;
+    opacity: 0.13;
+    transform: rotate(-7deg) scale(1.1);
+    animation: wallpaperMove 40s linear infinite;
+}
+
+.wallpaper::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,.5);
+}
+
+@keyframes wallpaperMove {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 300px 150px;
+    }
+}
+
+/* HIASAN MELAYANG */
+.decoration {
+    position: fixed;
+    z-index: -1;
+    color: #65bd63;
+    pointer-events: none;
+    animation: floating 4s ease-in-out infinite;
+}
+
+.deco1 {
+    top: 15%;
+    left: 5%;
+    font-size: 40px;
+}
+
+.deco2 {
+    top: 35%;
+    right: 6%;
+    font-size: 35px;
+    animation-delay: 1s;
+}
+
+.deco3 {
+    bottom: 15%;
+    left: 7%;
+    font-size: 35px;
+    animation-delay: 2s;
+}
+
+.deco4 {
+    bottom: 20%;
+    right: 8%;
+    font-size: 40px;
+    animation-delay: .5s;
+}
+
+@keyframes floating {
+    0%, 100% {
+        transform: translateY(0) rotate(-8deg);
+    }
+    50% {
+        transform: translateY(-13px) rotate(8deg);
+    }
+}
+
+/* NAVBAR */
+.navbar {
+    max-width: 850px;
+    margin: 0 auto 25px;
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    border: 1px solid #e0f1d9;
+    border-radius: 20px;
+    background: rgba(255,255,255,.94);
+    box-shadow: 0 5px 20px #8ecf821a;
+}
+
+.logo {
+    color: var(--dark-green);
+    font-size: 19px;
+    font-weight: 900;
+    text-decoration: none;
+}
+
+.logo span {
+    color: var(--green);
+}
+
+.nav-link {
+    color: var(--dark-green);
+    font-size: 13px;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.nav-link:hover {
+    color: var(--green);
+}
+
+/* KARTU UTAMA */
+.container {
+    max-width: 850px;
+    margin: auto;
+}
+
+.main-card {
+    padding: 30px;
+    border: 2px solid #d7efce;
+    border-radius: 30px;
+    background: rgba(255,255,255,.95);
+    box-shadow: 0 15px 40px #76ba7226;
+    animation: appear .8s ease both;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* JUDUL */
+.heading {
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.mini-title {
+    display: inline-block;
+    margin-bottom: 12px;
+    padding: 6px 15px;
+    border-radius: 30px;
+    color: var(--dark-green);
+    background: var(--light-green);
+    font-size: 12px;
+    font-weight: 900;
+}
+
+.heading h1 {
+    color: var(--dark-green);
+    font-size: clamp(28px, 5vw, 40px);
+    font-weight: 900;
+}
+
+.heading h1 span {
+    color: var(--green);
+}
+
+.heading p {
+    margin-top: 7px;
+    color: #7a9a80;
+    font-size: 13px;
+}
+
+/* KOTAK TULISAN */
+.section-title {
+    margin: 25px 0 13px;
+    color: var(--dark-green);
+    font-size: 20px;
+    font-weight: 900;
+}
+
+.writing-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.writing-item {
+    min-width: 0;
+    min-height: 85px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px;
+    border: 1px solid #deefd8;
+    border-radius: 17px;
+    background: linear-gradient(135deg, #f4fff0, #ffffff);
+    transition: .3s;
+}
+
+.writing-item:hover {
+    transform: translateY(-4px);
+    border-color: #8dce80;
+    background: #efffeb;
+    box-shadow: 0 7px 16px #9dd69535;
+}
+
+.item-icon {
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 14px;
+    background: #e2f7d9;
+    font-size: 20px;
+}
+
+.item-content {
+    min-width: 0;
+}
+
+.item-content small {
+    display: block;
+    margin-bottom: 5px;
+    color: #80a285;
+    font-size: 10px;
+    font-weight: 800;
+}
+
+.item-content p {
+    color: #355d40;
+    font-size: 13px;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+}
+
+/* KARTU KATA-KATA */
+.quote {
+    margin-top: 25px;
+    padding: 23px 18px;
+    border: 1px solid #cdebc4;
+    border-radius: 22px;
+    background: linear-gradient(135deg, #edffe8, #ffffff, #f2ffed);
+    text-align: center;
+}
+
+.quote-icon {
+    font-size: 27px;
+}
+
+.quote h2 {
+    margin: 8px 0;
+    color: var(--dark-green);
+    font-size: 21px;
+}
+
+.quote p {
+    color: #50745a;
+    font-size: 14px;
+    line-height: 2;
+}
+
+/* TOMBOL */
+.buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 11px 20px;
+    border: 1px solid var(--green);
+    border-radius: 30px;
+    background: white;
+    color: var(--dark-green);
+    font-size: 12px;
+    font-weight: 900;
+    text-decoration: none;
+    transition: .3s;
+}
+
+.btn-primary {
+    color: white;
+    background: linear-gradient(135deg, #62c45b, #339c49);
+}
+
+.btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 7px 18px #8bce8245;
+}
+
+/* FOOTER */
+footer {
+    max-width: 850px;
+    margin: 20px auto 0;
+    padding: 18px 10px;
+    text-align: center;
+    color: #6b8d72;
+    font-size: 12px;
+}
+
+footer strong {
+    color: var(--dark-green);
+}
+
+/* TAMPILAN HP */
+@media (max-width: 600px) {
+    body {
+        padding: 12px 9px;
+    }
+
+    .navbar {
+        padding: 12px;
+    }
+
+    .logo {
+        font-size: 16px;
+    }
+
+    .nav-link {
+        font-size: 11px;
+    }
+
+    .main-card {
+        padding: 20px 13px;
+        border-radius: 23px;
+    }
+
+    .writing-list {
+        grid-template-columns: 1fr;
+        gap: 9px;
+    }
+
+    .writing-item {
+        min-height: 72px;
+        padding: 12px;
+    }
+
+    .item-content p {
+        font-size: 13px;
+    }
+
+    .section-title {
+        font-size: 18px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- BACKGROUND -->
+<div class="wallpaper"></div>
+
+<!-- HIASAN -->
+<div class="decoration deco1">♡</div>
+<div class="decoration deco2">✿</div>
+<div class="decoration deco3">🌱</div>
+<div class="decoration deco4">★</div>
+
+<!-- NAVBAR -->
+<header class="navbar">
+    <a href="index.html" class="logo">
+        Anugrah <span>💚</span>
+    </a>
+
+    <a href="index.html" class="nav-link">
+        🏡 Beranda
+    </a>
+</header>
+
+<main class="container">
+    <div class="main-card">
+
+        <!-- JUDUL -->
+        <div class="heading">
+            <span class="mini-title">
+                🌷 MY LITTLE WORLD 🌷
+            </span>
+
+            <h1>
+                Tulisan <span>HTML ♡</span>
+            </h1>
+
+            <p>
+                Belajar tag HTML sambil berimajinasi 🍀
+            </p>
+        </div>
+
+        <!-- TULISAN TEBAL DAN FORMAT HTML -->
+        <h2 class="section-title">
+            🌼 Koleksi Tulisanku
+        </h2>
+
+        <div class="writing-list">
+
+            <div class="writing-item">
+                <div class="item-icon">👑</div>
+                <div class="item-content">
+                    <small>TAG B — BOLD</small>
+                    <p><b>ku ingin menjadi pangeran</b></p>
+                </div>
+            </div>
+
+            <div class="writing-item">
+                <div class="item-icon">🌷</div>
+                <div class="item-content">
+                    <small>TAG STRONG</small>
+                    <p><strong>wahai tuan putri</strong></p>
+                </div>
+            </div>
+
+            <div class="writing-item">
+                <div class="item-icon">💚</div>
+                <div class="item-content">
+                    <small>TAG I — ITALIC</small>
+                    <p>padahal aku ingin bertemu <i>denganmu</i></p>
+                </div>
+            </div>
+
+            <div class="writing-item">
+                <div class="item-icon">💌</div>
+                <div class="item-content">
+                    <small>TAG EM — EMPHASIS</small>
+                    <p><em>jangan pernah percaya pada seseorang</em></p>
+                </div>
+            </div>
+
+            <div class="writing-item">
+                <div class="item-icon">✨</div>
+                <div class="item-content">
+                    <small>TAG MARK</small>
+                    <p><mark style="background:#d9f5c9;color:#206b3b;border-radius:5px;padding:2px 5px;">sungguh indah</mark></p>
+                </div>
+            </div>
+
+            <div class="writing-item">
+                <div class="item-icon">🍀</div>
+                <div class="item-content">
+                    <small>TAG SMALL</small>
+                    <p><small>aku sang pangeran</small></p>
+                </div>
+            </div>
+
+            <div class="writing-item">
+                <div class="item-icon">🥀</div>
+                <div class="item-content">
+                    <small>TAG DEL — DELETED</small>
+                    <p>why did <del>you</del> shape my life like this?</p>
+                </div>
+            </div>
+
+            <div class="writing-item">
+                <div class="item-icon">🌱</div>
+                <div class="item-content">
+                    <small>TAG INS — INSERTED</small>
+                    <p>i never feel <ins>happy</ins></p>
+                </div>
+            </div>
+
+            <div class="writing-item">
+                <div class="item-icon">🧪</div>
+                <div class="item-content">
+                    <small>TAG SUB — SUBSCRIPT</small>
+                    <p>nama ilmiah air adalah H<sub>2</sub>O</p>
+                </div>
+            </div>
+
+            <div class="writing-item">
+                <div class="item-icon">🌡️</div>
+                <div class="item-content">
+                    <small>TAG SUP — SUPERSCRIPT</small>
+                    <p>suhu ruangan ini 16<sup>o</sup>C</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- KATA-KATA PENUTUP -->
+        <div class="quote">
+            <div class="quote-icon">🌿 ♡ 🌷</div>
+
+            <h2>My Prince Story 👑</h2>
+
+            <p>
+                <b>ku ingin menjadi pangeran</b>
+                <br>
+                <strong>wahai tuan putri...</strong>
+                <br>
+                padahal aku ingin bertemu <i>denganmu</i>
+                <br>
+                <span style="color:#54b85b;font-weight:800;">
+                    sungguh indahnya dunia khayalan ♡
+                </span>
+            </p>
+
+            <p style="margin-top:12px;">
+                ✧･ﾟ: *✧･ﾟ:* &nbsp; 💚 &nbsp; *:･ﾟ✧*:･ﾟ✧
+            </p>
+        </div>
+
+        <!-- TOMBOL KEMBALI -->
+        <div class="buttons">
+            <a href="index.html" class="btn btn-primary">
+                🏡 Kembali ke Beranda
+            </a>
+
+            <a href="biodata.html" class="btn">
+                🌸 Lihat Biodata
+            </a>
+        </div>
+
+    </div>
+</main>
+
+<footer>
+    <p>Made with ♡ by <strong>Anugrah</strong></p>
+    <p>🌱 Keep dreaming, little prince! 💚</p>
+    <p style="margin-top:6px;">I LOVE JONG WOO ♡</p>
+</footer>
+
+</body>
 </html>
+```
