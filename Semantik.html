@@ -1,32 +1,218 @@
-<html>
+<!DOCTYPE html>
+<html lang="id">
 
 <head>
- <title>Contoh Layout dengan elemen sematik</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Belajar Elemen Semantik HTML 💚</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap');
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            font-family: 'Nunito', sans-serif;
+            color: #24543a;
+            background: linear-gradient(135deg, #eaffef, #c8f5d6, #ffffff);
+            position: relative;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background: url("jongwoo.jfif") center/cover no-repeat;
+            opacity: 0.12;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.94);
+            border: 2px solid #c8efd4;
+            border-radius: 22px;
+            padding: 25px 15px;
+            text-align: center;
+            box-shadow: 0 6px 18px rgba(49, 128, 75, 0.12);
+        }
+
+        header h1 {
+            color: #25834c;
+            margin: 0;
+            font-size: 30px;
+        }
+
+        header p {
+            margin-bottom: 0;
+        }
+
+        nav {
+            background: #40ad68;
+            padding: 14px;
+            margin: 18px 0;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(49, 128, 75, 0.12);
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 800;
+            padding: 8px 12px;
+            display: inline-block;
+            border-radius: 9px;
+            transition: 0.2s;
+        }
+
+        nav a:hover {
+            background: white;
+            color: #25834c;
+        }
+
+        article,
+        section,
+        aside {
+            background: rgba(255, 255, 255, 0.94);
+            border: 2px solid #c8efd4;
+            border-radius: 20px;
+            padding: 22px;
+            margin-bottom: 18px;
+            box-shadow: 0 6px 18px rgba(49, 128, 75, 0.10);
+        }
+
+        h2 {
+            color: #25834c;
+            margin-top: 0;
+        }
+
+        article p,
+        section p,
+        aside p {
+            line-height: 1.8;
+        }
+
+        .hiasan {
+            background: #edfff1;
+            padding: 13px;
+            border-radius: 12px;
+            border-left: 5px solid #40ad68;
+        }
+
+        footer {
+            background: #25834c;
+            color: white;
+            text-align: center;
+            padding: 18px;
+            border-radius: 16px;
+            margin-top: 18px;
+        }
+
+        footer p {
+            margin: 5px;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 12px;
+            }
+
+            header h1 {
+                font-size: 24px;
+            }
+
+            article,
+            section,
+            aside {
+                padding: 17px;
+            }
+
+            nav a {
+                padding: 8px;
+            }
+        }
+    </style>
 </head>
 
-<body style="background-color:silver;">
+<body>
 
-  <header style="background-color:pink;">
-   <h1>Belajar Elemen Sematik di HTML</H1>
-  </header>
+    <main class="container">
 
-  <nav>
-    <a> href="#">Home</a>|
-    <a> href="#">About</a>|
-    <a> href="#">Contact</a>
-  </nav>
+        <header id="home">
+            <h1>🌷 Belajar Elemen Semantik HTML 🌷</h1>
+            <p>Mengenal struktur HTML dengan tampilan yang lucu 💚</p>
+        </header>
 
-  <article style="background-color:red;">
-    <h1>Tutorial Semantik elemen untuk pemula</h1>
-    <p>Semantik elemen adalah elemen yang memiliki makna dan tujuan.
-	Tujuannya agar kode HTML mudah dibaca dan tidak ada penyalahgunaan tag.
-	Elemen semantik bagus untuk SEO dan juga dapat meningkatkan accessibility.
-    </p>
-  </article>
+        <nav>
+            <a href="#home">🏠 Home</a>
+            <a href="#about">🌸 About</a>
+            <a href="#contact">💌 Contact</a>
+        </nav>
 
-  <footer style="background-color: purple;">
-    copyright &copy; 2020 by petani kode 
-  </footer>
+        <article id="about">
+            <h2>💚 Tutorial Elemen Semantik untuk Pemula</h2>
+
+            <p>
+                Elemen semantik adalah elemen HTML yang memiliki makna
+                dan tujuan yang jelas. Tujuannya agar kode HTML mudah
+                dibaca dan tidak terjadi penyalahgunaan tag.
+            </p>
+
+            <p>
+                Elemen semantik juga bermanfaat untuk SEO
+                (Search Engine Optimization) dan dapat meningkatkan
+                aksesibilitas atau kemudahan penggunaan website.
+            </p>
+
+            <div class="hiasan">
+                ✨ Contoh elemen semantik HTML:
+                <strong>header, nav, main, article, section, aside,</strong>
+                dan <strong>footer</strong>.
+            </div>
+        </article>
+
+        <section>
+            <h2>🌱 Apa Fungsi Elemen Semantik?</h2>
+
+            <p>
+                Elemen semantik membantu browser dan pengembang memahami
+                bagian-bagian halaman website.
+            </p>
+
+            <ul>
+                <li><strong>header:</strong> bagian kepala halaman.</li>
+                <li><strong>nav:</strong> bagian menu navigasi.</li>
+                <li><strong>main:</strong> bagian utama halaman.</li>
+                <li><strong>article:</strong> konten yang berdiri sendiri.</li>
+                <li><strong>section:</strong> bagian yang mengelompokkan konten.</li>
+                <li><strong>footer:</strong> bagian penutup halaman.</li>
+            </ul>
+        </section>
+
+        <aside>
+            <h2>🌸 Tahukah Kamu?</h2>
+            <p>
+                Menggunakan elemen semantik dengan benar membuat struktur
+                HTML lebih teratur dan lebih mudah dipahami.
+            </p>
+        </aside>
+
+        <footer id="contact">
+            <p>💚 Copyright &copy; 2026</p>
+            <p>Belajar HTML dengan semangat 🌷</p>
+        </footer>
+
+    </main>
 
 </body>
 </html>
