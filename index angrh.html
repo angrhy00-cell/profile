@@ -1,239 +1,619 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Praktikum JavaScript 💚</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap');
+<title>♡ Praktikum JavaScript Anugrah ♡</title>
 
-        * {
-            box-sizing: border-box;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 
-        body {
-            margin: 0;
-            padding: 20px;
-            min-height: 100vh;
-            font-family: 'Nunito', sans-serif;
-            color: #24543a;
-            background: linear-gradient(135deg, #eaffef, #c8f5d6, #ffffff);
-            position: relative;
-        }
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        body::before {
-            content: "";
-            position: fixed;
-            inset: 0;
-            background: url("jongwoo.jfif") center/cover no-repeat;
-            opacity: 0.12;
-            z-index: -1;
-        }
+:root {
+    --green: #54b85b;
+    --dark-green: #206b3b;
+    --light-green: #e7f9df;
+    --text: #405b49;
+}
 
-        header {
-            text-align: center;
-            padding: 25px 15px;
-        }
+body {
+    min-height: 100vh;
+    padding: 20px 15px;
+    font-family: 'Nunito', sans-serif;
+    color: var(--text);
+    background: white;
+    overflow-x: hidden;
+    transition: background-color .5s ease;
+}
 
-        header h1 {
-            color: #25834c;
-            font-size: 30px;
-            margin-bottom: 8px;
-        }
+/* BACKGROUND JONGWOO */
+.wallpaper {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    overflow: hidden;
+    background: white;
+    pointer-events: none;
+}
 
-        header p {
-            margin: 0;
-        }
+.wallpaper::before {
+    content: "";
+    position: absolute;
+    inset: -50px;
+    background-image: url("jongwoo.jfif");
+    background-size: 150px auto;
+    background-repeat: repeat;
+    opacity: 0.13;
+    transform: rotate(-7deg) scale(1.1);
+    animation: wallpaperMove 40s linear infinite;
+}
 
-        .container {
-            max-width: 850px;
-            margin: auto;
-        }
+.wallpaper::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,.5);
+}
 
-        .card {
-            background: rgba(255, 255, 255, 0.92);
-            border: 2px solid #c8efd4;
-            border-radius: 22px;
-            padding: 22px;
-            margin-bottom: 20px;
-            box-shadow: 0 6px 18px rgba(49, 128, 75, 0.12);
-        }
+@keyframes wallpaperMove {
+    from { background-position: 0 0; }
+    to { background-position: 300px 150px; }
+}
 
-        h2 {
-            color: #25834c;
-            margin-top: 0;
-        }
+/* HIASAN */
+.decoration {
+    position: fixed;
+    z-index: -1;
+    color: #65bd63;
+    pointer-events: none;
+    animation: floating 4s ease-in-out infinite;
+}
 
-        button {
-            background: #40ad68;
-            color: white;
-            border: none;
-            border-radius: 12px;
-            padding: 11px 17px;
-            margin: 5px 3px;
-            font-family: inherit;
-            font-weight: 800;
-            cursor: pointer;
-            transition: 0.2s;
-        }
+.deco1 {
+    top: 15%;
+    left: 5%;
+    font-size: 40px;
+}
 
-        button:hover {
-            background: #25834c;
-            transform: translateY(-2px);
-        }
+.deco2 {
+    top: 35%;
+    right: 6%;
+    font-size: 35px;
+    animation-delay: 1s;
+}
 
-        input {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #b9e9c8;
-            border-radius: 12px;
-            font-family: inherit;
-            font-size: 15px;
-            margin-bottom: 10px;
-            outline: none;
-        }
+.deco3 {
+    bottom: 15%;
+    left: 7%;
+    font-size: 35px;
+    animation-delay: 2s;
+}
 
-        input:focus {
-            border-color: #40ad68;
-        }
+.deco4 {
+    bottom: 20%;
+    right: 8%;
+    font-size: 40px;
+    animation-delay: .5s;
+}
 
-        .hasil {
-            background: #edfff1;
-            border-radius: 12px;
-            padding: 12px;
-            min-height: 45px;
-            margin-top: 12px;
-            overflow-wrap: anywhere;
-        }
+@keyframes floating {
+    0%, 100% {
+        transform: translateY(0) rotate(-8deg);
+    }
+    50% {
+        transform: translateY(-13px) rotate(8deg);
+    }
+}
 
-        .putih {
-            background: white;
-            color: #25834c;
-            border: 2px solid #40ad68;
-        }
+/* NAVBAR */
+.navbar {
+    max-width: 900px;
+    margin: 0 auto 25px;
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    border: 1px solid #e0f1d9;
+    border-radius: 20px;
+    background: rgba(255,255,255,.94);
+    box-shadow: 0 5px 20px #8ecf821a;
+}
 
-        .reset {
-            background: #f4a7b9;
-        }
+.logo {
+    color: var(--dark-green);
+    font-size: 19px;
+    font-weight: 900;
+    text-decoration: none;
+}
 
-        footer {
-            text-align: center;
-            padding: 15px;
-            color: #477958;
-        }
+.logo span {
+    color: var(--green);
+}
 
-        @media (max-width: 600px) {
-            header h1 {
-                font-size: 25px;
-            }
+.nav-link {
+    color: var(--dark-green);
+    font-size: 13px;
+    font-weight: 800;
+    text-decoration: none;
+}
 
-            .card {
-                padding: 17px;
-            }
+/* KARTU UTAMA */
+.container {
+    max-width: 900px;
+    margin: auto;
+}
 
-            button {
-                max-width: 100%;
-            }
-        }
-    </style>
+.main-card {
+    padding: 30px;
+    border: 2px solid #d7efce;
+    border-radius: 30px;
+    background: rgba(255,255,255,.95);
+    box-shadow: 0 15px 40px #76ba7226;
+    animation: appear .8s ease both;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* JUDUL */
+.heading {
+    margin-bottom: 28px;
+    text-align: center;
+}
+
+.mini-title {
+    display: inline-block;
+    margin-bottom: 12px;
+    padding: 6px 15px;
+    border-radius: 30px;
+    color: var(--dark-green);
+    background: var(--light-green);
+    font-size: 12px;
+    font-weight: 900;
+}
+
+.heading h1 {
+    color: var(--dark-green);
+    font-size: clamp(25px, 5vw, 38px);
+    font-weight: 900;
+}
+
+.heading h1 span {
+    color: var(--green);
+}
+
+.heading p {
+    margin-top: 8px;
+    color: #7a9a80;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+/* KARTU SAMBUTAN */
+.welcome {
+    padding: 22px;
+    margin-bottom: 22px;
+    border: 1px solid #cdebc4;
+    border-radius: 22px;
+    background: linear-gradient(135deg, #edffe8, #ffffff);
+    text-align: center;
+}
+
+.welcome h2 {
+    color: var(--dark-green);
+    font-size: 22px;
+}
+
+.welcome p {
+    margin-top: 8px;
+    color: #58775d;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+/* AREA INTERAKSI */
+.section-title {
+    margin: 25px 0 13px;
+    color: var(--dark-green);
+    font-size: 20px;
+    font-weight: 900;
+}
+
+.interactive-card {
+    padding: 22px;
+    margin-bottom: 16px;
+    border: 1px solid #deefd8;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #f7fff3, #ffffff);
+    transition: .3s;
+}
+
+.interactive-card:hover {
+    border-color: #9ed795;
+    box-shadow: 0 7px 18px #8bce8225;
+}
+
+.interactive-card h3 {
+    margin-bottom: 8px;
+    color: var(--dark-green);
+    font-size: 17px;
+}
+
+.interactive-card p {
+    color: #58775d;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+/* TOMBOL */
+.buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 11px 18px;
+    border: 1px solid var(--green);
+    border-radius: 30px;
+    background: white;
+    color: var(--dark-green);
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 900;
+    text-decoration: none;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.btn-primary {
+    color: white;
+    background: linear-gradient(135deg, #62c45b, #339c49);
+    border-color: transparent;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 7px 18px #8bce8245;
+}
+
+/* PESAN JAVASCRIPT */
+.message-box {
+    min-height: 60px;
+    margin-top: 15px;
+    padding: 15px;
+    border: 1px dashed #a8d99b;
+    border-radius: 15px;
+    background: #f3ffed;
+    color: var(--dark-green);
+    text-align: center;
+    font-size: 14px;
+    font-weight: 800;
+    overflow-wrap: anywhere;
+}
+
+.counter {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 8px 15px;
+    border-radius: 30px;
+    background: #e2f7d9;
+    color: var(--dark-green);
+    font-size: 13px;
+    font-weight: 900;
+}
+
+/* INPUT NAMA */
+.name-input {
+    width: 100%;
+    margin-top: 12px;
+    padding: 12px 15px;
+    border: 1px solid #cdebc4;
+    border-radius: 13px;
+    outline: none;
+    background: white;
+    color: var(--dark-green);
+    font-family: inherit;
+    font-size: 14px;
+}
+
+.name-input:focus {
+    border-color: var(--green);
+    box-shadow: 0 0 0 3px #54b85b20;
+}
+
+/* FOOTER */
+footer {
+    max-width: 900px;
+    margin: 20px auto 0;
+    padding: 18px 10px;
+    text-align: center;
+    color: #6b8d72;
+    font-size: 12px;
+}
+
+footer strong {
+    color: var(--dark-green);
+}
+
+/* TAMPILAN HP */
+@media (max-width: 600px) {
+    body {
+        padding: 12px 9px;
+    }
+
+    .navbar {
+        padding: 12px;
+    }
+
+    .logo {
+        font-size: 16px;
+    }
+
+    .nav-link {
+        font-size: 11px;
+    }
+
+    .main-card {
+        padding: 20px 13px;
+        border-radius: 23px;
+    }
+
+    .welcome,
+    .interactive-card {
+        padding: 16px;
+    }
+
+    .section-title {
+        font-size: 18px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+</style>
 </head>
 
 <body>
 
-    <header>
-        <h1>🌷 Praktikum JavaScript 🌷</h1>
-        <p>Belajar coding dengan cara yang menyenangkan 💚</p>
-    </header>
+<div class="wallpaper"></div>
 
-    <main class="container">
+<div class="decoration deco1">♡</div>
+<div class="decoration deco2">✿</div>
+<div class="decoration deco3">🌱</div>
+<div class="decoration deco4">★</div>
 
-        <section class="card">
-            <h2>💚 1. Tombol Sapaan</h2>
-            <p>Klik tombol di bawah ini!</p>
-            <button type="button" onclick="sapa()">Klik Aku ✨</button>
-            <div class="hasil" id="pesan">Halo! Selamat datang 🌸</div>
-        </section>
+<header class="navbar">
+    <a href="index.html" class="logo">
+        Anugrah <span>💚</span>
+    </a>
 
-        <section class="card">
-            <h2>🌸 2. Masukkan Nama</h2>
-            <input type="text" id="nama" placeholder="Tulis namamu di sini...">
-            <button type="button" onclick="tampilkanNama()">Tampilkan Nama 💗</button>
-            <div class="hasil" id="hasilNama">Namamu akan muncul di sini.</div>
-        </section>
+    <a href="index.html" class="nav-link">
+        🏡 Beranda
+    </a>
+</header>
 
-        <section class="card">
-            <h2>🎨 3. Ganti Warna Background</h2>
-            <p>Pilih warna yang kamu suka!</p>
-            <button type="button" onclick="warnaHijau()">Hijau 💚</button>
-            <button type="button" class="putih" onclick="warnaPutih()">Putih 🤍</button>
-            <button type="button" onclick="warnaPink()" style="background:#e99ab1">Pink 🌷</button>
-        </section>
+<main class="container">
+<div class="main-card">
 
-        <section class="card">
-            <h2>🔢 4. Penghitung Klik</h2>
-            <p>Jumlah klik kamu:</p>
-            <h1 id="jumlah" style="font-size:40px; text-align:center;">0</h1>
-            <div style="text-align:center;">
-                <button type="button" onclick="tambah()">Klik Aku! +1</button>
-                <button type="button" class="reset" onclick="reset()">Reset 🔄</button>
+    <div class="heading">
+        <span class="mini-title">
+            🌷 MY JAVASCRIPT PROJECT 🌷
+        </span>
+
+        <h1>
+            Praktikum <span>JavaScript ♡</span>
+        </h1>
+
+        <p>
+            Belajar coding dengan cara yang cute dan menyenangkan! 🍀
+        </p>
+    </div>
+
+    <div class="welcome">
+        <h2>🌼 Selamat Datang! 🌼</h2>
+
+        <p id="teksPesan">
+            Halo, selamat datang di praktikum JavaScript!
+            Klik tombol di bawah untuk mencoba keajaibannya. 💚
+        </p>
+
+        <div class="buttons">
+            <button class="btn btn-primary" id="tombolSapa">
+                💌 Klik untuk Menyapa
+            </button>
+        </div>
+    </div>
+
+    <h2 class="section-title">✨ Coba Fitur Interaktif</h2>
+
+    <!-- FITUR SAPA -->
+    <div class="interactive-card">
+        <h3>💚 1. Tombol Sapa</h3>
+        <p>
+            Klik tombol untuk menampilkan sapaan menggunakan JavaScript.
+        </p>
+
+        <div class="buttons">
+            <button class="btn btn-primary" id="tombolAlert">
+                🌷 Tampilkan Sapaan
+            </button>
+        </div>
+    </div>
+
+    <!-- FITUR UBAH TEKS -->
+    <div class="interactive-card">
+        <h3>✏️ 2. Mengubah Teks</h3>
+        <p>
+            Masukkan nama kamu, lalu klik tombol untuk mengubah pesan.
+        </p>
+
+        <input
+            type="text"
+            id="inputNama"
+            class="name-input"
+            placeholder="Tulis nama kamu di sini..."
+        >
+
+        <div class="buttons">
+            <button class="btn btn-primary" id="tombolUbah">
+                🌱 Ubah Pesan
+            </button>
+        </div>
+
+        <div class="message-box" id="hasilNama">
+            Pesan kamu akan muncul di sini ♡
+        </div>
+    </div>
+
+    <!-- FITUR WARNA -->
+    <div class="interactive-card">
+        <h3>🎨 3. Mengubah Warna</h3>
+        <p>
+            Klik tombol untuk mengganti warna latar belakang halaman.
+        </p>
+
+        <div class="buttons">
+            <button class="btn btn-primary" id="tombolWarna">
+                💚 Warna Hijau
+            </button>
+
+            <button class="btn" id="tombolPutih">
+                🤍 Warna Putih
+            </button>
+        </div>
+    </div>
+
+    <!-- FITUR HITUNG KLIK -->
+    <div class="interactive-card">
+        <h3>⭐ 4. Penghitung Klik</h3>
+        <p>
+            Coba tekan tombol ini berkali-kali dan lihat jumlah kliknya.
+        </p>
+
+        <div style="text-align:center;">
+            <div class="counter">
+                Jumlah klik: <span id="jumlahKlik">0</span>
             </div>
-        </section>
+        </div>
 
-    </main>
+        <div class="buttons">
+            <button class="btn btn-primary" id="tombolHitung">
+                🌟 Klik Aku!
+            </button>
 
-    <footer>
-        Dibuat dengan 💚 dan semangat belajar coding!
-    </footer>
+            <button class="btn" id="tombolReset">
+                🔄 Reset
+            </button>
+        </div>
+    </div>
 
-    <script>
-        // 1. Tombol sapaan
-        function sapa() {
-            document.getElementById("pesan").textContent =
-                "Haii! Semangat belajar JavaScript yaa! 💚✨";
-        }
+    <!-- TOMBOL KEMBALI -->
+    <div class="buttons">
+        <a href="index.html" class="btn btn-primary">
+            🏡 Kembali ke Beranda
+        </a>
 
-        // 2. Menampilkan nama
-        function tampilkanNama() {
-            const nama = document.getElementById("nama").value.trim();
+        <a href="biodata.html" class="btn">
+            🌸 Lihat Biodata
+        </a>
 
-            if (nama === "") {
-                document.getElementById("hasilNama").textContent =
-                    "Isi namamu terlebih dahulu ya! 😊";
-            } else {
-                document.getElementById("hasilNama").textContent =
-                    "Halo, " + nama + "! Senang bertemu denganmu 🌷";
-            }
-        }
+        <a href="table.html" class="btn">
+            📚 Tabel Nilai
+        </a>
+    </div>
 
-        // 3. Mengganti warna background
-        function warnaHijau() {
-            document.body.style.background =
-                "linear-gradient(135deg, #d9ffe3, #a8edbd)";
-        }
+</div>
+</main>
 
-        function warnaPutih() {
-            document.body.style.background = "#ffffff";
-        }
+<footer>
+    <p>Made with ♡ by <strong>Anugrah</strong></p>
+    <p>🌱 Keep learning, keep growing! 💚</p>
+    <p style="margin-top:6px;">I LOVE JONG WOO ♡</p>
+</footer>
 
-        function warnaPink() {
-            document.body.style.background =
-                "linear-gradient(135deg, #ffe0eb, #fff5f8)";
-        }
+<script>
+// 1. TOMBOL SAPA DENGAN ALERT
+const tombolAlert = document.getElementById('tombolAlert');
 
-        // 4. Penghitung klik
-        let jumlahKlik = 0;
+tombolAlert.addEventListener('click', function() {
+    alert('Halo, Anugrah! Selamat datang di dunia JavaScript! 💚');
+});
 
-        function tambah() {
-            jumlahKlik++;
-            document.getElementById("jumlah").textContent = jumlahKlik;
-        }
+// 2. TOMBOL SAPA UTAMA
+const tombolSapa = document.getElementById('tombolSapa');
 
-        function reset() {
-            jumlahKlik = 0;
-            document.getElementById("jumlah").textContent = jumlahKlik;
-        }
-    </script>
+tombolSapa.addEventListener('click', function() {
+    document.getElementById('teksPesan').textContent =
+        'Yeay! Kamu berhasil menggunakan JavaScript! 🌷💚';
+});
+
+// 3. MENGUBAH TEKS SESUAI NAMA
+const tombolUbah = document.getElementById('tombolUbah');
+
+tombolUbah.addEventListener('click', function() {
+    const nama = document.getElementById('inputNama').value.trim();
+    const hasilNama = document.getElementById('hasilNama');
+
+    if (nama === '') {
+        hasilNama.textContent = 'Yuk, tuliskan namamu terlebih dahulu! 🌱';
+    } else {
+        hasilNama.textContent =
+            'Halo, ' + nama + '! Semangat belajar JavaScript! 💚✨';
+    }
+});
+
+// 4. MENGUBAH WARNA LATAR BELAKANG
+const tombolWarna = document.getElementById('tombolWarna');
+const tombolPutih = document.getElementById('tombolPutih');
+
+tombolWarna.addEventListener('click', function() {
+    document.body.style.backgroundColor = '#e0ffe0';
+});
+
+tombolPutih.addEventListener('click', function() {
+    document.body.style.backgroundColor = '#ffffff';
+});
+
+// 5. PENGHITUNG JUMLAH KLIK
+let jumlah = 0;
+
+const tombolHitung = document.getElementById('tombolHitung');
+const tombolReset = document.getElementById('tombolReset');
+const jumlahKlik = document.getElementById('jumlahKlik');
+
+tombolHitung.addEventListener('click', function() {
+    jumlah++;
+    jumlahKlik.textContent = jumlah;
+});
+
+tombolReset.addEventListener('click', function() {
+    jumlah = 0;
+    jumlahKlik.textContent = jumlah;
+});
+</script>
 
 </body>
 </html>
