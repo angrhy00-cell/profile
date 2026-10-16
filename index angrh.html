@@ -324,6 +324,296 @@ body {
 /* INPUT NAMA */
 .name-input {
     width: 100%;
-    margin-top: 12
+    margin-top: 12px;
+    padding: 12px 15px;
+    border: 1px solid #cdebc4;
+    border-radius: 13px;
+    outline: none;
+    background: white;
+    color: var(--dark-green);
+    font-family: inherit;
+    font-size: 14px;
 }
 
+.name-input:focus {
+    border-color: var(--green);
+    box-shadow: 0 0 0 3px #54b85b20;
+}
+
+/* FOOTER */
+footer {
+    max-width: 900px;
+    margin: 20px auto 0;
+    padding: 18px 10px;
+    text-align: center;
+    color: #6b8d72;
+    font-size: 12px;
+}
+
+footer strong {
+    color: var(--dark-green);
+}
+
+/* TAMPILAN HP */
+@media (max-width: 600px) {
+    body {
+        padding: 12px 9px;
+    }
+
+    .navbar {
+        padding: 12px;
+    }
+
+    .logo {
+        font-size: 16px;
+    }
+
+    .nav-link {
+        font-size: 11px;
+    }
+
+    .main-card {
+        padding: 20px 13px;
+        border-radius: 23px;
+    }
+
+    .welcome,
+    .interactive-card {
+        padding: 16px;
+    }
+
+    .section-title {
+        font-size: 18px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="wallpaper"></div>
+
+<div class="decoration deco1">♡</div>
+<div class="decoration deco2">✿</div>
+<div class="decoration deco3">🌱</div>
+<div class="decoration deco4">★</div>
+
+<header class="navbar">
+    <a href="index.html" class="logo">
+        Anugrah <span>💚</span>
+    </a>
+
+    <a href="index.html" class="nav-link">
+        🏡 Beranda
+    </a>
+</header>
+
+<main class="container">
+<div class="main-card">
+
+    <div class="heading">
+        <span class="mini-title">
+            🌷 MY JAVASCRIPT PROJECT 🌷
+        </span>
+
+        <h1>
+            Praktikum <span>JavaScript ♡</span>
+        </h1>
+
+        <p>
+            Belajar coding dengan cara yang cute dan menyenangkan! 🍀
+        </p>
+    </div>
+
+    <div class="welcome">
+        <h2>🌼 Selamat Datang! 🌼</h2>
+
+        <p id="teksPesan">
+            Halo, selamat datang di praktikum JavaScript!
+            Klik tombol di bawah untuk mencoba keajaibannya. 💚
+        </p>
+
+        <div class="buttons">
+            <button class="btn btn-primary" id="tombolSapa">
+                💌 Klik untuk Menyapa
+            </button>
+        </div>
+    </div>
+
+    <h2 class="section-title">✨ Coba Fitur Interaktif</h2>
+
+    <!-- FITUR SAPA -->
+    <div class="interactive-card">
+        <h3>💚 1. Tombol Sapa</h3>
+        <p>
+            Klik tombol untuk menampilkan sapaan menggunakan JavaScript.
+        </p>
+
+        <div class="buttons">
+            <button class="btn btn-primary" id="tombolAlert">
+                🌷 Tampilkan Sapaan
+            </button>
+        </div>
+    </div>
+
+    <!-- FITUR UBAH TEKS -->
+    <div class="interactive-card">
+        <h3>✏️ 2. Mengubah Teks</h3>
+        <p>
+            Masukkan nama kamu, lalu klik tombol untuk mengubah pesan.
+        </p>
+
+        <input
+            type="text"
+            id="inputNama"
+            class="name-input"
+            placeholder="Tulis nama kamu di sini..."
+        >
+
+        <div class="buttons">
+            <button class="btn btn-primary" id="tombolUbah">
+                🌱 Ubah Pesan
+            </button>
+        </div>
+
+        <div class="message-box" id="hasilNama">
+            Pesan kamu akan muncul di sini ♡
+        </div>
+    </div>
+
+    <!-- FITUR WARNA -->
+    <div class="interactive-card">
+        <h3>🎨 3. Mengubah Warna</h3>
+        <p>
+            Klik tombol untuk mengganti warna latar belakang halaman.
+        </p>
+
+        <div class="buttons">
+            <button class="btn btn-primary" id="tombolWarna">
+                💚 Warna Hijau
+            </button>
+
+            <button class="btn" id="tombolPutih">
+                🤍 Warna Putih
+            </button>
+        </div>
+    </div>
+
+    <!-- FITUR HITUNG KLIK -->
+    <div class="interactive-card">
+        <h3>⭐ 4. Penghitung Klik</h3>
+        <p>
+            Coba tekan tombol ini berkali-kali dan lihat jumlah kliknya.
+        </p>
+
+        <div style="text-align:center;">
+            <div class="counter">
+                Jumlah klik: <span id="jumlahKlik">0</span>
+            </div>
+        </div>
+
+        <div class="buttons">
+            <button class="btn btn-primary" id="tombolHitung">
+                🌟 Klik Aku!
+            </button>
+
+            <button class="btn" id="tombolReset">
+                🔄 Reset
+            </button>
+        </div>
+    </div>
+
+    <!-- TOMBOL KEMBALI -->
+    <div class="buttons">
+        <a href="index.html" class="btn btn-primary">
+            🏡 Kembali ke Beranda
+        </a>
+
+        <a href="biodata.html" class="btn">
+            🌸 Lihat Biodata
+        </a>
+
+        <a href="table.html" class="btn">
+            📚 Tabel Nilai
+        </a>
+    </div>
+
+</div>
+</main>
+
+<footer>
+    <p>Made with ♡ by <strong>Anugrah</strong></p>
+    <p>🌱 Keep learning, keep growing! 💚</p>
+    <p style="margin-top:6px;">I LOVE JONG WOO ♡</p>
+</footer>
+
+<script>
+// 1. TOMBOL SAPA DENGAN ALERT
+const tombolAlert = document.getElementById('tombolAlert');
+
+tombolAlert.addEventListener('click', function() {
+    alert('Halo, Anugrah! Selamat datang di dunia JavaScript! 💚');
+});
+
+// 2. TOMBOL SAPA UTAMA
+const tombolSapa = document.getElementById('tombolSapa');
+
+tombolSapa.addEventListener('click', function() {
+    document.getElementById('teksPesan').textContent =
+        'Yeay! Kamu berhasil menggunakan JavaScript! 🌷💚';
+});
+
+// 3. MENGUBAH TEKS SESUAI NAMA
+const tombolUbah = document.getElementById('tombolUbah');
+
+tombolUbah.addEventListener('click', function() {
+    const nama = document.getElementById('inputNama').value.trim();
+    const hasilNama = document.getElementById('hasilNama');
+
+    if (nama === '') {
+        hasilNama.textContent = 'Yuk, tuliskan namamu terlebih dahulu! 🌱';
+    } else {
+        hasilNama.textContent =
+            'Halo, ' + nama + '! Semangat belajar JavaScript! 💚✨';
+    }
+});
+
+// 4. MENGUBAH WARNA LATAR BELAKANG
+const tombolWarna = document.getElementById('tombolWarna');
+const tombolPutih = document.getElementById('tombolPutih');
+
+tombolWarna.addEventListener('click', function() {
+    document.body.style.backgroundColor = '#e0ffe0';
+});
+
+tombolPutih.addEventListener('click', function() {
+    document.body.style.backgroundColor = '#ffffff';
+});
+
+// 5. PENGHITUNG JUMLAH KLIK
+let jumlah = 0;
+
+const tombolHitung = document.getElementById('tombolHitung');
+const tombolReset = document.getElementById('tombolReset');
+const jumlahKlik = document.getElementById('jumlahKlik');
+
+tombolHitung.addEventListener('click', function() {
+    jumlah++;
+    jumlahKlik.textContent = jumlah;
+});
+
+tombolReset.addEventListener('click', function() {
+    jumlah = 0;
+    jumlahKlik.textContent = jumlah;
+});
+</script>
+
+</body>
+</html>
