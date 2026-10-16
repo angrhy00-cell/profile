@@ -1,27 +1,620 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-  <title>Biodata Diri</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>♡ Biodata Anugrah ♡</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --green: #54b85b;
+    --dark-green: #206b3b;
+    --light-green: #e7f9df;
+    --text: #405b49;
+}
+
+body {
+    min-height: 100vh;
+    padding: 20px 15px;
+    font-family: 'Nunito', sans-serif;
+    color: var(--text);
+    background: white;
+    overflow-x: hidden;
+}
+
+/* BACKGROUND JONGWOO */
+.wallpaper {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    overflow: hidden;
+    background: white;
+    pointer-events: none;
+}
+
+.wallpaper::before {
+    content: "";
+    position: absolute;
+    inset: -50px;
+    background-image: url("jongwoo.jfif");
+    background-size: 150px auto;
+    background-repeat: repeat;
+    opacity: 0.13;
+    transform: rotate(-7deg) scale(1.1);
+    animation: wallpaperMove 40s linear infinite;
+}
+
+.wallpaper::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,0.5);
+}
+
+@keyframes wallpaperMove {
+    from { background-position: 0 0; }
+    to { background-position: 300px 150px; }
+}
+
+/* HIASAN MELAYANG */
+.decoration {
+    position: fixed;
+    z-index: -1;
+    color: #65bd63;
+    pointer-events: none;
+    animation: floating 4s ease-in-out infinite;
+}
+
+.deco1 {
+    top: 15%;
+    left: 5%;
+    font-size: 40px;
+}
+
+.deco2 {
+    top: 35%;
+    right: 6%;
+    font-size: 35px;
+    animation-delay: 1s;
+}
+
+.deco3 {
+    bottom: 15%;
+    left: 7%;
+    font-size: 35px;
+    animation-delay: 2s;
+}
+
+.deco4 {
+    bottom: 20%;
+    right: 8%;
+    font-size: 40px;
+    animation-delay: .5s;
+}
+
+@keyframes floating {
+    0%, 100% {
+        transform: translateY(0) rotate(-8deg);
+    }
+    50% {
+        transform: translateY(-13px) rotate(8deg);
+    }
+}
+
+/* NAVBAR */
+.navbar {
+    max-width: 900px;
+    margin: 0 auto 25px;
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    border: 1px solid #e0f1d9;
+    border-radius: 20px;
+    background: rgba(255,255,255,.94);
+    box-shadow: 0 5px 20px #8ecf821a;
+}
+
+.logo {
+    color: var(--dark-green);
+    font-size: 19px;
+    font-weight: 900;
+    text-decoration: none;
+}
+
+.logo span {
+    color: var(--green);
+}
+
+.nav-link {
+    color: var(--dark-green);
+    font-size: 13px;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.nav-link:hover {
+    color: var(--green);
+}
+
+/* KARTU UTAMA */
+.container {
+    max-width: 900px;
+    margin: auto;
+}
+
+.main-card {
+    padding: 30px;
+    border: 2px solid #d7efce;
+    border-radius: 30px;
+    background: rgba(255,255,255,.95);
+    box-shadow: 0 15px 40px #76ba7226;
+    animation: appear .8s ease both;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* JUDUL */
+.heading {
+    margin-bottom: 28px;
+    text-align: center;
+}
+
+.mini-title {
+    display: inline-block;
+    margin-bottom: 12px;
+    padding: 6px 15px;
+    border-radius: 30px;
+    color: var(--dark-green);
+    background: var(--light-green);
+    font-size: 12px;
+    font-weight: 900;
+}
+
+.heading h1 {
+    color: var(--dark-green);
+    font-size: clamp(28px, 5vw, 40px);
+    font-weight: 900;
+}
+
+.heading h1 span {
+    color: var(--green);
+}
+
+.heading p {
+    margin-top: 8px;
+    color: #7a9a80;
+    font-size: 14px;
+}
+
+/* LAYOUT FOTO DAN BIODATA */
+.bio-content {
+    display: grid;
+    grid-template-columns: .85fr 1.15fr;
+    gap: 28px;
+    align-items: center;
+}
+
+/* FOTO PROFIL */
+.photo-box {
+    position: relative;
+    padding: 12px;
+    border: 2px dashed #a9dba0;
+    border-radius: 25px;
+    background: linear-gradient(145deg, #f0ffe9, #ffffff);
+    animation: floating 5s ease-in-out infinite;
+}
+
+.photo-box img {
+    display: block;
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    object-position: center;
+    border: 4px solid white;
+    border-radius: 19px;
+    box-shadow: 0 5px 15px #7fba7730;
+}
+
+.photo-label {
+    position: absolute;
+    left: 50%;
+    bottom: -13px;
+    transform: translateX(-50%);
+    width: max-content;
+    max-width: 95%;
+    padding: 7px 15px;
+    border: 1px solid #ccebc3;
+    border-radius: 30px;
+    background: white;
+    color: var(--dark-green);
+    font-size: 12px;
+    font-weight: 900;
+    box-shadow: 0 4px 10px #8fc78525;
+}
+
+.heart {
+    position: absolute;
+    color: var(--green);
+    font-size: 28px;
+    animation: heartbeat 1.8s ease-in-out infinite;
+}
+
+.heart-one {
+    top: -13px;
+    right: -8px;
+}
+
+.heart-two {
+    bottom: 35px;
+    left: -12px;
+    animation-delay: .5s;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+/* DATA BIODATA */
+.bio-details h2 {
+    margin-bottom: 15px;
+    color: var(--dark-green);
+    font-size: 23px;
+    font-weight: 900;
+}
+
+.bio-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px;
+    margin-bottom: 10px;
+    border: 1px solid #e0f1da;
+    border-radius: 15px;
+    background: linear-gradient(120deg, #f8fff5, #ffffff);
+    transition: .3s;
+}
+
+.bio-item:hover {
+    transform: translateX(5px);
+    border-color: #9ed795;
+    background: #efffeb;
+}
+
+.bio-icon {
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
+    background: #e2f7d9;
+    font-size: 19px;
+}
+
+.bio-text {
+    min-width: 0;
+}
+
+.bio-text small {
+    display: block;
+    margin-bottom: 3px;
+    color: #80a285;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.bio-text strong {
+    display: block;
+    color: #315c3d;
+    font-size: 13px;
+    overflow-wrap: anywhere;
+}
+
+/* KARTU PESAN */
+.quote {
+    margin-top: 30px;
+    padding: 22px;
+    border: 1px solid #cdebc4;
+    border-radius: 22px;
+    background: linear-gradient(135deg, #edffe8, #ffffff, #f2ffed);
+    text-align: center;
+}
+
+.quote h3 {
+    margin: 8px 0;
+    color: var(--dark-green);
+    font-size: 20px;
+}
+
+.quote p {
+    color: #50745a;
+    font-size: 14px;
+    line-height: 1.9;
+}
+
+.quote strong {
+    color: var(--green);
+}
+
+/* TOMBOL */
+.buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 11px 20px;
+    border: 1px solid var(--green);
+    border-radius: 30px;
+    background: white;
+    color: var(--dark-green);
+    font-size: 12px;
+    font-weight: 900;
+    text-decoration: none;
+    transition: .3s;
+}
+
+.btn-primary {
+    color: white;
+    background: linear-gradient(135deg, #62c45b, #339c49);
+    border-color: transparent;
+}
+
+.btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 7px 18px #8bce8245;
+}
+
+/* FOOTER */
+footer {
+    max-width: 900px;
+    margin: 20px auto 0;
+    padding: 18px 10px;
+    text-align: center;
+    color: #6b8d72;
+    font-size: 12px;
+}
+
+footer strong {
+    color: var(--dark-green);
+}
+
+/* RESPONSIVE HP */
+@media (max-width: 650px) {
+    body {
+        padding: 12px 9px;
+    }
+
+    .navbar {
+        padding: 12px;
+    }
+
+    .logo {
+        font-size: 16px;
+    }
+
+    .nav-link {
+        font-size: 11px;
+    }
+
+    .main-card {
+        padding: 20px 14px;
+        border-radius: 23px;
+    }
+
+    .bio-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .photo-box {
+        width: 100%;
+        max-width: 300px;
+        margin: auto;
+    }
+
+    .photo-box img {
+        height: 300px;
+    }
+
+    .bio-details h2 {
+        text-align: center;
+    }
+
+    .bio-item {
+        padding: 10px;
+    }
+
+    .quote {
+        padding: 18px 12px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+</style>
 </head>
+
 <body>
 
-  <!-- Bagian untuk menyisipkan gambar -->
- <img src="Cesuna lain.jpg" alt="Foto diri saya" width="200" height="200">
+<!-- BACKGROUND JONGWOO -->
+<div class="wallpaper"></div>
 
+<!-- HIASAN -->
+<div class="decoration deco1">♡</div>
+<div class="decoration deco2">✿</div>
+<div class="decoration deco3">🌱</div>
+<div class="decoration deco4">★</div>
 
-  <!-- Bagian untuk keterangan biodata -->
-  <h2>Biodata Diri</h2>
-  <ul>
-    <li><strong>Nama:</strong> Anugrah nur cahyati</li>
-    <li><strong>Kelas:</strong> Kelas RPL</li>
-    <li><strong>Umur:</strong> XX</li>
-    <li><strong>Alamat:</strong> Tanjung getas, Playen</li>
-    <li><strong>Email:</strong> angrhy00@gmail.com</li>
-    <li><strong>Telepon:</strong> 082136674809</li>
-  </ul>
+<!-- NAVBAR -->
+<header class="navbar">
+    <a href="index.html" class="logo">
+        Anugrah <span>💚</span>
+    </a>
+
+    <a href="index.html" class="nav-link">
+        🏡 Beranda
+    </a>
+</header>
+
+<main class="container">
+    <div class="main-card">
+
+        <!-- JUDUL -->
+        <div class="heading">
+            <span class="mini-title">
+                🌷 WELCOME TO MY LITTLE WORLD 🌷
+            </span>
+
+            <h1>
+                Biodata <span>Diri ♡</span>
+            </h1>
+
+            <p>
+                Sedikit cerita tentang diriku 🍀
+            </p>
+        </div>
+
+        <!-- FOTO DAN BIODATA -->
+        <div class="bio-content">
+
+            <div class="photo-box">
+                <span class="heart heart-one">♡</span>
+                <span class="heart heart-two">♥</span>
+
+                <img
+                    src="Cesuna lain.jpg"
+                    alt="Foto diri Anugrah"
+                >
+
+                <div class="photo-label">
+                    🌿 It's me, Anugrah!
+                </div>
+            </div>
+
+            <div class="bio-details">
+                <h2>🌼 Tentang Aku</h2>
+
+                <div class="bio-item">
+                    <div class="bio-icon">👑</div>
+                    <div class="bio-text">
+                        <small>Nama Lengkap</small>
+                        <strong>Anugrah Nur Cahyati</strong>
+                    </div>
+                </div>
+
+                <div class="bio-item">
+                    <div class="bio-icon">🎒</div>
+                    <div class="bio-text">
+                        <small>Kelas</small>
+                        <strong>Kelas RPL</strong>
+                    </div>
+                </div>
+
+                <div class="bio-item">
+                    <div class="bio-icon">🎂</div>
+                    <div class="bio-text">
+                        <small>Umur</small>
+                        <strong>XX tahun</strong>
+                    </div>
+                </div>
+
+                <div class="bio-item">
+                    <div class="bio-icon">🏡</div>
+                    <div class="bio-text">
+                        <small>Alamat</small>
+                        <strong>Tanjung Getas, Playen</strong>
+                    </div>
+                </div>
+
+                <div class="bio-item">
+                    <div class="bio-icon">💌</div>
+                    <div class="bio-text">
+                        <small>Email</small>
+                        <strong>angrhy00@gmail.com</strong>
+                    </div>
+                </div>
+
+                <div class="bio-item">
+                    <div class="bio-icon">📱</div>
+                    <div class="bio-text">
+                        <small>Telepon</small>
+                        <strong>082136674809</strong>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- KATA-KATA -->
+        <div class="quote">
+            <div style="font-size:27px;">🌿 ♡ 🌷</div>
+
+            <h3>Little Things About Me</h3>
+
+            <p>
+                Aku adalah seorang siswa yang sedang belajar
+                dan terus berkembang. ✨
+                <br>
+                Semoga langkah kecil hari ini bisa membawaku
+                menuju masa depan yang indah.
+                <br>
+                <strong>Keep dreaming and keep smiling! 💚</strong>
+            </p>
+        </div>
+
+        <!-- TOMBOL -->
+        <div class="buttons">
+            <a href="index.html" class="btn btn-primary">
+                🏡 Kembali ke Beranda
+            </a>
+
+            <a href="biodata.html" class="btn">
+                🌸 Biodata Saya
+            </a>
+
+            <a href="table.html" class="btn">
+                📚 Tabel Nilai
+            </a>
+        </div>
+
+    </div>
+</main>
+
+<footer>
+    <p>Made with ♡ by <strong>Anugrah</strong></p>
+    <p>🌱 Stay cute, stay kind, and keep growing! 💚</p>
+    <p style="margin-top:6px;">I LOVE JONG WOO ♡</p>
+</footer>
 
 </body>
-
 </html>
-
-
