@@ -1,36 +1,244 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Contoh Input dan JavaScript</title>
-    </head>
-    <body>
-        <h2>Cek Nama Siswa</h2>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cek Nama Siswa 💚</title>
 
-        <form onsubmit="return cekNama()">
-            <label >Username:</label><br>
-            <input type="text" id="nama"><br><br>
-            <label>password:</label><br>
-            <input type="number" id="password"><br><br>
-            <button onclick="submit">Login</button>
-        </form>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap');
 
-        <p id="hasil"></p>
+        * {
+            box-sizing: border-box;
+        }
 
-        <script>
-            function cekNama () {
-                var namaSiswa = document.getElementById("nama") .value;
-        
-            if (namaSiswa === "Admin"){
-                 let expectedPassword = "12345";
-                 document.getElementById("hasil").innerHTML =
-                  "<span style='color:green;'>Halo Admin, selamat datang!</span>";
-                } else {
-                 document.getElementById("hasil").innerHTML =
-                  "<span style='color:red;'>Maaf, nama tidak dikenal.</span>";
-                }
-                return false;
+        body {
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            font-family: 'Nunito', sans-serif;
+            color: #24543a;
+            background: linear-gradient(135deg, #eaffef, #c8f5d6, #ffffff);
+            position: relative;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background: url("jongwoo.jfif") center/cover no-repeat;
+            opacity: 0.12;
+            z-index: -1;
+        }
+
+        header {
+            text-align: center;
+            padding: 25px 10px;
+        }
+
+        header h1 {
+            color: #25834c;
+            font-size: 30px;
+            margin-bottom: 8px;
+        }
+
+        header p {
+            margin: 0;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 10px auto;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.94);
+            border: 2px solid #c8efd4;
+            border-radius: 22px;
+            padding: 25px;
+            box-shadow: 0 6px 18px rgba(49, 128, 75, 0.12);
+        }
+
+        h2 {
+            text-align: center;
+            color: #25834c;
+            margin-top: 0;
+        }
+
+        .deskripsi {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: 800;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 18px;
+            border: 2px solid #b9e9c8;
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 15px;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #40ad68;
+        }
+
+        button {
+            width: 100%;
+            background: #40ad68;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 13px;
+            font-family: inherit;
+            font-size: 16px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            background: #25834c;
+            transform: translateY(-2px);
+        }
+
+        .reset {
+            background: #f0a3b8;
+            margin-top: 10px;
+        }
+
+        .reset:hover {
+            background: #dc829c;
+        }
+
+        #hasil {
+            margin-top: 20px;
+            padding: 13px;
+            border-radius: 12px;
+            text-align: center;
+            overflow-wrap: anywhere;
+        }
+
+        .sukses {
+            color: #25834c;
+            background: #e8ffed;
+            border: 1px solid #b9e9c8;
+        }
+
+        .gagal {
+            color: #c43d52;
+            background: #fff0f2;
+            border: 1px solid #f5c2cc;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px 10px;
+            color: #477958;
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 25px;
             }
-            
-        </script>
-    </body>
+
+            .card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>🌷 Cek Nama Siswa 🌷</h1>
+        <p>Login dengan benar dan mulai belajar 💚</p>
+    </header>
+
+    <main class="container">
+        <section class="card">
+
+            <h2>💚 Login Siswa</h2>
+            <p class="deskripsi">
+                Silakan masukkan username dan password kamu.
+            </p>
+
+            <form onsubmit="return cekNama()">
+
+                <label for="nama">Username</label>
+                <input
+                    type="text"
+                    id="nama"
+                    placeholder="Masukkan username..."
+                    autocomplete="username"
+                    required
+                >
+
+                <label for="password">Password</label>
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Masukkan password..."
+                    autocomplete="current-password"
+                    required
+                >
+
+                <button type="submit">Login ✨</button>
+                <button type="button" class="reset" onclick="resetForm()">
+                    Reset 🔄
+                </button>
+
+            </form>
+
+            <div id="hasil" hidden></div>
+
+        </section>
+    </main>
+
+    <footer class="footer">
+        Dibuat dengan 💚 dan semangat belajar coding!
+    </footer>
+
+    <script>
+        function cekNama() {
+            const namaSiswa = document.getElementById("nama").value.trim();
+            const passwordSiswa = document.getElementById("password").value;
+            const hasil = document.getElementById("hasil");
+
+            hasil.hidden = false;
+
+            if (namaSiswa === "Admin" && passwordSiswa === "12345") {
+                hasil.className = "sukses";
+                hasil.textContent = "Halo Admin, selamat datang! 💚🌷";
+            } else {
+                hasil.className = "gagal";
+                hasil.textContent = "Maaf, username atau password salah. Coba lagi ya! 💗";
+            }
+
+            return false;
+        }
+
+        function resetForm() {
+            document.getElementById("nama").value = "";
+            document.getElementById("password").value = "";
+
+            const hasil = document.getElementById("hasil");
+            hasil.hidden = true;
+            hasil.textContent = "";
+            hasil.className = "";
+
+            document.getElementById("nama").focus();
+        }
+    </script>
+
+</body>
 </html>
