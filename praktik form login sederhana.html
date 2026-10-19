@@ -1,12 +1,13 @@
+```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jong Woo Clnut Login</title>
+    <title>Prince in the Kingdom</title>
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap');
 
         * {
             margin: 0;
@@ -16,28 +17,30 @@
 
         body {
             min-height: 100vh;
-            font-family: 'Poppins', sans-serif;
+            padding: 25px 15px;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 25px 15px;
+            font-family: 'Poppins', sans-serif;
+            color: #fff8e8;
+            background: #17152d;
             overflow-x: hidden;
             position: relative;
-            background: #17182f;
         }
 
-        /* BACKGROUND GAMBAR JONG WOO */
-        .background {
+        /* BACKGROUND JONG WOO */
+        body::before {
+            content: "";
             position: fixed;
-            inset: -30px;
+            inset: -20px;
             z-index: -3;
 
             background-image:
                 linear-gradient(
-                    rgba(15, 18, 43, 0.38),
-                    rgba(15, 18, 43, 0.58)
+                    rgba(19, 17, 43, 0.30),
+                    rgba(19, 17, 43, 0.48)
                 ),
-                url('jongwoo.jfif');
+                url("jongwoo.jfif");
 
             background-size: cover;
             background-position: center;
@@ -48,15 +51,15 @@
 
         @keyframes backgroundMove {
             from {
-                transform: scale(1) translateY(0);
+                transform: scale(1);
             }
 
             to {
-                transform: scale(1.12) translateY(-10px);
+                transform: scale(1.10) translateY(-8px);
             }
         }
 
-        /* Lapisan cahaya */
+        /* LAPISAN CAHAYA */
         .glow {
             position: fixed;
             inset: 0;
@@ -65,72 +68,71 @@
 
             background:
                 radial-gradient(
-                    circle at 20% 20%,
-                    rgba(194, 179, 255, 0.22),
+                    circle at 15% 15%,
+                    rgba(201, 177, 255, 0.18),
                     transparent 40%
                 ),
                 radial-gradient(
-                    circle at 80% 80%,
-                    rgba(129, 164, 255, 0.2),
+                    circle at 85% 85%,
+                    rgba(137, 160, 255, 0.15),
                     transparent 40%
                 );
         }
 
-        /* Bintang bergerak */
+        /* BINTANG BERKELIP */
         .stars {
             position: fixed;
             inset: 0;
-            overflow: hidden;
-            pointer-events: none;
             z-index: -1;
+            pointer-events: none;
         }
 
-        .star {
+        .stars span {
             position: absolute;
-            color: #fff0bf;
-            animation: twinkle 3s ease-in-out infinite,
-                       floatStar 7s ease-in-out infinite;
-        }
-
-        .star:nth-child(1) {
-            top: 12%;
-            left: 12%;
+            color: #f5dfa2;
             font-size: 22px;
+            animation: twinkle 3s ease-in-out infinite,
+                       floatStar 6s ease-in-out infinite;
         }
 
-        .star:nth-child(2) {
+        .stars span:nth-child(1) {
+            top: 10%;
+            left: 12%;
+        }
+
+        .stars span:nth-child(2) {
             top: 20%;
             right: 15%;
-            font-size: 17px;
             animation-delay: 1s;
         }
 
-        .star:nth-child(3) {
+        .stars span:nth-child(3) {
             top: 75%;
             left: 10%;
-            font-size: 20px;
             animation-delay: 2s;
         }
 
-        .star:nth-child(4) {
-            top: 80%;
-            right: 12%;
-            font-size: 25px;
-            animation-delay: 0.5s;
+        .stars span:nth-child(4) {
+            top: 12%;
+            right: 35%;
+            font-size: 30px;
         }
 
-        .star:nth-child(5) {
-            top: 45%;
-            left: 5%;
-            font-size: 14px;
+        .stars span:nth-child(5) {
+            top: 60%;
+            right: 10%;
             animation-delay: 1.5s;
         }
 
-        .star:nth-child(6) {
-            top: 35%;
-            right: 7%;
-            font-size: 16px;
-            animation-delay: 2s;
+        .stars span:nth-child(6) {
+            top: 85%;
+            right: 25%;
+            animation-delay: 0.5s;
+        }
+
+        .stars span:nth-child(7) {
+            top: 40%;
+            left: 5%;
         }
 
         @keyframes twinkle {
@@ -149,213 +151,195 @@
             }
 
             50% {
-                transform: translateY(-15px);
+                transform: translateY(-12px);
             }
         }
 
-        /* KOTAK LOGIN */
-        .login-container {
+        /* KOTAK UTAMA */
+        .container {
             width: 100%;
-            max-width: 390px;
-            padding: 30px;
+            max-width: 650px;
+            padding: 38px 25px;
             text-align: center;
 
-            background: rgba(25, 25, 53, 0.83);
-            border: 1px solid rgba(235, 224, 255, 0.55);
+            background: rgba(25, 22, 51, 0.68);
+            border: 1px solid rgba(240, 220, 174, 0.45);
             border-radius: 25px;
 
             box-shadow:
-                0 15px 45px rgba(0, 0, 0, 0.35),
-                0 0 25px rgba(192, 174, 255, 0.15);
+                0 15px 45px rgba(0, 0, 0, 0.3),
+                0 0 25px rgba(190, 165, 255, 0.12);
 
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(7px);
+            -webkit-backdrop-filter: blur(7px);
 
-            animation: loginAppear 1s ease both;
+            animation: appear 1s ease both;
         }
 
-        @keyframes loginAppear {
+        @keyframes appear {
             from {
                 opacity: 0;
-                transform: translateY(30px) scale(0.96);
+                transform: translateY(25px);
             }
 
             to {
                 opacity: 1;
-                transform: translateY(0) scale(1);
+                transform: translateY(0);
             }
         }
 
+        /* BULAN */
         .moon {
-            font-size: 48px;
-            color: #f5e2ad;
-            text-shadow: 0 0 20px rgba(245, 226, 173, 0.6);
-            animation: moonFloat 4s ease-in-out infinite;
+            font-size: 52px;
+            color: #f4dfa5;
+            text-shadow: 0 0 20px rgba(244, 223, 165, 0.6);
+            animation: moonMove 4s ease-in-out infinite;
         }
 
-        @keyframes moonFloat {
+        @keyframes moonMove {
             0%, 100% {
                 transform: translateY(0) rotate(-5deg);
             }
 
             50% {
-                transform: translateY(-7px) rotate(5deg);
+                transform: translateY(-8px) rotate(5deg);
             }
         }
 
-        h1 {
-            color: #f5e5bc;
-            font-size: 28px;
-            letter-spacing: 4px;
-            margin-top: 5px;
-        }
-
+        /* SUBJUDUL */
         .subtitle {
-            font-size: 12px;
-            color: #d8d4ed;
-            line-height: 1.8;
+            margin-top: 12px;
+            color: #e0d1fa;
+            font-size: 11px;
+            letter-spacing: 4px;
+        }
+
+        /* JUDUL */
+        .judul {
+            margin: 20px 0 15px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(34px, 6vw, 52px);
+            font-weight: 600;
+            line-height: 1.15;
+            color: #fff5db;
+            text-shadow: 0 0 15px rgba(239, 218, 171, 0.2);
+        }
+
+        .judul span {
+            display: block;
+            color: #e7cf98;
+            font-style: italic;
+        }
+
+        /* TULISAN CUTIE */
+        .n {
+            display: inline-block;
             margin: 10px 0 25px;
+            padding: 10px 18px;
+
+            color: #f4d8ee;
+            font-size: 14px;
+
+            background: rgba(177, 140, 205, 0.18);
+            border: 1px solid rgba(220, 185, 230, 0.4);
+            border-radius: 30px;
+
+            animation: gentlePulse 3s infinite;
         }
 
-        /* HIASAN KARTU TAROT */
-        .tarot-decoration {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin-bottom: 25px;
-        }
-
-        .mini-card {
-            width: 65px;
-            height: 88px;
-            border: 1px solid #c9bce9;
-            border-radius: 9px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            color: #f5e5bc;
-            font-size: 24px;
-
-            background:
-                repeating-radial-gradient(
-                    circle,
-                    transparent 0 7px,
-                    rgba(221, 213, 250, 0.12) 8px 9px
-                ),
-                linear-gradient(145deg, #777394, #373653);
-
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-
-            animation: cardFloat 4s ease-in-out infinite;
-        }
-
-        .mini-card:nth-child(2) {
-            transform: translateY(-8px);
-            animation-delay: 0.5s;
-        }
-
-        .mini-card:nth-child(3) {
-            animation-delay: 1s;
-        }
-
-        @keyframes cardFloat {
+        @keyframes gentlePulse {
             0%, 100% {
-                translate: 0 0;
+                box-shadow: 0 0 0 rgba(216, 173, 238, 0);
             }
 
             50% {
-                translate: 0 -7px;
+                box-shadow: 0 0 16px rgba(216, 173, 238, 0.2);
             }
         }
 
-        /* INPUT FORM */
-        .input-group {
-            text-align: left;
-            margin-bottom: 17px;
+        /* HALLO CISS */
+        .tomato {
+            margin: 10px 0 20px;
+            color: #ffb9b0;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 36px;
+            font-weight: 600;
         }
 
-        label {
-            display: block;
-            color: #e9e3f7;
-            font-size: 13px;
-            margin-bottom: 7px;
-        }
-
-        input {
-            width: 100%;
-            padding: 13px 14px;
-            border: 1px solid #827ba4;
-            border-radius: 11px;
-            outline: none;
-
-            background: rgba(255, 255, 255, 0.09);
-            color: white;
-
-            font-family: inherit;
-            font-size: 13px;
-            transition: 0.3s;
-        }
-
-        input::placeholder {
-            color: #c1bbd5;
-        }
-
-        input:focus {
-            border-color: #f5e2ad;
-            box-shadow: 0 0 12px rgba(245, 226, 173, 0.18);
-        }
-
-        /* TOMBOL LOGIN */
-        button {
-            width: 100%;
+        /* HALLO JAPAN */
+        .border-text {
+            margin: 0 auto 25px;
             padding: 13px;
-            margin-top: 5px;
+            max-width: 340px;
 
-            border: none;
-            border-radius: 11px;
+            border: 2px solid #a7c7ff;
+            border-radius: 12px;
 
-            background: linear-gradient(135deg, #f5e2ad, #c8b7ef);
-            color: #292640;
+            color: #d5e4ff;
+            font-size: 18px;
+            letter-spacing: 2px;
 
-            font-family: inherit;
-            font-weight: 700;
-            font-size: 14px;
-
-            cursor: pointer;
+            box-shadow: 0 0 15px rgba(141, 187, 255, 0.12);
             transition: 0.3s;
         }
 
-        button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(200, 183, 239, 0.3);
+        .border-text:hover {
+            box-shadow: 0 0 20px rgba(141, 187, 255, 0.3);
+            transform: scale(1.02);
         }
 
-        button:active {
-            transform: scale(0.98);
+        /* TOMBOL LINK */
+        .link-button {
+            display: inline-block;
+            padding: 12px 26px;
+
+            border: 1px solid #e6d09d;
+            border-radius: 30px;
+
+            background: linear-gradient(135deg, #f2dfa9, #d1b9eb);
+            color: #302747;
+
+            font-size: 13px;
+            font-weight: 700;
+            text-decoration: none;
+
+            transition: 0.3s;
         }
 
-        #pesan {
-            min-height: 20px;
-            margin-top: 15px;
-            font-size: 12px;
-            overflow-wrap: anywhere;
+        .link-button:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(226, 197, 244, 0.3);
         }
 
+        /* FOOTER */
         .footer {
-            margin-top: 22px;
-            color: #c7c1dc;
-            font-size: 11px;
+            margin-top: 28px;
+            color: #e0d7f0;
+            font-size: 10px;
+            letter-spacing: 1px;
         }
 
-        @media (max-width: 420px) {
-            .login-container {
-                padding: 25px 21px;
+        /* TAMPILAN HP */
+        @media (max-width: 520px) {
+            .container {
+                padding: 30px 18px;
             }
 
-            h1 {
-                font-size: 25px;
+            .subtitle {
+                font-size: 9px;
+                letter-spacing: 3px;
+            }
+
+            .judul {
+                font-size: 37px;
+            }
+
+            .n {
+                font-size: 12px;
+            }
+
+            .border-text {
+                font-size: 15px;
             }
         }
 
@@ -365,7 +349,6 @@
             *::after {
                 animation-duration: 0.01ms !important;
                 animation-iteration-count: 1 !important;
-                scroll-behavior: auto !important;
             }
         }
     </style>
@@ -373,102 +356,56 @@
 
 <body>
 
-    <!-- Background Jong Woo -->
-    <div class="background"></div>
+    <!-- CAHAYA BACKGROUND -->
     <div class="glow"></div>
 
-    <!-- Bintang -->
+    <!-- BINTANG -->
     <div class="stars">
-        <span class="star">✦</span>
-        <span class="star">✧</span>
-        <span class="star">✦</span>
-        <span class="star">✧</span>
-        <span class="star">·</span>
-        <span class="star">✦</span>
+        <span>✦</span>
+        <span>✧</span>
+        <span>✦</span>
+        <span>☾</span>
+        <span>✧</span>
+        <span>✦</span>
+        <span>·</span>
     </div>
 
-    <!-- Form Login -->
-    <main class="login-container">
+    <!-- KONTEN -->
+    <main class="container">
 
         <div class="moon">☾</div>
 
-        <h1>CLNUT</h1>
-
         <p class="subtitle">
-            Welcome to My little WEb HiHi^^ ✨<br>
-            Let the stars guide This ^^.
+            ✧ THE MYSTICAL WORLD ✧
         </p>
 
-        <!-- Kartu tarot kecil -->
-        <div class="tarot-decoration">
-            <div class="mini-card">☾</div>
-            <div class="mini-card">✧</div>
-            <div class="mini-card">☼</div>
-        </div>
+        <h1 class="judul">
+            Prince in the
+            <span>Kingdom Brins</span>
+        </h1>
 
-        <form id="loginForm">
+        <p class="n">
+            Prince soooo cutieee arghhh ♡
+        </p>
 
-            <div class="input-group">
-                <label for="username">Username</label>
-                <input
-                    type="text"
-                    id="username"
-                    placeholder="Masukkan username"
-                    autocomplete="username"
-                    required
-                >
-            </div>
+        <h2 class="tomato">
+            Hallo ciss ♡
+        </h2>
 
-            <div class="input-group">
-                <label for="password">Password</label>
-                <input
-                    type="password"
-                    id="password"
-                    placeholder="Masukkan password"
-                    autocomplete="current-password"
-                    required
-                >
-            </div>
+        <h2 class="border-text">
+            HALLO NIHAOO ✧
+        </h2>
 
-            <button type="submit">✧ LOGIN ✧</button>
+        <a href="index.html" class="link-button">
+            ✦ Keinginanku ✦
+        </a>
 
-            <p id="pesan" aria-live="polite"></p>
-
-        </form>
-
-        <div class="footer">
-            ✦ Made with love under the Pie ✦
-        </div>
+        <p class="footer">
+            ✧ written under the stars, with love ✧
+        </p>
 
     </main>
 
-    <script>
-        const form = document.getElementById("loginForm");
-        const pesan = document.getElementById("pesan");
-
-        form.addEventListener("submit", function(event) {
-            event.preventDefault();
-
-            const username =
-                document.getElementById("username").value.trim();
-
-            const password =
-                document.getElementById("password").value;
-
-            if (
-                username === "anugrah" &&
-                password === "4809"
-            ) {
-                pesan.style.color = "#b8f5c8";
-                pesan.textContent =
-                    "Login berhasil! Welcome, Anugrah ✨";
-            } else {
-                pesan.style.color = "#ffaaaa";
-                pesan.textContent =
-                    "Username atau password salah. Coba lagi ya!";
-            }
-        });
-    </script>
-
 </body>
 </html>
+```
