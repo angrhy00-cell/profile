@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Astral</title>
+    <title>Jong Woo Tarot Login</title>
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
@@ -16,49 +16,99 @@
 
         body {
             min-height: 100vh;
+            font-family: 'Poppins', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 20px;
-            font-family: 'Poppins', sans-serif;
-            color: white;
-            background:
-                radial-gradient(circle at 50% 20%, #62638e, transparent 45%),
-                linear-gradient(135deg, #10172f, #302b50, #10172f);
-            overflow: hidden;
+            padding: 25px 15px;
+            overflow-x: hidden;
+            position: relative;
+            background: #17182f;
         }
 
-        /* Hiasan bintang */
+        /* BACKGROUND GAMBAR JONG WOO */
+        .background {
+            position: fixed;
+            inset: -30px;
+            z-index: -3;
+
+            background-image:
+                linear-gradient(
+                    rgba(15, 18, 43, 0.38),
+                    rgba(15, 18, 43, 0.58)
+                ),
+                url('jongwoo.jfif');
+
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+
+            animation: backgroundMove 18s ease-in-out infinite alternate;
+        }
+
+        @keyframes backgroundMove {
+            from {
+                transform: scale(1) translateY(0);
+            }
+
+            to {
+                transform: scale(1.12) translateY(-10px);
+            }
+        }
+
+        /* Lapisan cahaya */
+        .glow {
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            pointer-events: none;
+
+            background:
+                radial-gradient(
+                    circle at 20% 20%,
+                    rgba(194, 179, 255, 0.22),
+                    transparent 40%
+                ),
+                radial-gradient(
+                    circle at 80% 80%,
+                    rgba(129, 164, 255, 0.2),
+                    transparent 40%
+                );
+        }
+
+        /* Bintang bergerak */
         .stars {
             position: fixed;
             inset: 0;
             overflow: hidden;
             pointer-events: none;
-            color: #f3e5b8;
+            z-index: -1;
         }
 
         .star {
             position: absolute;
-            animation: twinkle 3s infinite ease-in-out;
+            color: #fff0bf;
+            animation: twinkle 3s ease-in-out infinite,
+                       floatStar 7s ease-in-out infinite;
         }
 
         .star:nth-child(1) {
-            top: 10%;
-            left: 15%;
+            top: 12%;
+            left: 12%;
             font-size: 22px;
         }
 
         .star:nth-child(2) {
             top: 20%;
             right: 15%;
-            font-size: 16px;
+            font-size: 17px;
             animation-delay: 1s;
         }
 
         .star:nth-child(3) {
             top: 75%;
             left: 10%;
-            font-size: 18px;
+            font-size: 20px;
             animation-delay: 2s;
         }
 
@@ -72,149 +122,250 @@
         .star:nth-child(5) {
             top: 45%;
             left: 5%;
-            font-size: 13px;
+            font-size: 14px;
             animation-delay: 1.5s;
         }
 
         .star:nth-child(6) {
             top: 35%;
             right: 7%;
-            font-size: 14px;
+            font-size: 16px;
             animation-delay: 2s;
         }
 
         @keyframes twinkle {
             0%, 100% {
-                opacity: 0.35;
-                transform: scale(0.8);
+                opacity: 0.3;
             }
+
             50% {
                 opacity: 1;
-                transform: scale(1.2);
             }
         }
 
-        /* Kotak login */
+        @keyframes floatStar {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        /* KOTAK LOGIN */
         .login-container {
-            position: relative;
-            z-index: 1;
             width: 100%;
             max-width: 390px;
-            padding: 38px 30px;
-            border: 1px solid rgba(226, 218, 255, 0.35);
-            border-radius: 25px;
+            padding: 30px;
             text-align: center;
-            background: rgba(24, 26, 54, 0.88);
-            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.4);
+
+            background: rgba(25, 25, 53, 0.83);
+            border: 1px solid rgba(235, 224, 255, 0.55);
+            border-radius: 25px;
+
+            box-shadow:
+                0 15px 45px rgba(0, 0, 0, 0.35),
+                0 0 25px rgba(192, 174, 255, 0.15);
+
             backdrop-filter: blur(12px);
-            animation: appear 0.8s ease;
+            -webkit-backdrop-filter: blur(12px);
+
+            animation: loginAppear 1s ease both;
         }
 
-        @keyframes appear {
+        @keyframes loginAppear {
             from {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: translateY(30px) scale(0.96);
             }
+
             to {
                 opacity: 1;
-                transform: translateY(0);
+                transform: translateY(0) scale(1);
             }
         }
 
         .moon {
-            font-size: 55px;
-            margin-bottom: 8px;
-            color: #f2dfaa;
-            text-shadow: 0 0 20px rgba(242, 223, 170, 0.4);
+            font-size: 48px;
+            color: #f5e2ad;
+            text-shadow: 0 0 20px rgba(245, 226, 173, 0.6);
+            animation: moonFloat 4s ease-in-out infinite;
+        }
+
+        @keyframes moonFloat {
+            0%, 100% {
+                transform: translateY(0) rotate(-5deg);
+            }
+
+            50% {
+                transform: translateY(-7px) rotate(5deg);
+            }
         }
 
         h1 {
-            font-size: 27px;
-            letter-spacing: 3px;
-            color: #f2dfaa;
+            color: #f5e5bc;
+            font-size: 28px;
+            letter-spacing: 4px;
+            margin-top: 5px;
         }
 
         .subtitle {
-            margin: 10px 0 28px;
-            color: #c7c4df;
             font-size: 12px;
-            line-height: 1.7;
+            color: #d8d4ed;
+            line-height: 1.8;
+            margin: 10px 0 25px;
         }
 
+        /* HIASAN KARTU TAROT */
+        .tarot-decoration {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+
+        .mini-card {
+            width: 65px;
+            height: 88px;
+            border: 1px solid #c9bce9;
+            border-radius: 9px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: #f5e5bc;
+            font-size: 24px;
+
+            background:
+                repeating-radial-gradient(
+                    circle,
+                    transparent 0 7px,
+                    rgba(221, 213, 250, 0.12) 8px 9px
+                ),
+                linear-gradient(145deg, #777394, #373653);
+
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+
+            animation: cardFloat 4s ease-in-out infinite;
+        }
+
+        .mini-card:nth-child(2) {
+            transform: translateY(-8px);
+            animation-delay: 0.5s;
+        }
+
+        .mini-card:nth-child(3) {
+            animation-delay: 1s;
+        }
+
+        @keyframes cardFloat {
+            0%, 100% {
+                translate: 0 0;
+            }
+
+            50% {
+                translate: 0 -7px;
+            }
+        }
+
+        /* INPUT FORM */
         .input-group {
-            margin-bottom: 18px;
             text-align: left;
+            margin-bottom: 17px;
         }
 
         label {
             display: block;
-            margin-bottom: 8px;
+            color: #e9e3f7;
             font-size: 13px;
-            color: #e6e0f4;
+            margin-bottom: 7px;
         }
 
         input {
             width: 100%;
-            padding: 13px 15px;
-            border: 1px solid #777596;
-            border-radius: 12px;
+            padding: 13px 14px;
+            border: 1px solid #827ba4;
+            border-radius: 11px;
             outline: none;
-            background: rgba(255, 255, 255, 0.07);
+
+            background: rgba(255, 255, 255, 0.09);
             color: white;
+
             font-family: inherit;
             font-size: 13px;
             transition: 0.3s;
         }
 
         input::placeholder {
-            color: #aaa8c2;
+            color: #c1bbd5;
         }
 
         input:focus {
-            border-color: #f2dfaa;
-            box-shadow: 0 0 12px rgba(242, 223, 170, 0.15);
+            border-color: #f5e2ad;
+            box-shadow: 0 0 12px rgba(245, 226, 173, 0.18);
         }
 
+        /* TOMBOL LOGIN */
         button {
             width: 100%;
-            margin-top: 8px;
             padding: 13px;
+            margin-top: 5px;
+
             border: none;
-            border-radius: 12px;
-            background: linear-gradient(135deg, #f2dfaa, #c6b6e8);
-            color: #29253e;
+            border-radius: 11px;
+
+            background: linear-gradient(135deg, #f5e2ad, #c8b7ef);
+            color: #292640;
+
             font-family: inherit;
-            font-size: 14px;
             font-weight: 700;
+            font-size: 14px;
+
             cursor: pointer;
             transition: 0.3s;
         }
 
         button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 7px 20px rgba(198, 182, 232, 0.25);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(200, 183, 239, 0.3);
+        }
+
+        button:active {
+            transform: scale(0.98);
         }
 
         #pesan {
             min-height: 20px;
-            margin-top: 18px;
+            margin-top: 15px;
             font-size: 12px;
             overflow-wrap: anywhere;
         }
 
         .footer {
-            margin-top: 25px;
+            margin-top: 22px;
+            color: #c7c1dc;
             font-size: 11px;
-            color: #aaa7c3;
         }
 
-        @media (max-width: 400px) {
+        @media (max-width: 420px) {
             .login-container {
-                padding: 30px 22px;
+                padding: 25px 21px;
             }
 
             h1 {
-                font-size: 24px;
+                font-size: 25px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                scroll-behavior: auto !important;
             }
         }
     </style>
@@ -222,6 +373,11 @@
 
 <body>
 
+    <!-- Background Jong Woo -->
+    <div class="background"></div>
+    <div class="glow"></div>
+
+    <!-- Bintang -->
     <div class="stars">
         <span class="star">✦</span>
         <span class="star">✧</span>
@@ -231,7 +387,8 @@
         <span class="star">✦</span>
     </div>
 
-    <div class="login-container">
+    <!-- Form Login -->
+    <main class="login-container">
 
         <div class="moon">☾</div>
 
@@ -239,8 +396,15 @@
 
         <p class="subtitle">
             Welcome to your little universe ✨<br>
-            Masuk dan temukan duniamu.
+            Let the stars guide you.
         </p>
+
+        <!-- Kartu tarot kecil -->
+        <div class="tarot-decoration">
+            <div class="mini-card">☾</div>
+            <div class="mini-card">✧</div>
+            <div class="mini-card">☼</div>
+        </div>
 
         <form id="loginForm">
 
@@ -273,10 +437,10 @@
         </form>
 
         <div class="footer">
-            ✦ Made under the stars ✦
+            ✦ Made with love under the stars ✦
         </div>
 
-    </div>
+    </main>
 
     <script>
         const form = document.getElementById("loginForm");
@@ -291,12 +455,17 @@
             const password =
                 document.getElementById("password").value;
 
-            if (username === "anugrah" && password === "4809") {
+            if (
+                username === "anugrah" &&
+                password === "4809"
+            ) {
                 pesan.style.color = "#b8f5c8";
-                pesan.textContent = "Login berhasil! Selamat datang, Anugrah ✨";
+                pesan.textContent =
+                    "Login berhasil! Welcome, Anugrah ✨";
             } else {
                 pesan.style.color = "#ffaaaa";
-                pesan.textContent = "Username atau password salah. Coba lagi ya!";
+                pesan.textContent =
+                    "Username atau password salah. Coba lagi ya!";
             }
         });
     </script>
