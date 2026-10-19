@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prince is Clnut/title>
+    <title>Prince Soooo CLNUT♡</title>
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap');
 
         * {
             margin: 0;
@@ -37,7 +37,7 @@
 
             background-image:
                 linear-gradient(
-                    rgba(19, 17, 43, 0.30),
+                    rgba(19, 17, 43, 0.25),
                     rgba(19, 17, 43, 0.48)
                 ),
                 url("jongwoo.jfif");
@@ -59,7 +59,7 @@
             }
         }
 
-        /* LAPISAN CAHAYA */
+        /* CAHAYA UNGU */
         .glow {
             position: fixed;
             inset: 0;
@@ -87,52 +87,57 @@
             pointer-events: none;
         }
 
-        .stars span {
+        .star {
             position: absolute;
             color: #f5dfa2;
-            font-size: 22px;
             animation: twinkle 3s ease-in-out infinite,
                        floatStar 6s ease-in-out infinite;
         }
 
-        .stars span:nth-child(1) {
+        .star:nth-child(1) {
             top: 10%;
             left: 12%;
+            font-size: 22px;
         }
 
-        .stars span:nth-child(2) {
+        .star:nth-child(2) {
             top: 20%;
             right: 15%;
+            font-size: 18px;
             animation-delay: 1s;
         }
 
-        .stars span:nth-child(3) {
+        .star:nth-child(3) {
             top: 75%;
             left: 10%;
+            font-size: 20px;
             animation-delay: 2s;
         }
 
-        .stars span:nth-child(4) {
+        .star:nth-child(4) {
             top: 12%;
             right: 35%;
             font-size: 30px;
         }
 
-        .stars span:nth-child(5) {
+        .star:nth-child(5) {
             top: 60%;
             right: 10%;
+            font-size: 17px;
             animation-delay: 1.5s;
         }
 
-        .stars span:nth-child(6) {
+        .star:nth-child(6) {
             top: 85%;
             right: 25%;
+            font-size: 24px;
             animation-delay: 0.5s;
         }
 
-        .stars span:nth-child(7) {
+        .star:nth-child(7) {
             top: 40%;
             left: 5%;
+            font-size: 14px;
         }
 
         @keyframes twinkle {
@@ -206,7 +211,7 @@
             }
         }
 
-        /* SUBJUDUL */
+        /* JUDUL */
         .subtitle {
             margin-top: 12px;
             color: #e0d1fa;
@@ -214,7 +219,6 @@
             letter-spacing: 4px;
         }
 
-        /* JUDUL */
         .judul {
             margin: 20px 0 15px;
             font-family: 'Cormorant Garamond', serif;
@@ -231,7 +235,7 @@
             font-style: italic;
         }
 
-        /* TULISAN CUTIE */
+        /* PRINCE CUTIE */
         .n {
             display: inline-block;
             margin: 10px 0 25px;
@@ -239,7 +243,6 @@
 
             color: #f4d8ee;
             font-size: 14px;
-
             background: rgba(177, 140, 205, 0.18);
             border: 1px solid rgba(220, 185, 230, 0.4);
             border-radius: 30px;
@@ -253,7 +256,7 @@
             }
 
             50% {
-                box-shadow: 0 0 16px rgba(216, 173, 238, 0.2);
+                box-shadow: 0 0 16px rgba(216, 173, 238, 0.25);
             }
         }
 
@@ -264,6 +267,17 @@
             font-family: 'Cormorant Garamond', serif;
             font-size: 36px;
             font-weight: 600;
+            animation: softGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes softGlow {
+            0%, 100% {
+                text-shadow: 0 0 3px rgba(255, 185, 176, 0.1);
+            }
+
+            50% {
+                text-shadow: 0 0 15px rgba(255, 185, 176, 0.5);
+            }
         }
 
         /* HALLO JAPAN */
@@ -288,7 +302,7 @@
             transform: scale(1.02);
         }
 
-        /* TOMBOL LINK */
+        /* LINK */
         .link-button {
             display: inline-block;
             padding: 12px 26px;
@@ -319,7 +333,7 @@
             letter-spacing: 1px;
         }
 
-        /* TAMPILAN HP */
+        /* RESPONSIVE HP */
         @media (max-width: 520px) {
             .container {
                 padding: 30px 18px;
@@ -356,21 +370,18 @@
 
 <body>
 
-    <!-- CAHAYA BACKGROUND -->
     <div class="glow"></div>
 
-    <!-- BINTANG -->
     <div class="stars">
-        <span>✦</span>
-        <span>✧</span>
-        <span>✦</span>
-        <span>☾</span>
-        <span>✧</span>
-        <span>✦</span>
-        <span>·</span>
+        <span class="star">✦</span>
+        <span class="star">✧</span>
+        <span class="star">✦</span>
+        <span class="star">☾</span>
+        <span class="star">✧</span>
+        <span class="star">✦</span>
+        <span class="star">·</span>
     </div>
 
-    <!-- KONTEN -->
     <main class="container">
 
         <div class="moon">☾</div>
@@ -393,7 +404,7 @@
         </h2>
 
         <h2 class="border-text">
-            HALLO JAPAN ✧
+            HALLO NIHAOO ✧
         </h2>
 
         <a href="index.html" class="link-button">
