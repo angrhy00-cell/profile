@@ -1,37 +1,392 @@
-<html lang="en">
+```html
+<!DOCTYPE html>
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contoh javascript Dasar</title>
+    <title>Praktikum JavaScript Clnut ✨</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: Georgia, 'Times New Roman', serif;
+            background: linear-gradient(135deg, #26153f, #4b2865, #21152f);
+            color: #fff5df;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 25px;
+            overflow-x: hidden;
+            transition: background 1s ease;
+        }
+
+        /* Cahaya latar */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background:
+                radial-gradient(circle at 15% 20%,
+                rgba(255, 215, 130, 0.22), transparent 30%),
+                radial-gradient(circle at 85% 80%,
+                rgba(201, 155, 255, 0.22), transparent 35%);
+            pointer-events: none;
+        }
+
+        /* Bintang-bintang */
+        .star {
+            position: fixed;
+            color: #ffe7a0;
+            font-size: 20px;
+            animation: twinkle 2s ease-in-out infinite alternate,
+                       float 5s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        .star:nth-child(1) {
+            top: 12%;
+            left: 12%;
+            animation-delay: 0s;
+        }
+
+        .star:nth-child(2) {
+            top: 20%;
+            right: 14%;
+            animation-delay: 1s;
+        }
+
+        .star:nth-child(3) {
+            bottom: 15%;
+            left: 17%;
+            animation-delay: 0.5s;
+        }
+
+        .star:nth-child(4) {
+            bottom: 20%;
+            right: 12%;
+            animation-delay: 1.5s;
+        }
+
+        .star:nth-child(5) {
+            top: 48%;
+            left: 6%;
+            animation-delay: 0.8s;
+        }
+
+        @keyframes twinkle {
+            from {
+                opacity: 0.3;
+                text-shadow: 0 0 3px #ffe7a0;
+            }
+            to {
+                opacity: 1;
+                text-shadow: 0 0 18px #ffe7a0;
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        /* Kotak utama */
+        .container {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 650px;
+            padding: 40px 28px;
+            text-align: center;
+            background: rgba(32, 19, 49, 0.72);
+            border: 1px solid rgba(255, 220, 145, 0.75);
+            border-radius: 25px;
+            box-shadow: 0 0 35px rgba(229, 184, 255, 0.18);
+            backdrop-filter: blur(12px);
+            animation: appear 1.2s ease, levitate 4s ease-in-out infinite;
+        }
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.96);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes levitate {
+            0%, 100% {
+                translate: 0 0;
+            }
+            50% {
+                translate: 0 -7px;
+            }
+        }
+
+        .moon {
+            font-size: 48px;
+            color: #ffe5a0;
+            margin-bottom: 12px;
+            display: inline-block;
+            animation: moonGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes moonGlow {
+            from {
+                filter: drop-shadow(0 0 3px #ffe5a0);
+                transform: rotate(-8deg);
+            }
+            to {
+                filter: drop-shadow(0 0 17px #ffe5a0);
+                transform: rotate(8deg);
+            }
+        }
+
+        .subtitle {
+            color: #f1d5ff;
+            font-size: 12px;
+            letter-spacing: 4px;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: clamp(25px, 5vw, 36px);
+            line-height: 1.4;
+            margin-bottom: 15px;
+        }
+
+        h1 span {
+            color: #ffdf91;
+        }
+
+        .description {
+            font-size: 15px;
+            line-height: 1.8;
+            color: #f4eafa;
+            margin-bottom: 25px;
+        }
+
+        #teksPesan {
+            min-height: 55px;
+            padding: 15px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(255, 223, 145, 0.45);
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.07);
+            color: #ffe7ae;
+            font-size: 15px;
+            line-height: 1.6;
+            transition: all 0.4s ease;
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        button {
+            border: 1px solid #ffe2a0;
+            border-radius: 30px;
+            padding: 12px 17px;
+            background: linear-gradient(135deg, #e5bd73, #fff0bd);
+            color: #382044;
+            font-family: inherit;
+            font-weight: bold;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            transform: translateY(-4px) scale(1.04);
+            box-shadow: 0 5px 18px rgba(255, 223, 145, 0.35);
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        .color-title {
+            color: #f1d5ff;
+            font-size: 13px;
+            letter-spacing: 2px;
+            margin-bottom: 13px;
+        }
+
+        .color-buttons button {
+            min-width: 110px;
+        }
+
+        .pink {
+            background: #ffb6d9;
+            border-color: #fff0f7;
+        }
+
+        .blue {
+            background: #a8ddff;
+            border-color: #e5f6ff;
+        }
+
+        .brown {
+            background: #dfc09b;
+            border-color: #fff0dd;
+        }
+
+        .green {
+            background: #b9efb7;
+            border-color: #edffeb;
+        }
+
+        .footer {
+            margin-top: 25px;
+            color: #d9c3e8;
+            font-size: 12px;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 32px 18px;
+            }
+
+            .color-buttons button {
+                min-width: 125px;
+            }
+        }
+    </style>
 </head>
+
 <body>
-    <h1>Selamat Datang di praktikum Javascript!</h1>
-<p id="teksPesan">
-<button id="tombolTeks">Click teks</button>
-<button id="tombolWarna">click warna</button>
-<script>
-    // mendapatkan elemen tombol berdasarkan ID
-    const tombol = document.getElementById('tombolTeks');
 
-    // menambahkan event listener untuk aksi 'click'
-    tombol.addEventListener('click',function() {
-        alert('Halo, Selamat Datang di Dunia Javascript!') ;
-    });
+    <!-- Animasi bintang -->
+    <div class="star">✦</div>
+    <div class="star">✧</div>
+    <div class="star">✦</div>
+    <div class="star">✧</div>
+    <div class="star">✦</div>
 
-    // Untuk Tombol  (mengubah teks paragraf)
-    const tombolTeks=document.getElementById('tombolTeks');
-    tombolSapa.addEventListener('click',function() {
-        document.getElementById('teksPesan').teksContent = 'Teks paragraf sudah diubah oleh Javascript!';
+    <div class="container">
 
-    });
+        <div class="moon">☾</div>
 
-    // Untuk Tombol Warna (mengubah warna latar belakang)
-    const tombolWarna = document.getElementById('tombolWarna');
-    tombolWarna.addEventListener('click',function() {
-            document.body.style.backgroundColor = '#E0FFF';
-        
-    });
+        <p class="subtitle">✧ THE MYSTICAL WORLD ✧</p>
+
+        <h1>
+            Selamat Datang di
+            <span>Praktikum JavaScript!</span>
+        </h1>
+
+        <p class="description">
+            ✨ Discover the magic of code ✨<br>
+            Klik tombol di bawah dan lihat keajaibannya!
+        </p>
+
+        <p id="teksPesan">
+            ✧ Halo! Selamat datang di dunia JavaScript ✧
+        </p>
+
+        <div class="button-group">
+            <button id="tombolTeks">✦ Click Teks ✦</button>
+            <button id="tombolWarna">☾ Click Warna ☾</button>
+        </div>
+
+        <p class="color-title">✧ PILIH WARNA LATAR ✧</p>
+
+        <div class="button-group color-buttons">
+            <button class="pink" data-warna="#ffb6d9">
+                ♡ Pink Cerah
+            </button>
+
+            <button class="blue" data-warna="#a8ddff">
+                ✧ Biru Cerah
+            </button>
+
+            <button class="brown" data-warna="#dfc09b">
+                ☕ Cokelat Muda
+            </button>
+
+            <button class="green" data-warna="#b9efb7">
+                🍃 Hijau Muda
+            </button>
+        </div>
+
+        <p class="footer">
+            ✧ made with love under the stars ✧
+        </p>
+
+    </div>
+
+    <script>
+        // Tombol untuk mengubah teks
+        const tombolTeks = document.getElementById('tombolTeks');
+        const teksPesan = document.getElementById('teksPesan');
+
+        tombolTeks.addEventListener('click', function() {
+            teksPesan.textContent =
+                '♡ Teks paragraf sudah diubah oleh JavaScript! ✨';
+
+            teksPesan.style.transform = 'scale(1.04)';
+
+            setTimeout(function() {
+                teksPesan.style.transform = 'scale(1)';
+            }, 300);
+        });
+
+        // Tombol untuk mengganti warna latar secara bergantian
+        const tombolWarna = document.getElementById('tombolWarna');
+
+        const daftarWarna = [
+            '#ffb6d9',
+            '#a8ddff',
+            '#dfc09b',
+            '#b9efb7'
+        ];
+
+        let indeksWarna = 0;
+
+        tombolWarna.addEventListener('click', function() {
+            document.body.style.background =
+                daftarWarna[indeksWarna];
+
+            indeksWarna++;
+
+            if (indeksWarna >= daftarWarna.length) {
+                indeksWarna = 0;
+            }
+        });
+
+        // Tombol warna pilihan
+        const tombolPilihanWarna =
+            document.querySelectorAll('[data-warna]');
+
+        tombolPilihanWarna.forEach(function(tombol) {
+            tombol.addEventListener('click', function() {
+                const warna = tombol.getAttribute('data-warna');
+
+                document.body.style.background = warna;
+
+                // Mengubah warna kotak agar cocok dengan latar
+                document.querySelector('.container').style.background =
+                    'rgba(40, 25, 50, 0.78)';
+            });
+        });
     </script>
-    </body>
-    </html>
 
+</body>
+</html>
+```
