@@ -1,12 +1,13 @@
+```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prince in the Kingdom</title>
+    <title>Clnut Login - Jong Woo</title>
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap');
 
         * {
             margin: 0;
@@ -37,7 +38,7 @@
             background-image:
                 linear-gradient(
                     rgba(19, 17, 43, 0.30),
-                    rgba(19, 17, 43, 0.48)
+                    rgba(19, 17, 43, 0.50)
                 ),
                 url("jongwoo.jfif");
 
@@ -58,7 +59,7 @@
             }
         }
 
-        /* LAPISAN CAHAYA */
+        /* EFEK CAHAYA */
         .glow {
             position: fixed;
             inset: 0;
@@ -78,7 +79,7 @@
                 );
         }
 
-        /* BINTANG BERKELIP */
+        /* BINTANG */
         .stars {
             position: fixed;
             inset: 0;
@@ -86,52 +87,57 @@
             pointer-events: none;
         }
 
-        .stars span {
+        .star {
             position: absolute;
             color: #f5dfa2;
-            font-size: 22px;
             animation: twinkle 3s ease-in-out infinite,
                        floatStar 6s ease-in-out infinite;
         }
 
-        .stars span:nth-child(1) {
+        .star:nth-child(1) {
             top: 10%;
             left: 12%;
+            font-size: 22px;
         }
 
-        .stars span:nth-child(2) {
+        .star:nth-child(2) {
             top: 20%;
             right: 15%;
+            font-size: 18px;
             animation-delay: 1s;
         }
 
-        .stars span:nth-child(3) {
+        .star:nth-child(3) {
             top: 75%;
             left: 10%;
+            font-size: 20px;
             animation-delay: 2s;
         }
 
-        .stars span:nth-child(4) {
+        .star:nth-child(4) {
             top: 12%;
             right: 35%;
             font-size: 30px;
         }
 
-        .stars span:nth-child(5) {
+        .star:nth-child(5) {
             top: 60%;
             right: 10%;
+            font-size: 17px;
             animation-delay: 1.5s;
         }
 
-        .stars span:nth-child(6) {
+        .star:nth-child(6) {
             top: 85%;
             right: 25%;
+            font-size: 24px;
             animation-delay: 0.5s;
         }
 
-        .stars span:nth-child(7) {
+        .star:nth-child(7) {
             top: 40%;
             left: 5%;
+            font-size: 14px;
         }
 
         @keyframes twinkle {
@@ -154,42 +160,42 @@
             }
         }
 
-        /* KOTAK UTAMA */
-        .container {
+        /* KOTAK LOGIN */
+        .login-container {
             width: 100%;
-            max-width: 650px;
-            padding: 38px 25px;
+            max-width: 390px;
+            padding: 35px 28px;
             text-align: center;
 
-            background: rgba(25, 22, 51, 0.68);
-            border: 1px solid rgba(240, 220, 174, 0.45);
+            background: rgba(25, 22, 51, 0.78);
+            border: 1px solid rgba(240, 220, 174, 0.5);
             border-radius: 25px;
 
             box-shadow:
-                0 15px 45px rgba(0, 0, 0, 0.3),
-                0 0 25px rgba(190, 165, 255, 0.12);
+                0 15px 45px rgba(0, 0, 0, 0.35),
+                0 0 25px rgba(190, 165, 255, 0.15);
 
-            backdrop-filter: blur(7px);
-            -webkit-backdrop-filter: blur(7px);
+            backdrop-filter: blur(9px);
+            -webkit-backdrop-filter: blur(9px);
 
-            animation: appear 1s ease both;
+            animation: appear 0.9s ease both;
         }
 
         @keyframes appear {
             from {
                 opacity: 0;
-                transform: translateY(25px);
+                transform: translateY(25px) scale(0.97);
             }
 
             to {
                 opacity: 1;
-                transform: translateY(0);
+                transform: translateY(0) scale(1);
             }
         }
 
         /* BULAN */
         .moon {
-            font-size: 52px;
+            font-size: 53px;
             color: #f4dfa5;
             text-shadow: 0 0 20px rgba(244, 223, 165, 0.6);
             animation: moonMove 4s ease-in-out infinite;
@@ -205,140 +211,127 @@
             }
         }
 
-        /* SUBJUDUL */
+        h1 {
+            margin-top: 5px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 42px;
+            letter-spacing: 5px;
+            color: #f5e5bc;
+        }
+
         .subtitle {
-            margin-top: 12px;
-            color: #e0d1fa;
-            font-size: 11px;
-            letter-spacing: 4px;
+            margin: 8px 0 28px;
+            color: #d8cfee;
+            font-size: 12px;
+            line-height: 1.8;
         }
 
-        /* JUDUL */
-        .judul {
-            margin: 20px 0 15px;
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(34px, 6vw, 52px);
-            font-weight: 600;
-            line-height: 1.15;
-            color: #fff5db;
-            text-shadow: 0 0 15px rgba(239, 218, 171, 0.2);
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 25px;
+            color: #f0dba6;
+            font-size: 12px;
         }
 
-        .judul span {
+        .divider::before,
+        .divider::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: rgba(240, 220, 174, 0.4);
+        }
+
+        /* INPUT */
+        .input-group {
+            margin-bottom: 18px;
+            text-align: left;
+        }
+
+        label {
             display: block;
-            color: #e7cf98;
-            font-style: italic;
+            margin-bottom: 8px;
+            color: #eee7fa;
+            font-size: 13px;
         }
 
-        /* TULISAN CUTIE */
-        .n {
-            display: inline-block;
-            margin: 10px 0 25px;
-            padding: 10px 18px;
+        input {
+            width: 100%;
+            padding: 13px 14px;
+            border: 1px solid #827ba4;
+            border-radius: 11px;
+            outline: none;
 
-            color: #f4d8ee;
-            font-size: 14px;
+            background: rgba(255, 255, 255, 0.08);
+            color: white;
 
-            background: rgba(177, 140, 205, 0.18);
-            border: 1px solid rgba(220, 185, 230, 0.4);
-            border-radius: 30px;
-
-            animation: gentlePulse 3s infinite;
-        }
-
-        @keyframes gentlePulse {
-            0%, 100% {
-                box-shadow: 0 0 0 rgba(216, 173, 238, 0);
-            }
-
-            50% {
-                box-shadow: 0 0 16px rgba(216, 173, 238, 0.2);
-            }
-        }
-
-        /* HALLO CISS */
-        .tomato {
-            margin: 10px 0 20px;
-            color: #ffb9b0;
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 36px;
-            font-weight: 600;
-        }
-
-        /* HALLO JAPAN */
-        .border-text {
-            margin: 0 auto 25px;
-            padding: 13px;
-            max-width: 340px;
-
-            border: 2px solid #a7c7ff;
-            border-radius: 12px;
-
-            color: #d5e4ff;
-            font-size: 18px;
-            letter-spacing: 2px;
-
-            box-shadow: 0 0 15px rgba(141, 187, 255, 0.12);
+            font-family: inherit;
+            font-size: 13px;
             transition: 0.3s;
         }
 
-        .border-text:hover {
-            box-shadow: 0 0 20px rgba(141, 187, 255, 0.3);
-            transform: scale(1.02);
+        input::placeholder {
+            color: #c1bbd5;
         }
 
-        /* TOMBOL LINK */
-        .link-button {
-            display: inline-block;
-            padding: 12px 26px;
+        input:focus {
+            border-color: #f5e2ad;
+            box-shadow: 0 0 12px rgba(245, 226, 173, 0.2);
+        }
 
-            border: 1px solid #e6d09d;
-            border-radius: 30px;
+        /* TOMBOL */
+        .login-button {
+            width: 100%;
+            margin-top: 7px;
+            padding: 13px;
+
+            border: none;
+            border-radius: 11px;
 
             background: linear-gradient(135deg, #f2dfa9, #d1b9eb);
             color: #302747;
 
-            font-size: 13px;
+            font-family: inherit;
+            font-size: 14px;
             font-weight: 700;
-            text-decoration: none;
 
+            cursor: pointer;
             transition: 0.3s;
         }
 
-        .link-button:hover {
-            transform: translateY(-4px);
+        .login-button:hover {
+            transform: translateY(-3px);
             box-shadow: 0 8px 20px rgba(226, 197, 244, 0.3);
         }
 
-        /* FOOTER */
+        .login-button:active {
+            transform: scale(0.98);
+        }
+
+        #pesan {
+            min-height: 20px;
+            margin-top: 16px;
+            font-size: 12px;
+            line-height: 1.6;
+            overflow-wrap: anywhere;
+        }
+
         .footer {
-            margin-top: 28px;
-            color: #e0d7f0;
+            margin-top: 25px;
+            color: #d4cbe6;
             font-size: 10px;
             letter-spacing: 1px;
         }
 
-        /* TAMPILAN HP */
-        @media (max-width: 520px) {
-            .container {
-                padding: 30px 18px;
+        /* RESPONSIVE HP */
+        @media (max-width: 420px) {
+            .login-container {
+                padding: 30px 22px;
             }
 
-            .subtitle {
-                font-size: 9px;
-                letter-spacing: 3px;
-            }
-
-            .judul {
-                font-size: 37px;
-            }
-
-            .n {
-                font-size: 12px;
-            }
-
-            .border-text {
-                font-size: 15px;
+            h1 {
+                font-size: 36px;
             }
         }
 
@@ -358,53 +351,101 @@
     <!-- CAHAYA BACKGROUND -->
     <div class="glow"></div>
 
-    <!-- BINTANG -->
+    <!-- BINTANG BERKELIP -->
     <div class="stars">
-        <span>✦</span>
-        <span>✧</span>
-        <span>✦</span>
-        <span>☾</span>
-        <span>✧</span>
-        <span>✦</span>
-        <span>·</span>
+        <span class="star">✦</span>
+        <span class="star">✧</span>
+        <span class="star">✦</span>
+        <span class="star">☾</span>
+        <span class="star">✧</span>
+        <span class="star">✦</span>
+        <span class="star">·</span>
     </div>
 
-    <!-- KONTEN -->
-    <main class="container">
+    <!-- FORM LOGIN -->
+    <main class="login-container">
 
         <div class="moon">☾</div>
 
+        <h1>ASTRAL</h1>
+
         <p class="subtitle">
-            ✧ THE MYSTICAL WORLD ✧
+            Welcome to your little universe ✨<br>
+            Let the stars guide you.
         </p>
 
-        <h1 class="judul">
-            Prince in the
-            <span>Kingdom Brins</span>
-        </h1>
+        <div class="divider">
+            ✧ SIGN IN ✧
+        </div>
 
-        <p class="n">
-            Prince soooo cutieee arghhh ♡
-        </p>
+        <form id="loginForm">
 
-        <h2 class="tomato">
-            Hallo ciss ♡
-        </h2>
+            <div class="input-group">
+                <label for="username">Username</label>
 
-        <h2 class="border-text">
-            HALLO NIHAOO ✧
-        </h2>
+                <input
+                    type="text"
+                    id="username"
+                    placeholder="Masukkan username"
+                    autocomplete="username"
+                    required
+                >
+            </div>
 
-        <a href="index.html" class="link-button">
-            ✦ Keinginanku ✦
-        </a>
+            <div class="input-group">
+                <label for="password">Password</label>
 
-        <p class="footer">
-            ✧ written under the stars, with love ✧
-        </p>
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Masukkan password"
+                    autocomplete="current-password"
+                    required
+                >
+            </div>
+
+            <button type="submit" class="login-button">
+                ✧ LOGIN ✧
+            </button>
+
+            <p id="pesan" aria-live="polite"></p>
+
+        </form>
+
+        <div class="footer">
+            ✦ Made with love under the stars ✦
+        </div>
 
     </main>
 
+    <script>
+        const form = document.getElementById("loginForm");
+        const pesan = document.getElementById("pesan");
+
+        form.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const username =
+                document.getElementById("username").value.trim();
+
+            const password =
+                document.getElementById("password").value;
+
+            if (
+                username === "anugrah" &&
+                password === "4809"
+            ) {
+                pesan.style.color = "#b8f5c8";
+                pesan.textContent =
+                    "Login berhasil! Welcome, Anugrah ✨";
+            } else {
+                pesan.style.color = "#ffaaaa";
+                pesan.textContent =
+                    "Username atau password salah. Coba lagi ya!";
+            }
+        });
+    </script>
+
 </body>
 </html>
-
+```
