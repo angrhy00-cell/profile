@@ -1,0 +1,438 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Your Tarot Pile</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: 'Poppins', sans-serif;
+            color: #fff9eb;
+            background:
+                radial-gradient(ellipse at 50% 15%, #526080, transparent 42%),
+                linear-gradient(145deg, #10172b, #222b48, #10172b);
+            overflow-x: hidden;
+        }
+
+        /* Hiasan bintang */
+        .stars {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            opacity: 0.5;
+            background-image:
+                radial-gradient(2px 2px at 10% 20%, #f6e6b7 99%, transparent),
+                radial-gradient(2px 2px at 25% 65%, #f6e6b7 99%, transparent),
+                radial-gradient(2px 2px at 40% 15%, #f6e6b7 99%, transparent),
+                radial-gradient(2px 2px at 62% 28%, #f6e6b7 99%, transparent),
+                radial-gradient(2px 2px at 75% 72%, #f6e6b7 99%, transparent),
+                radial-gradient(2px 2px at 90% 35%, #f6e6b7 99%, transparent);
+            background-size: 290px 250px;
+        }
+
+        .page {
+            position: relative;
+            width: min(100% - 32px, 1000px);
+            margin: auto;
+            padding: 42px 0;
+            text-align: center;
+        }
+
+        .eyebrow {
+            color: #e5cb8b;
+            font-size: 11px;
+            letter-spacing: 4px;
+            margin-bottom: 12px;
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(27px, 5vw, 44px);
+            color: #f8e9c0;
+            text-shadow: 0 0 22px #d8bd7b55;
+        }
+
+        .subtitle {
+            max-width: 530px;
+            margin: 15px auto 28px;
+            color: #d3d7e8;
+            font-size: 13px;
+            line-height: 1.9;
+        }
+
+        /* Matahari */
+        .sun {
+            width: 112px;
+            height: 112px;
+            margin: 0 auto 32px;
+            border: 1px solid #e4c982;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #f2d99b;
+            font-size: 58px;
+            box-shadow: 0 0 30px #e4c98233;
+            animation: glow 4s ease-in-out infinite;
+        }
+
+        /* Susunan tiga kartu */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: clamp(10px, 3vw, 28px);
+            max-width: 780px;
+            margin: auto;
+        }
+
+        .pile {
+            min-width: 0;
+            padding: 8px;
+            border: 1px solid #d8cbe8;
+            border-radius: 13px;
+            background: linear-gradient(145deg, #b7b1cc, #74738f, #a09ab7);
+            box-shadow: 0 12px 30px #05091766;
+            cursor: pointer;
+            animation: float 4s ease-in-out infinite;
+            transition: box-shadow 0.3s, opacity 0.3s;
+        }
+
+        .pile:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+
+        .pile:nth-child(3) {
+            animation-delay: 1s;
+        }
+
+        .pile:hover,
+        .pile:focus-visible {
+            box-shadow: 0 15px 35px #e7cd8a55;
+            outline: 1px solid #e5cb8b;
+        }
+
+        .card-art {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 250px;
+            overflow: hidden;
+            border-radius: 7px;
+            background:
+                repeating-radial-gradient(
+                    circle,
+                    transparent 0 15px,
+                    #f0e7ff22 16px 17px
+                ),
+                linear-gradient(145deg, #aaa4c0, #6c6d8a);
+        }
+
+        .tarot-image {
+            display: block;
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 5px;
+        }
+
+        /* Label pile di tengah gambar */
+        .label {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 7px 13px;
+            border-radius: 10px;
+            background: #fff9eb;
+            color: #262438;
+            font-size: clamp(12px, 1.8vw, 17px);
+            font-weight: 600;
+            white-space: nowrap;
+            box-shadow: 0 3px 8px #15162b30;
+        }
+
+        .instruction {
+            margin-top: 30px;
+            color: #e5cb8b;
+            font-family: 'Cinzel', serif;
+            font-size: 14px;
+        }
+
+        .hint {
+            margin-top: 8px;
+            color: #c2c8dc;
+            font-size: 11px;
+        }
+
+        /* Hasil setelah kartu dipilih */
+        .result {
+            display: none;
+            max-width: 500px;
+            margin: 24px auto 0;
+            padding: 20px;
+            border: 1px solid #d9bc7655;
+            border-radius: 14px;
+            background: #ffffff0b;
+        }
+
+        .result.show {
+            display: block;
+        }
+
+        .result h2 {
+            margin-bottom: 8px;
+            color: #f5df9f;
+            font-family: 'Cinzel', serif;
+        }
+
+        .result p {
+            color: #d3d7e8;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        .reset {
+            margin-top: 16px;
+            padding: 9px 20px;
+            border: 1px solid #e5cb8b;
+            border-radius: 30px;
+            background: transparent;
+            color: #f7e8bf;
+            cursor: pointer;
+        }
+
+        footer {
+            margin-top: 38px;
+            color: #aeb4cc;
+            font-size: 10px;
+            letter-spacing: 2px;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-6px);
+            }
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                box-shadow: 0 0 20px #e4c98222;
+            }
+            50% {
+                box-shadow: 0 0 40px #e4c98266;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .page {
+                padding-top: 30px;
+            }
+
+            .eyebrow {
+                font-size: 9px;
+                letter-spacing: 2px;
+            }
+
+            .sun {
+                width: 88px;
+                height: 88px;
+                font-size: 46px;
+                margin-bottom: 25px;
+            }
+
+            .cards {
+                gap: 9px;
+            }
+
+            .pile {
+                padding: 5px;
+            }
+
+            .card-art {
+                min-height: 180px;
+            }
+
+            .tarot-image {
+                height: 180px;
+            }
+
+            .label {
+                padding: 6px 8px;
+                font-size: 11px;
+            }
+
+            .subtitle {
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .cards {
+                gap: 6px;
+            }
+
+            .card-art,
+            .tarot-image {
+                height: 155px;
+                min-height: 155px;
+            }
+
+            .label {
+                padding: 5px 6px;
+                font-size: 10px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="stars" aria-hidden="true"></div>
+
+    <main class="page">
+        <p class="eyebrow">
+            ✧ A Little Message From The Universe ✧
+        </p>
+
+        <h1>Choose Your Tarot Pile</h1>
+
+        <p class="subtitle">
+            Tenangkan pikiranmu, ikuti intuisi, dan pilih satu
+            gambar yang paling menarik perhatianmu.
+        </p>
+
+        <div class="sun" aria-hidden="true">☼</div>
+
+        <section class="cards" aria-label="Pilihan kartu tarot">
+
+            <!-- PILE 1 -->
+            <button class="pile" type="button" data-pile="1">
+                <div class="card-art">
+                    <img
+                        src="Duan.jfif"
+                        alt="Gambar Duan"
+                        class="tarot-image"
+                    >
+                    <span class="label">Pile 1</span>
+                </div>
+            </button>
+
+            <!-- PILE 2 -->
+            <button class="pile" type="button" data-pile="2">
+                <div class="card-art">
+                    <img
+                        src="Cesuna.jfif"
+                        alt="Gambar Cesuna"
+                        class="tarot-image"
+                    >
+                    <span class="label">Pile 2</span>
+                </div>
+            </button>
+
+            <!-- PILE 3 -->
+            <button class="pile" type="button" data-pile="3">
+                <div class="card-art">
+                    <img
+                        src="Clnut.jfif"
+                        alt="Gambar Clnut"
+                        class="tarot-image"
+                    >
+                    <span class="label">Pile 3</span>
+                </div>
+            </button>
+
+        </section>
+
+        <p class="instruction">
+            Which pile is calling you?
+        </p>
+
+        <p class="hint">
+            Pilih satu pile yang paling menarik perhatianmu ✦
+        </p>
+
+        <section class="result" id="result" aria-live="polite">
+            <h2 id="resultTitle"></h2>
+            <p id="resultText"></p>
+
+            <button class="reset" id="reset" type="button">
+                Choose Again
+            </button>
+        </section>
+
+        <footer>✦ TRUST YOUR INTUITION ✦</footer>
+    </main>
+
+    <script>
+        const piles = document.querySelectorAll(".pile");
+        const result = document.getElementById("result");
+        const resultTitle = document.getElementById("resultTitle");
+        const resultText = document.getElementById("resultText");
+        const resetButton = document.getElementById("reset");
+
+        piles.forEach((pile) => {
+            pile.addEventListener("click", () => {
+                const number = pile.dataset.pile;
+
+                resultTitle.textContent =
+                    "You Chose Pile " + number;
+
+                resultText.textContent =
+                    "Kamu memilih Pile " + number +
+                    ". Kamu bisa menambahkan pesan tarot untuk pilihan ini.";
+
+                result.classList.add("show");
+
+                piles.forEach((item) => {
+                    item.style.opacity =
+                        item === pile ? "1" : "0.45";
+
+                    item.setAttribute(
+                        "aria-pressed",
+                        item === pile ? "true" : "false"
+                    );
+                });
+
+                result.scrollIntoView({
+                    behavior: "smooth",
+                    block: "nearest"
+                });
+            });
+        });
+
+        resetButton.addEventListener("click", () => {
+            result.classList.remove("show");
+
+            piles.forEach((pile) => {
+                pile.style.opacity = "1";
+                pile.setAttribute("aria-pressed", "false");
+            });
+        });
+    </script>
+</body>
+</html>
+```
