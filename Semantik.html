@@ -1,33 +1,335 @@
-<html>
-
+<!DOCTYPE html>
+<html lang="id">
 <head>
- <title>Contoh Layout dengan elemen sematik</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Tarot Garden</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: 'Trebuchet MS', sans-serif;
+            color: #24472b;
+            background:
+                radial-gradient(circle at top left, #f5ffd9, transparent 40%),
+                linear-gradient(135deg, #b8f28b, #eaffd5, #a6e88b);
+            overflow-x: hidden;
+        }
+
+        /* Bintang dekorasi */
+        body::before {
+            content: "✦  ✧  ✦  ✧  ✦  ✧";
+            position: fixed;
+            top: 15px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            font-size: 28px;
+            letter-spacing: 25px;
+            color: #fffde5;
+            text-shadow: 0 0 12px #74ad42;
+            pointer-events: none;
+            animation: sparkle 3s infinite alternate;
+        }
+
+        header {
+            text-align: center;
+            padding: 35px 15px 20px;
+        }
+
+        header h1 {
+            font-size: clamp(28px, 5vw, 48px);
+            color: #285b32;
+            text-shadow: 2px 3px 0 #f4ffd9;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        header p {
+            margin-top: 12px;
+            color: #497447;
+            font-size: 15px;
+        }
+
+        nav {
+            width: fit-content;
+            max-width: 95%;
+            margin: 10px auto 25px;
+            padding: 12px 25px;
+            background: #ffffffb8;
+            border: 2px solid #ffffff;
+            border-radius: 30px;
+            box-shadow: 0 5px 15px #548d3b30;
+        }
+
+        nav a {
+            color: #356d37;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 10px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #8aaf26;
+        }
+
+        article {
+            max-width: 1000px;
+            margin: auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .intro {
+            max-width: 650px;
+            margin: 0 auto 30px;
+            padding: 22px;
+            background: #ffffffb8;
+            border: 2px solid white;
+            border-radius: 25px;
+            box-shadow: 0 8px 20px #477b3420;
+        }
+
+        .intro h2 {
+            color: #326638;
+            margin-bottom: 12px;
+        }
+
+        .intro p {
+            line-height: 1.8;
+            color: #52734e;
+        }
+
+        .sun {
+            display: inline-block;
+            font-size: 35px;
+            margin-bottom: 8px;
+            animation: rotate 12s linear infinite;
+        }
+
+        .tarot-container {
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin: 25px auto 35px;
+        }
+
+        .tarot-card {
+            width: 230px;
+            padding: 12px;
+            background: #fafff0;
+            border: 3px solid #ffffff;
+            border-radius: 22px;
+            box-shadow: 0 10px 25px #4b813333;
+            transition: transform 0.35s, box-shadow 0.35s;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .tarot-card:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+
+        .tarot-card:nth-child(3) {
+            animation-delay: 1s;
+        }
+
+        .tarot-card:hover {
+            transform: translateY(-12px) rotate(-2deg) scale(1.04);
+            box-shadow: 0 16px 30px #397c4050;
+        }
+
+        .tarot-card img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 15px;
+            border: 2px solid #c3e7a5;
+        }
+
+        .tarot-card h3 {
+            margin: 13px 0;
+            color: #356b3b;
+            font-size: 21px;
+        }
+
+        .choose-btn {
+            width: 100%;
+            padding: 11px;
+            margin-bottom: 5px;
+            border: none;
+            border-radius: 20px;
+            background: linear-gradient(135deg, #a4df68, #d9f5a4);
+            color: #28552c;
+            font-weight: bold;
+            font-size: 15px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .choose-btn:hover {
+            background: #76c44e;
+            color: white;
+            transform: scale(1.04);
+        }
+
+        #hasil {
+            display: none;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 20px;
+            background: #ffffffd9;
+            border: 2px dashed #8ac568;
+            color: #356638;
+            line-height: 1.8;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px 15px;
+            margin-top: 25px;
+            color: #416d40;
+            background: #ffffff80;
+            border-top: 2px solid #ffffff;
+            line-height: 1.8;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-7px); }
+        }
+
+        @keyframes sparkle {
+            from { opacity: 0.45; }
+            to { opacity: 1; }
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 600px) {
+            nav {
+                padding: 12px;
+            }
+
+            nav a {
+                margin: 0 5px;
+                font-size: 14px;
+            }
+
+            .tarot-card {
+                width: min(100%, 290px);
+            }
+
+            .tarot-card img {
+                height: 320px;
+            }
+        }
+    </style>
 </head>
 
-<body style="background-color:silver;">
+<body>
 
-  <header style="background-color:pink;">
-   <h1>Belajar Elemen Sematik di HTML</H1>
-  </header>
+    <header id="home">
+        <span class="sun">☀️</span>
+        <h1>Green Tarot Garden</h1>
+        <p>✧ Temukan pesan kecil untuk harimu ✧</p>
+    </header>
 
-  <nav>
-    <a> href="#">Home</a>|
-    <a> href="#">About</a>|
-    <a> href="#">Contact</a>
-  </nav>
+    <nav>
+        <a href="#home">Home</a> |
+        <a href="#tarot">Tarot</a> |
+        <a href="#about">About</a>
+    </nav>
 
-  <article style="background-color:red;">
-    <h1>Tutorial Semantik elemen untuk pemula</h1>
-    <p>Semantik elemen adalah elemen yang memiliki makna dan tujuan.
-	Tujuannya agar kode HTML mudah dibaca dan tidak ada penyalahgunaan tag.
-	Elemen semantik bagus untuk SEO dan juga dapat meningkatkan accessibility.
-    </p>
-  </article>
+    <article>
+        <section class="intro" id="about">
+            <h2>🌿 Welcome to My Little Garden 🌿</h2>
+            <p>
+                Selamat datang di taman tarot hijau!
+                Tenangkan pikiranmu, ikuti intuisi,
+                lalu pilih satu kartu yang paling menarik perhatianmu.
+            </p>
+            <p><b>✨ Pilih dengan hati, bukan dengan terburu-buru ✨</b></p>
+        </section>
 
-  <footer style="background-color: purple;">
-    copyright &copy; 2020 by petani kode 
-  </footer>
+        <section id="tarot">
+            <h2>🍀 Choose Your Tarot 🍀</h2>
+            <p style="margin-top: 10px; color: #52734e;">
+                Pilih salah satu kartu di bawah ini!
+            </p>
+
+            <div class="tarot-container">
+
+                <div class="tarot-card">
+                    <img src="Duan.jfif" alt="Kartu tarot Pile 1">
+                    <h3>🌱 Pile 1</h3>
+                    <button class="choose-btn"
+                        onclick="pilihTarot(1)">
+                        Pilih Kartu
+                    </button>
+                </div>
+
+                <div class="tarot-card">
+                    <img src="Cesuna.jfif" alt="Kartu tarot Pile 2">
+                    <h3>🍃 Pile 2</h3>
+                    <button class="choose-btn"
+                        onclick="pilihTarot(2)">
+                        Pilih Kartu
+                    </button>
+                </div>
+
+                <div class="tarot-card">
+                    <img src="Clnut.jfif" alt="Kartu tarot Pile 3">
+                    <h3>🌼 Pile 3</h3>
+                    <button class="choose-btn"
+                        onclick="pilihTarot(3)">
+                        Pilih Kartu
+                    </button>
+                </div>
+
+            </div>
+
+            <div id="hasil"></div>
+        </section>
+    </article>
+
+    <footer>
+        <p>🌿 Copyright &copy; 2026 Green Tarot Garden 🌿</p>
+        <p>Made with ♡ and a little bit of magic</p>
+    </footer>
+
+    <script>
+        function pilihTarot(nomor) {
+            const pesan = {
+                1: "🌱 Pile 1 — Awal yang baru menantimu. Beranilah mencoba hal baik dan percaya pada prosesmu.",
+                2: "🍃 Pile 2 — Beri dirimu waktu untuk tumbuh. Tidak perlu membandingkan perjalananmu dengan orang lain.",
+                3: "🌼 Pile 3 — Tetaplah bersinar dengan caramu sendiri. Hal kecil yang kamu lakukan hari ini juga berarti."
+            };
+
+            const hasil = document.getElementById("hasil");
+            hasil.style.display = "block";
+            hasil.innerHTML =
+                "<h2>✨ Pesan untukmu ✨</h2><p>" +
+                pesan[nomor] +
+                "</p><p><small>Anggap ini sebagai hiburan dan refleksi positif, ya!</small></p>";
+
+            hasil.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+        }
+    </script>
 
 </body>
 </html>
-tolong buat seperti di atas ya
