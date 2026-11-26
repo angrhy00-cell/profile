@@ -630,6 +630,48 @@ body::after {
         transition: none !important;
     }
 }
+    
+/* ICON AESTHETIC */
+.item-icon {
+    flex-shrink: 0;
+
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: linear-gradient(
+        145deg,
+        #c8ffbb,
+        #ffffff,
+        #e3ffdc
+    );
+
+    border: 1px solid #a6e99b;
+    border-radius: 16px;
+
+    font-size: 25px;
+
+    box-shadow:
+        0 4px 12px #54c75b35,
+        inset 0 0 8px #ffffff;
+
+    transition: all 0.4s ease;
+}
+
+.writing-item:hover .item-icon {
+    transform: rotate(-10deg) scale(1.15);
+
+    background: linear-gradient(
+        145deg,
+        #9cff91,
+        #ffffff
+    );
+
+    box-shadow: 0 0 18px #69e66b80;
+}
 
 </style>
 </head>
