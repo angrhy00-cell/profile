@@ -1,14 +1,289 @@
-<html>
-	<head>
-	<title>halaman 3</title>
-	<style>
-	body {background-color: lingblue;}
-	h1 {color: white;text-align: center;}
-	p {font-family: jokerman;font-size: 20px;}
-	</style>
-	</head>
-	<body>
-	<h1> kataku </h1>
-	<p>lakukan apa yang kamu ingin lakukan asal tidak merugikan orang lain,</p>
-	<p>rasa bahagia = karena kebahagian ada pada diri sendiri</p> 
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cesuna - My Little Words</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: Georgia, serif;
+            background-image:
+                linear-gradient(
+                    rgba(35, 20, 25, 0.35),
+                    rgba(35, 20, 25, 0.55)
+                ),
+                url('china girl.jpg');
+
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* Hiasan cahaya */
+        .glow {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: #ffe6ed;
+            filter: blur(130px);
+            opacity: 0.35;
+            border-radius: 50%;
+            animation: glowMove 6s infinite alternate;
+        }
+
+        @keyframes glowMove {
+            from {
+                transform: translate(-100px, -80px);
+            }
+            to {
+                transform: translate(100px, 80px);
+            }
+        }
+
+        /* Kotak utama */
+        .container {
+            position: relative;
+            width: 85%;
+            max-width: 650px;
+            padding: 45px 30px;
+
+            text-align: center;
+            color: white;
+
+            background: rgba(255, 245, 240, 0.17);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+
+            border: 1px solid rgba(255, 255, 255, 0.55);
+            border-radius: 25px;
+
+            box-shadow:
+                0 10px 40px rgba(0, 0, 0, 0.25),
+                inset 0 0 20px rgba(255,255,255,0.1);
+
+            animation: appear 2s ease;
+        }
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Tulisan China */
+        .chinese {
+            font-size: 35px;
+            letter-spacing: 8px;
+            color: #ffe3c9;
+            text-shadow: 0 0 15px #ffb6c1;
+            animation: floating 3s infinite ease-in-out;
+        }
+
+        @keyframes floating {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        h1 {
+            font-size: 48px;
+            margin: 15px 0;
+            color: #fff5ed;
+            letter-spacing: 5px;
+
+            text-shadow:
+                0 0 10px #ffc4d6,
+                0 0 25px #ff9ebd;
+
+            animation: titleGlow 3s infinite alternate;
+        }
+
+        @keyframes titleGlow {
+            from {
+                text-shadow: 0 0 10px #ffc4d6;
+            }
+            to {
+                text-shadow: 0 0 25px #ffb5ca,
+                             0 0 40px #fff;
+            }
+        }
+
+        .line {
+            width: 100px;
+            height: 2px;
+            background: #ffe3c9;
+            margin: 20px auto;
+        }
+
+        p {
+            font-size: 19px;
+            line-height: 1.8;
+            margin: 20px 0;
+            color: #fffaf5;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+
+            animation: textAppear 2s ease;
+        }
+
+        @keyframes textAppear {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .quote {
+            padding: 15px;
+            border-left: 2px solid #ffe0c8;
+            border-right: 2px solid #ffe0c8;
+            margin: 25px 0;
+        }
+
+        .footer {
+            font-size: 14px;
+            color: #ffe5e8;
+            letter-spacing: 3px;
+            margin-top: 25px;
+        }
+
+        /* Animasi kelopak bunga */
+        .petal {
+            position: absolute;
+            top: -30px;
+            color: #ffe4ec;
+            font-size: 22px;
+            animation: fall linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-10vh) rotate(0deg);
+                opacity: 0;
+            }
+            15% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .petal:nth-child(1) {
+            left: 10%;
+            animation-duration: 8s;
+        }
+
+        .petal:nth-child(2) {
+            left: 30%;
+            animation-duration: 11s;
+            animation-delay: 2s;
+        }
+
+        .petal:nth-child(3) {
+            left: 55%;
+            animation-duration: 9s;
+            animation-delay: 1s;
+        }
+
+        .petal:nth-child(4) {
+            left: 75%;
+            animation-duration: 12s;
+            animation-delay: 3s;
+        }
+
+        .petal:nth-child(5) {
+            left: 90%;
+            animation-duration: 10s;
+            animation-delay: 2s;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                width: 90%;
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 35px;
+            }
+
+            p {
+                font-size: 16px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="glow"></div>
+
+    <!-- Kelopak bunga bergerak -->
+    <div class="petal">🌸</div>
+    <div class="petal">🌷</div>
+    <div class="petal">🌸</div>
+    <div class="petal">🌷</div>
+    <div class="petal">🌸</div>
+
+    <div class="container">
+
+        <div class="chinese">切 苏 娜</div>
+
+        <h1>Kataku</h1>
+
+        <div class="line"></div>
+
+        <div class="quote">
+
+            <p>
+                "Lakukan apa yang kamu ingin lakukan,
+                selama itu tidak merugikan orang lain."
+            </p>
+
+            <p>
+                "Rasa bahagia berasal dari diri sendiri,
+                sebab kebahagiaan sejati ada dalam
+                cara kita menghargai kehidupan."
+            </p>
+
+        </div>
+
+        <div class="chinese">花 · 梦 · 美</div>
+
+        <div class="footer">
+            ✧ A LITTLE WORLD OF CESUNA ✧
+        </div>
+
+    </div>
+
+</body>
 </html>
