@@ -1,9 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contoh Layout dengan Elemen Semantik</title>
+
+    <title>Chinese Princess - Semantic HTML</title>
 
     <style>
         * {
@@ -16,111 +18,253 @@
             font-family: 'Trebuchet MS', sans-serif;
             min-height: 100vh;
             padding: 25px;
-            color: #315b35;
-            background: linear-gradient(
-                135deg,
-                #d9ffbd,
-                #f7ffe9,
-                #a9e88d,
-                #eaffd5
-            );
-            background-size: 300% 300%;
-            animation: backgroundMove 10s ease infinite;
+            color: white;
+
+            /* Background foto */
+            background:
+                linear-gradient(
+                    rgba(35, 20, 25, 0.35),
+                    rgba(35, 20, 25, 0.55)
+                ),
+                url('china girl.jpg');
+
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+
+            overflow-x: hidden;
         }
 
+        /* HEADER */
         header {
             max-width: 1000px;
             margin: 20px auto;
             padding: 35px 20px;
             text-align: center;
-            background: #ffffffc9;
-            border: 3px solid white;
+
+            background: rgba(255, 240, 235, 0.20);
+            backdrop-filter: blur(10px);
+
+            border: 2px solid #fff0e6;
             border-radius: 25px;
-            box-shadow: 0 8px 20px #477b3430;
+
+            box-shadow: 0 8px 25px #00000030;
+
+            animation: muncul 1.5s ease;
         }
 
         header h1 {
             font-size: clamp(25px, 5vw, 38px);
-            color: #38733c;
-            text-shadow: 2px 2px #d8f6bd;
+            color: #fff5ed;
+
+            text-shadow:
+                0 0 10px #ffb6c1,
+                0 0 20px #ffffff;
+
             animation: float 3s ease-in-out infinite;
         }
 
+        .hiasan {
+            margin-bottom: 15px;
+            font-size: 30px;
+            color: #ffe1c9;
+            animation: float 3s infinite ease-in-out;
+        }
+
+        .subtitle {
+            margin-top: 12px;
+            color: #ffe9e3;
+            letter-spacing: 4px;
+            font-size: 14px;
+        }
+
+        /* NAVIGATION */
         nav {
             max-width: 1000px;
             margin: 20px auto;
-            padding: 17px;
+            padding: 18px;
+
             text-align: center;
-            background: #8ed36e;
-            border: 2px solid white;
+
+            background: rgba(255, 225, 225, 0.30);
+            backdrop-filter: blur(10px);
+
+            border: 1px solid white;
             border-radius: 30px;
-            box-shadow: 0 5px 15px #477b3420;
+
+            box-shadow: 0 5px 20px #00000025;
         }
 
         nav a {
-            margin: 0 15px;
-            color: #214e2b;
+            display: inline-block;
+            margin: 5px 18px;
+
+            color: #fff5ed;
             text-decoration: none;
             font-weight: bold;
-            transition: 0.3s;
+
+            transition: 0.4s;
         }
 
         nav a:hover {
-            color: white;
+            color: #ffd1dc;
+            transform: translateY(-5px);
+            text-shadow: 0 0 10px white;
         }
 
+        /* ARTICLE */
         article {
             max-width: 1000px;
             margin: 25px auto;
-            padding: 30px;
-            background: #ffffffd9;
-            border: 3px solid white;
+            padding: 35px;
+
+            background: rgba(255, 245, 240, 0.24);
+            backdrop-filter: blur(12px);
+
+            border: 2px solid rgba(255,255,255,0.7);
             border-radius: 25px;
-            box-shadow: 0 8px 25px #477b3425;
+
+            box-shadow: 0 8px 30px #00000030;
+
             line-height: 1.9;
+
+            animation: muncul 2s ease;
         }
 
         article h2 {
-            margin-bottom: 15px;
-            color: #397440;
+            margin-bottom: 20px;
+            color: #fff0e6;
+
+            text-shadow: 0 0 10px #ffb6c1;
+            text-align: center;
         }
 
         article p {
-            color: #536f50;
+            color: white;
             text-align: justify;
+            font-size: 17px;
+            text-shadow: 0 2px 5px #00000070;
         }
 
+        .garis {
+            width: 100px;
+            height: 2px;
+            margin: 15px auto 25px;
+
+            background: #ffe1c9;
+            box-shadow: 0 0 10px white;
+        }
+
+        /* FOOTER */
         footer {
             max-width: 1000px;
             margin: 25px auto 0;
             padding: 22px;
+
             text-align: center;
-            color: #315b35;
-            background: #b9eb9c;
-            border: 2px solid white;
+
+            color: #fff5ed;
+
+            background: rgba(255, 225, 225, 0.25);
+            backdrop-filter: blur(10px);
+
+            border: 1px solid white;
             border-radius: 20px;
+
+            box-shadow: 0 5px 20px #00000025;
         }
 
-        .hiasan {
-            margin-bottom: 10px;
-            font-size: 28px;
+        /* TULISAN CHINA */
+        .china {
+            font-size: 25px;
+            letter-spacing: 8px;
+            color: #ffe3c9;
+
+            text-shadow: 0 0 15px #ffb6c1;
         }
 
+        /* ANIMASI */
         @keyframes float {
             0%, 100% {
                 transform: translateY(0);
             }
+
             50% {
-                transform: translateY(-5px);
+                transform: translateY(-8px);
             }
         }
 
-        @keyframes backgroundMove {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        @keyframes muncul {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
+        /* BUNGA BERJATUHAN */
+        .petal {
+            position: fixed;
+            top: -40px;
+
+            font-size: 23px;
+            pointer-events: none;
+
+            z-index: 10;
+
+            animation: jatuh linear infinite;
+        }
+
+        .petal:nth-child(1) {
+            left: 10%;
+            animation-duration: 8s;
+        }
+
+        .petal:nth-child(2) {
+            left: 30%;
+            animation-duration: 11s;
+            animation-delay: 2s;
+        }
+
+        .petal:nth-child(3) {
+            left: 50%;
+            animation-duration: 9s;
+            animation-delay: 1s;
+        }
+
+        .petal:nth-child(4) {
+            left: 70%;
+            animation-duration: 12s;
+            animation-delay: 3s;
+        }
+
+        .petal:nth-child(5) {
+            left: 90%;
+            animation-duration: 10s;
+            animation-delay: 2s;
+        }
+
+        @keyframes jatuh {
+            0% {
+                transform: translateY(-10vh) rotate(0deg);
+                opacity: 0;
+            }
+
+            15% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* RESPONSIVE */
         @media (max-width: 600px) {
             body {
                 padding: 12px;
@@ -131,43 +275,103 @@
             }
 
             nav a {
-                margin: 0 5px;
+                margin: 5px 8px;
                 font-size: 14px;
             }
 
             article {
                 padding: 22px;
             }
+
+            article p {
+                font-size: 15px;
+            }
         }
+
     </style>
 </head>
 
 <body>
 
+    <!-- ANIMASI BUNGA -->
+    <div class="petal">🌸</div>
+    <div class="petal">🌷</div>
+    <div class="petal">🌸</div>
+    <div class="petal">🌷</div>
+    <div class="petal">🌸</div>
+
+    <!-- HEADER -->
     <header>
-        <div class="hiasan">☘️ ✧ 🌿 ✧ ☘️</div>
+
+        <div class="hiasan">
+            🏮 ✧ 🌸 ✧ 🏮
+        </div>
+
+        <div class="china">
+            切 苏 娜
+        </div>
+
         <h1>Belajar Elemen Semantik di HTML</h1>
+
+        <div class="subtitle">
+            WELCOME TO MY LITTLE WORLD
+        </div>
+
     </header>
 
+    <!-- NAVIGATION -->
     <nav>
-        <a href="#">Home</a> |
-        <a href="#">About</a> |
-        <a href="#">Contact</a>
+
+        <a href="#">✧ Home</a>
+        <a href="#">✧ About</a>
+        <a href="#">✧ Contact</a>
+
     </nav>
 
+    <!-- ARTICLE -->
     <article>
-        <h2>Tutorial Semantik Elemen untuk Pemula</h2>
+
+        <div class="china" style="text-align:center;">
+            花 · 梦 · 美
+        </div>
+
+        <div class="garis"></div>
+
+        <h2>
+            Tutorial Semantik Elemen untuk Pemula
+        </h2>
 
         <p>
-            Semantik elemen adalah elemen yang memiliki makna dan tujuan.
-            Tujuannya agar kode HTML mudah dibaca dan tidak ada
-            penyalahgunaan tag. Elemen semantik bagus untuk SEO dan juga
-            dapat meningkatkan accessibility.
+            Semantik elemen adalah elemen yang memiliki makna
+            dan tujuan. Tujuannya agar kode HTML mudah dibaca
+            dan tidak ada penyalahgunaan tag. Elemen semantik
+            bagus untuk SEO dan juga dapat meningkatkan
+            accessibility.
         </p>
+
+        <div class="garis"></div>
+
+        <p style="text-align:center;">
+            ✧ Keep Learning, Keep Growing ✧
+        </p>
+
     </article>
 
+    <!-- FOOTER -->
     <footer>
-        <p>☘️ Copyright &copy; 2020 by petani kode ☘️</p>
+
+        <div class="hiasan">
+            🌸 ✧ 🌸
+        </div>
+
+        <p>
+            © 2020 by Petani Kode
+        </p>
+
+        <p class="china" style="margin-top:10px;">
+            切苏娜
+        </p>
+
     </footer>
 
 </body>
