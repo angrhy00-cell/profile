@@ -10,76 +10,62 @@
 
 <style>
 
+/* GOOGLE FONT */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-:root {
-    --green: #39d353;
-    --dark-green: #14752e;
-    --light-green: #d9ffd2;
-    --text: #315b3b;
-}
-
+/* BODY */
 body {
     min-height: 100vh;
-    padding: 20px 15px;
+    padding: 20px;
     font-family: 'Nunito', sans-serif;
-    color: var(--text);
+    color: #285b35;
+    overflow-x: hidden;
+
     background: linear-gradient(
         135deg,
-        #d4ffcb,
+        #d9ffd2,
         #ffffff,
-        #aaff91,
-        #e3ffda
+        #a8f58f,
+        #efffe9
     );
+
     background-size: 400% 400%;
     animation: backgroundMove 12s ease infinite;
-    overflow-x: hidden;
 }
 
-/* BACKGROUND JONGWOO */
+/* BACKGROUND FOTO */
 .wallpaper {
     position: fixed;
     inset: 0;
     z-index: -2;
-    overflow: hidden;
-    background: white;
-    pointer-events: none;
-}
 
-.wallpaper::before {
-    content: "";
-    position: absolute;
-    inset: -50px;
-    background-image: url("jongwoo.jfif");
-    background-size: 150px auto;
-    background-repeat: repeat;
-    opacity: 0.18;
-    transform: rotate(-7deg) scale(1.1);
-    animation: wallpaperMove 35s linear infinite;
-}
+    background:
+        linear-gradient(
+            rgba(20, 65, 30, 0.30),
+            rgba(20, 65, 30, 0.48)
+        ),
+        url('jongwoo.jfif');
 
-.wallpaper::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        135deg,
-        rgba(218, 255, 207, .65),
-        rgba(255, 255, 255, .72),
-        rgba(176, 255, 158, .60)
-    );
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    animation: wallpaperMove 25s ease-in-out infinite alternate;
 }
 
 @keyframes wallpaperMove {
     from {
-        background-position: 0 0;
+        transform: scale(1);
     }
+
     to {
-        background-position: 300px 150px;
+        transform: scale(1.12);
     }
 }
 
@@ -87,9 +73,11 @@ body {
     0% {
         background-position: 0% 50%;
     }
+
     50% {
         background-position: 100% 50%;
     }
+
     100% {
         background-position: 0% 50%;
     }
@@ -99,122 +87,122 @@ body {
 .decoration {
     position: fixed;
     z-index: -1;
-    color: #36d65b;
     pointer-events: none;
+
+    color: #baffaa;
+    font-size: 35px;
+
+    text-shadow: 0 0 15px #ffffff;
+
     animation: floating 4s ease-in-out infinite;
-    text-shadow: 0 0 15px #aaff9e;
 }
 
 .deco1 {
-    top: 15%;
+    top: 12%;
     left: 5%;
-    font-size: 40px;
 }
 
 .deco2 {
     top: 35%;
-    right: 6%;
-    font-size: 35px;
+    right: 5%;
     animation-delay: 1s;
 }
 
 .deco3 {
     bottom: 15%;
     left: 7%;
-    font-size: 35px;
     animation-delay: 2s;
 }
 
 .deco4 {
     bottom: 20%;
     right: 8%;
-    font-size: 40px;
-    animation-delay: .5s;
+    animation-delay: 0.5s;
 }
 
 @keyframes floating {
     0%, 100% {
         transform: translateY(0) rotate(-8deg);
     }
+
     50% {
-        transform: translateY(-13px) rotate(8deg);
+        transform: translateY(-15px) rotate(8deg);
     }
 }
 
 /* NAVBAR */
 .navbar {
     max-width: 850px;
-    margin: 0 auto 25px;
-    padding: 14px 20px;
+    margin: 10px auto 25px;
+    padding: 16px 25px;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 10px;
 
-    border: 2px solid white;
-    border-radius: 20px;
-
-    background: rgba(255,255,255,.88);
+    background: rgba(235, 255, 230, 0.85);
     backdrop-filter: blur(12px);
 
-    box-shadow: 0 5px 20px #39d35335;
-    transition: .3s;
-}
+    border: 2px solid white;
+    border-radius: 25px;
 
-.navbar:hover {
-    box-shadow: 0 8px 25px #39d35355;
+    box-shadow: 0 8px 25px #267c3740;
+
+    animation: appear 1s ease;
 }
 
 .logo {
-    color: var(--dark-green);
-    font-size: 19px;
+    color: #176c32;
+    font-size: 21px;
     font-weight: 900;
     text-decoration: none;
 }
 
 .logo span {
-    color: var(--green);
+    color: #38d353;
 }
 
 .nav-link {
-    color: var(--dark-green);
-    font-size: 13px;
+    color: #247d39;
     font-weight: 800;
     text-decoration: none;
-    transition: .3s;
+    transition: 0.3s;
 }
 
 .nav-link:hover {
-    color: #26d94d;
-    transform: translateY(-3px);
+    color: #42d65b;
+    transform: translateY(-4px);
 }
 
-/* KARTU UTAMA */
+/* CONTAINER */
 .container {
     max-width: 850px;
     margin: auto;
 }
 
+/* KARTU UTAMA */
 .main-card {
-    padding: 30px;
+    padding: 35px;
+
+    background: rgba(242, 255, 239, 0.88);
+    backdrop-filter: blur(15px);
+
     border: 2px solid white;
     border-radius: 30px;
 
-    background: rgba(255,255,255,.87);
-    backdrop-filter: blur(12px);
-
     box-shadow:
-        0 15px 40px #39b94b30,
-        0 0 20px #a7ff9c30;
+        0 12px 35px #145d2d45,
+        inset 0 0 20px #ffffff80;
 
-    animation: appear .8s ease both;
+    animation: appear 1.5s ease;
 }
 
 @keyframes appear {
     from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(35px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -223,136 +211,193 @@ body {
 
 /* JUDUL */
 .heading {
-    margin-bottom: 25px;
     text-align: center;
+    margin-bottom: 30px;
 }
 
-.mini-title {
-    display: inline-block;
-    margin-bottom: 12px;
-    padding: 7px 17px;
-    border-radius: 30px;
+/* TULISAN CHINA CESUNA */
+.heading::before {
+    content: "切 苏 娜";
 
-    color: #14752e;
-    background: linear-gradient(
-        135deg,
-        #baffac,
-        #e8ffe2
-    );
+    display: block;
+    margin-bottom: 18px;
 
-    font-size: 12px;
-    font-weight: 900;
+    color: #238c43;
+    font-size: 32px;
+    font-weight: bold;
+    letter-spacing: 10px;
 
-    box-shadow: 0 4px 12px #68d65b35;
+    text-shadow:
+        0 0 8px #aaff9b,
+        0 0 18px #ffffff;
+
+    animation: chinaFloat 3s ease-in-out infinite;
 }
 
-.heading h1 {
-    color: var(--dark-green);
-    font-size: clamp(28px, 5vw, 40px);
-    font-weight: 900;
-    animation: titleFloat 3s ease-in-out infinite;
-}
-
-.heading h1 span {
-    color: #32c94e;
-    text-shadow: 0 0 12px #aaffaa;
-}
-
-.heading p {
-    margin-top: 7px;
-    color: #65a76d;
-    font-size: 13px;
-}
-
-@keyframes titleFloat {
+@keyframes chinaFloat {
     0%, 100% {
         transform: translateY(0);
     }
+
     50% {
-        transform: translateY(-5px);
+        transform: translateY(-8px);
     }
 }
 
-/* KOTAK TULISAN */
-.section-title {
-    margin: 25px 0 13px;
-    color: var(--dark-green);
-    font-size: 20px;
+/* LABEL JUDUL */
+.mini-title {
+    display: inline-block;
+    padding: 8px 20px;
+    margin-bottom: 15px;
+
+    color: #207a37;
+    background: linear-gradient(
+        135deg,
+        #baffad,
+        #ffffff,
+        #d6ffd0
+    );
+
+    border: 1px solid #a4e99a;
+    border-radius: 30px;
+
+    font-size: 12px;
     font-weight: 900;
+    letter-spacing: 2px;
+
+    box-shadow: 0 4px 15px #64d45c40;
 }
 
+.heading h1 {
+    color: #267c3b;
+    font-size: clamp(30px, 5vw, 43px);
+    font-weight: 900;
+
+    text-shadow:
+        2px 2px #c9ffc1,
+        0 0 15px #b5ffa8;
+
+    animation: titleGlow 3s ease-in-out infinite alternate;
+}
+
+.heading h1 span {
+    color: #36c950;
+}
+
+.heading p {
+    margin-top: 12px;
+    color: #60956a;
+    font-size: 14px;
+}
+
+@keyframes titleGlow {
+    from {
+        text-shadow: 0 0 8px #c2ffb7;
+    }
+
+    to {
+        text-shadow:
+            0 0 15px #7fea78,
+            0 0 25px #ffffff;
+    }
+}
+
+/* JUDUL KOLEKSI */
+.section-title {
+    margin: 25px 0 18px;
+    color: #287c3c;
+    font-size: 21px;
+    font-weight: 900;
+
+    border-bottom: 2px solid #b7efad;
+    padding-bottom: 12px;
+}
+
+/* DAFTAR TULISAN */
 .writing-list {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px;
+    gap: 15px;
 }
 
+/* KARTU TULISAN */
 .writing-item {
-    min-width: 0;
-    min-height: 85px;
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 15px;
 
-    border: 1px solid #b8f0ae;
-    border-radius: 17px;
+    min-width: 0;
+    min-height: 90px;
+    padding: 15px;
 
     background: linear-gradient(
         135deg,
-        #e3ffdc,
-        #ffffff,
-        #f0ffed
+        rgba(207, 255, 198, 0.95),
+        rgba(255, 255, 255, 0.95)
     );
 
-    transition: .3s;
+    border: 1.5px solid #b2e9a9;
+    border-radius: 18px;
+
+    box-shadow: 0 5px 15px #5cbf5530;
+
+    transition: 0.4s;
 }
 
 .writing-item:hover {
-    transform: translateY(-5px) scale(1.02);
-    border-color: #39d353;
+    transform: translateY(-7px) scale(1.02);
 
     background: linear-gradient(
         135deg,
-        #caffbd,
-        #f2fff0
+        #baffaa,
+        #ffffff
     );
 
-    box-shadow: 0 7px 18px #63d85b45;
+    border-color: #42cf53;
+
+    box-shadow: 0 10px 22px #39c95355;
 }
 
+/* ICON KARTU */
 .item-icon {
     flex-shrink: 0;
-    display: grid;
-    place-items: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 14px;
+
+    width: 43px;
+    height: 43px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     background: linear-gradient(
         135deg,
-        #baffac,
-        #e5ffe0
+        #a9f59b,
+        #edffeb
     );
 
-    font-size: 20px;
-    box-shadow: 0 3px 10px #55cc5540;
+    border-radius: 15px;
+    font-size: 22px;
+
+    box-shadow: 0 4px 12px #64cb5740;
 }
 
+/* ISI KARTU */
 .item-content {
     min-width: 0;
 }
 
 .item-content small {
     display: block;
-    margin-bottom: 5px;
-    color: #49a85b;
+    margin-bottom: 6px;
+
+    color: #31934a;
     font-size: 10px;
-    font-weight: 800;
+    font-weight: 900;
+    letter-spacing: 1px;
 }
 
 .item-content p {
-    color: #285f36;
+    color: #315f3a;
     font-size: 13px;
     line-height: 1.7;
     overflow-wrap: anywhere;
@@ -360,46 +405,52 @@ body {
 
 /* KARTU KATA-KATA */
 .quote {
-    margin-top: 25px;
-    padding: 23px 18px;
+    margin-top: 30px;
+    padding: 28px 20px;
 
-    border: 2px solid #b5edaa;
-    border-radius: 22px;
+    text-align: center;
 
     background: linear-gradient(
         135deg,
-        #d9ffd2,
-        #ffffff,
-        #caffbd
+        rgba(190, 255, 177, 0.9),
+        rgba(255, 255, 255, 0.95),
+        rgba(221, 255, 215, 0.9)
     );
 
-    text-align: center;
-    box-shadow: 0 5px 20px #6cd35b25;
+    border: 2px solid white;
+    border-radius: 25px;
 
-    animation: quoteGlow 4s ease-in-out infinite;
+    box-shadow:
+        0 7px 22px #48b94b35,
+        inset 0 0 15px #ffffff90;
+
+    animation: quoteGlow 4s infinite alternate;
 }
 
 @keyframes quoteGlow {
-    0%, 100% {
-        box-shadow: 0 5px 20px #6cd35b25;
+    from {
+        box-shadow: 0 5px 15px #48b94b25;
     }
-    50% {
-        box-shadow: 0 5px 28px #39d35355;
+
+    to {
+        box-shadow: 0 8px 30px #39d35365;
     }
 }
 
 .quote-icon {
-    font-size: 27px;
+    font-size: 28px;
+    animation: floating 3s infinite ease-in-out;
 }
 
 .quote h2 {
-    margin: 8px 0;
-    color: var(--dark-green);
-    font-size: 21px;
+    margin: 12px 0;
+    color: #267b39;
+    font-size: 23px;
+    font-weight: 900;
 }
 
 .quote p {
-    color: #477b50;
+    color: #426f49;
     font-size: 14px;
     line-height: 2;
 }
@@ -409,101 +460,170 @@ body {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 12px;
-    margin-top: 25px;
+    gap: 15px;
+    margin-top: 28px;
 }
 
 .btn {
     display: inline-block;
-    padding: 11px 20px;
+    padding: 12px 22px;
 
-    border: 2px solid #39c953;
+    color: #277b3b;
+    background: #ffffff;
+
+    border: 2px solid #8ee38b;
     border-radius: 30px;
 
-    background: white;
-    color: #187b34;
-
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 900;
     text-decoration: none;
 
-    transition: .3s;
+    transition: 0.4s;
 }
 
 .btn-primary {
     color: white;
+
     background: linear-gradient(
         135deg,
-        #58e76a,
-        #24b843
+        #55e66b,
+        #20b842
     );
 
-    border-color: #39c953;
+    border-color: #45d35a;
 }
 
 .btn:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 7px 18px #58d95b65;
+    transform: translateY(-5px);
+    box-shadow: 0 7px 18px #39c95355;
 }
 
 /* FOOTER */
 footer {
     max-width: 850px;
-    margin: 20px auto 0;
-    padding: 18px 10px;
+    margin: 25px auto 5px;
+    padding: 20px;
 
     text-align: center;
-    color: #4d955b;
-    font-size: 12px;
+
+    color: white;
+    font-size: 13px;
+    line-height: 2;
+
+    background: rgba(26, 110, 49, 0.75);
+    backdrop-filter: blur(10px);
+
+    border: 1px solid #d9ffd2;
+    border-radius: 20px;
+
+    box-shadow: 0 5px 20px #174b2835;
 }
 
 footer strong {
-    color: #14752e;
+    color: #baffad;
 }
 
-/* TAMPILAN HP */
-@media (max-width: 600px) {
-    body {
-        padding: 12px 9px;
+/* TULISAN CHINA DI FOOTER */
+footer::before {
+    content: "花 · 梦 · 美";
+
+    display: block;
+    margin-bottom: 12px;
+
+    color: #d9ffd2;
+    font-size: 21px;
+    letter-spacing: 7px;
+
+    text-shadow: 0 0 12px #aaffaa;
+}
+
+/* ANIMASI BUNGA DAN DAUN */
+body::before,
+body::after {
+    position: fixed;
+    top: -50px;
+    z-index: 5;
+
+    pointer-events: none;
+
+    font-size: 23px;
+
+    animation: falling 10s linear infinite;
+}
+
+body::before {
+    content: "🌸";
+    left: 15%;
+}
+
+body::after {
+    content: "🍃";
+    left: 75%;
+    animation-delay: 4s;
+    animation-duration: 13s;
+}
+
+@keyframes falling {
+    0% {
+        transform: translateY(-5vh) rotate(0deg);
+        opacity: 0;
     }
 
-    .navbar {
+    15% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* RESPONSIVE HP */
+@media (max-width: 600px) {
+    body {
         padding: 12px;
     }
 
+    .navbar {
+        padding: 13px 15px;
+    }
+
     .logo {
-        font-size: 16px;
+        font-size: 17px;
     }
 
     .nav-link {
-        font-size: 11px;
+        font-size: 12px;
     }
 
     .main-card {
-        padding: 20px 13px;
-        border-radius: 23px;
+        padding: 22px 15px;
     }
 
     .writing-list {
         grid-template-columns: 1fr;
-        gap: 9px;
+        gap: 11px;
     }
 
     .writing-item {
-        min-height: 72px;
-        padding: 12px;
+        min-height: 75px;
     }
 
-    .item-content p {
-        font-size: 13px;
+    .heading h1 {
+        font-size: 30px;
     }
 
-    .section-title {
-        font-size: 18px;
+    .heading::before {
+        font-size: 27px;
+    }
+
+    .quote {
+        padding: 22px 13px;
     }
 }
 
-/* AKSESIBILITAS ANIMASI */
+/* MENGURANGI ANIMASI JIKA DIPERLUKAN */
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
         animation: none !important;
